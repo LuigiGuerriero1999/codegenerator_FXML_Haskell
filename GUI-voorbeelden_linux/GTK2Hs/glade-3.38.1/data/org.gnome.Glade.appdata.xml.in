@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop">
+  <id>org.gnome.Glade</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-2.0+ and LGPL-2.0+</project_license>
+  <name>Glade</name>
+  <summary>Create or open user interface designs for GTK+ applications</summary>
+  <description>
+
+    <!-- To translators: AppData description first paragraph -->
+    <p>
+      Glade is a RAD tool to enable quick &amp; easy development of user interfaces
+      for the GTK+ 3 toolkit and the GNOME desktop environment. 
+    </p>
+
+    <!-- To translators: AppData description second paragraph -->
+    <p>
+      The user interfaces designed in Glade are saved as XML and these can be
+      loaded by applications dynamically as needed by using GtkBuilder or used
+      directly to define a new GtkWidget derived object class using
+      GTK+ new template feature.
+    </p>
+
+    <!-- To translators: AppData description third paragraph -->
+    <p>
+      By using GtkBuilder, Glade XML files can be used in numerous programming 
+      languages including C, C++, C#, Vala, Java, Perl, Python, and others. 
+    </p>
+  </description>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://glade.gnome.org/images/glade-main-page.png</image>
+    </screenshot>
+  </screenshots>
+  <provides>
+    <id>glade.desktop</id>
+  </provides>
+  <launchable type="desktop-id">org.gnome.Glade.desktop</launchable>
+  <url type="homepage">https://glade.gnome.org/</url>
+  <url type="bugtracker">https://gitlab.gnome.org/GNOME/glade/issues</url>
+  <url type="donation">https://www.gnome.org/friends/</url>
+  <url type="help">https://help.gnome.org/users/glade/stable/</url>
+  <update_contact>juanpablougarte_at_gmail.com</update_contact>
+  <kudos>
+    <kudo>HiDpiIcon</kudo>
+    <kudo>ModernToolkit</kudo>
+    <kudo>UserDocs</kudo>
+  </kudos>
+  <project_group>GNOME</project_group>
+  <translation type="gettext">glade</translation>
+  <releases>
+    <release version="3.38.1" date="2020-10-04">
+      <description>
+        <p>Glade 3.38.1 release!</p>
+        <ul>
+          <li>Fixed various stability and functionality issues.</li>
+          <li>Updated translations.</li>
+        </ul>
+      </description>
+      <issues>
+        <issue url="https://gitlab.gnome.org/GNOME/glade/-/issues/471">Issue #471: XML not updated after adding element</issue>
+        <issue url="https://gitlab.gnome.org/GNOME/glade/-/issues/480">Issue #480: version field not always updated in XML</issue>
+        <issue url="https://gitlab.gnome.org/GNOME/glade/-/issues/474">Issue #474: GtkLabel: setup text attribute issues</issue>
+        <issue url="https://gitlab.gnome.org/GNOME/glade/-/issues/479">Issue #479: Glade 3.36.0 segfaults when opening a file</issue>
+      </issues>
+    </release>
+    <release version="3.38.0" date="2020-09-12">
+      <description>
+        <p>Glade 3.38.0 release!</p>
+        <ul>
+          <li>Load template files as new GTypes and add them to "User templates" widget group automatically without the need of a catalog</li>
+          <li>Added JavaScript widget support</li>
+          <li>Use version data from gir to improve deprecation/target tests</li>
+          <li>Implement survey using new backend at surveys.gnome.org</li>
+          <li>Keep survey state in config file</li>
+          <li>Associate with application/x-gtk-builder (Caolán McNamara)</li>
+          <li>Project properties dialog improvements. (Use headerbar, stack and stach switcher, add warnings textview)</li>
+          <li>Improve toolkit target version selection in project properties dialog</li>
+          <li>Improve treemodel char data type handling</li>
+          <li>Remove autotools (Iñigo Martínez)</li>
+          <li>New gjs-1.0 1.64 dependency</li>
+          <li>Bump Gtk dependency to 3.24</li>
+          <li>Bump webkit2gtk dependency to 2.28</li>
+          <li>Fixed all compiler/gir warnings</li>
+        </ul>
+      </description>
+      <issues>
+        <issue url="https://gitlab.gnome.org/GNOME/glade/-/issues/385">Issue #385: GtkCellRendererText causes deprecated warnings for ghost properties</issue>
+        <issue url="https://gitlab.gnome.org/GNOME/glade/-/issues/444">Issue #444: show-emoji-icon is missing "minimum version"/since constraint</issue>
+        <issue url="https://gitlab.gnome.org/GNOME/glade/-/issues/367">Issue #367: Glade removes double/triple slashes from URLs</issue>
+        <issue url="https://gitlab.gnome.org/GNOME/glade/-/issues/452">Issue #452: GtkComboBox cell renderers editor is too hard to discover</issue>
+        <issue url="https://gitlab.gnome.org/GNOME/glade/-/issues/363">Issue #363: Toplevel windows are leaked when closing a project</issue>
+        <issue url="https://gitlab.gnome.org/GNOME/glade/-/issues/462">Issue #462: Crash when creating a new GtkAssistant and pressing it</issue>
+        <issue url="https://gitlab.gnome.org/GNOME/glade/-/issues/463">Issue #463: Specify file on command line</issue>
+        <issue url="https://gitlab.gnome.org/GNOME/glade/-/issues/461">Issue #461: Glade resets number of rows and columns in GtkGrid</issue>
+        <issue url="https://gitlab.gnome.org/GNOME/glade/-/issues/460">Issue #460: 3.37.0: test suite fails because glade uses incorrectly asserts in test units</issue>
+        <issue url="https://gitlab.gnome.org/GNOME/glade/-/issues/412">Issue #412: Fix inconsistent "top-level", "top level", "toplevel" spelling in translatable strings</issue>
+        <issue url="https://gitlab.gnome.org/GNOME/glade/-/issues/281">Issue #281: GladeProperty: Do not replace - with _</issue>
+        <issue url="https://gitlab.gnome.org/GNOME/glade/-/issues/389">Issue #389: GladeProject: show message on invalid GtkBuilder file</issue>
+        <issue url="https://gitlab.gnome.org/GNOME/glade/-/issues/446">Issue #446: GladeGtkListBox: fix size request issue</issue>
+        <issue url="https://gitlab.gnome.org/GNOME/glade/-/issues/432">Issue #432: GladeStandarStock, GladeStandarStockImage: fix get_type() functions for introspection</issue>
+        <issue url="https://gitlab.gnome.org/GNOME/glade/-/issues/447">Issue #447: GladeGtkWindow: Fix CSD support</issue>
+        <issue url="https://gitlab.gnome.org/GNOME/glade/-/issues/456">Issue #456: Utils: use g_param_spec_uchar() for uchar types</issue>
+        <issue url="https://gitlab.gnome.org/GNOME/glade/-/issues/459">Issue #459: Gtk catalog: add GtkRecentChooserMenu to Display group</issue>
+        <issue url="https://gitlab.gnome.org/GNOME/glade/-/issues/433">Issue #433: Implement survey using new backend at surveys.gnome.org</issue>
+        <issue>Build: use gtk-mac-integration only when creating bundle (Tom Schoonjans)</issue>
+        <issue>Ignore locale when saving numeric values (Alberto Fanjul)</issue>
+        <issue>Remove config for external builds (Alberto Fanjul)</issue>
+        <issue>Python plugin: fix linking error</issue>
+        <issue>Tests: add python and javascript test case</issue>
+        <issue>gtk: Add GtkScrolledWindow propagate-natural-width property (Corentin Noël)</issue>
+        <issue>GladeScrolledWindowEditor: Squeeze width/height properties in two columns</issue>
+        <issue>Gtk plugin: add missing displayable values</issue>
+        <issue>Webkit2gtk plugin: add missing displayable values and sandbox web view</issue>
+        <issue>dtd: Make init-function an element, not an attribute (Adrien Plazas)</issue>
+      </issues>
+    </release>
+    <release version="3.36.0" date="2020-05-06"/>
+    <release version="3.22.0" date="2018-03-12"/>
+  </releases>
+  <content_rating type="oars-1.1">
+    <content_attribute id="violence-cartoon">none</content_attribute>
+    <content_attribute id="violence-fantasy">none</content_attribute>
+    <content_attribute id="violence-realistic">none</content_attribute>
+    <content_attribute id="violence-bloodshed">none</content_attribute>
+    <content_attribute id="violence-sexual">none</content_attribute>
+    <content_attribute id="violence-desecration">none</content_attribute>
+    <content_attribute id="violence-slavery">none</content_attribute>
+    <content_attribute id="violence-worship">none</content_attribute>
+    <content_attribute id="drugs-alcohol">none</content_attribute>
+    <content_attribute id="drugs-narcotics">none</content_attribute>
+    <content_attribute id="drugs-tobacco">none</content_attribute>
+    <content_attribute id="sex-nudity">none</content_attribute>
+    <content_attribute id="sex-themes">none</content_attribute>
+    <content_attribute id="sex-homosexuality">none</content_attribute>
+    <content_attribute id="sex-prostitution">none</content_attribute>
+    <content_attribute id="sex-adultery">none</content_attribute>
+    <content_attribute id="sex-appearance">none</content_attribute>
+    <content_attribute id="language-profanity">none</content_attribute>
+    <content_attribute id="language-humor">none</content_attribute>
+    <content_attribute id="language-discrimination">none</content_attribute>
+    <content_attribute id="social-chat">none</content_attribute>
+    <content_attribute id="social-info">none</content_attribute>
+    <content_attribute id="social-audio">none</content_attribute>
+    <content_attribute id="social-location">none</content_attribute>
+    <content_attribute id="social-contacts">none</content_attribute>
+    <content_attribute id="money-purchasing">none</content_attribute>
+    <content_attribute id="money-gambling">none</content_attribute>
+  </content_rating>
+</component>

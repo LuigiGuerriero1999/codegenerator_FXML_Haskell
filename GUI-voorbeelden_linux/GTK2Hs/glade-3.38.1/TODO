@@ -1,0 +1,45 @@
+Split Project data model from view model:
+========================================
+
+Currently we create a GladeWidget object for each project object but
+GladeProject and gladeui api in general uses the very same runtime object.
+Ideally we should only depend on GladeWidget and the actual runtime object
+should only be used for the view in the workspace.
+
+A first step could be updating GladeProject to only use GladeWidget internally
+and then we can update gladeui api to use GladeWidget instead but this means a
+API/ABI break 
+
+GtkBuilder unsuported features:
+==============================
+
+  * Property bindings
+
+Unsupported object classes:
+==========================
+
+Glib
+
+  * GMenu/GMenuModel (<menu> GtkBuilder element)
+    Because GMenu is in Glib library it can not implement GtkBuildable iface which
+    is in GTK+ this lead to implementing GMenu object construction in GtkBuilder
+    using a custom element <menu>
+    Ideally we should move GtkBuilder and GtkBuildable to Glib and rename them
+    GBuilder and GBuildable so that we can implemet GBuildable in GMenu object
+    A way to avoid this would be to create a new object type in GTK that derives
+    from GMenu say GtkMenuObject (GtkMenu is already taken ;) and make it implement
+    GtkBuildable iface.
+
+  * GAction, GSimpleAction, GActionGroup
+
+GTK+ 3.4
+
+  * GtkApplication (add buildable iface to support GMenuModel?¿)
+
+GTK+ 3.14
+
+  * type="action" children in GtkDialog
+
+GTK+ 3.20
+
+  * GtkShortcutsWindow

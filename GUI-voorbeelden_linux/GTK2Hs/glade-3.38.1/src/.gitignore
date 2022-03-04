@@ -1,0 +1,11 @@
+/.deps
+/.libs
+
+/Makefile
+/Makefile.in
+
+/glade
+/glade.rc
+
+/glade-resources.c
+/glade-resources.h

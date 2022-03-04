@@ -1,0 +1,20 @@
+1. ghc en cabal installeren
+2. ghci installeren: sudo apt-get install haskell-platform
+3 Optie 1 :
+    3.1 gtk-ghc installeren : sudo apt-get install libghc-gtk-dev
+  Optie 2:
+    3.2 libraries installeren: 
+    sudo apt-get install libglib2.0-dev
+    sudo apt-get install libcairo2-dev libpango1.0-dev libgtk2.0-dev
+    cabal update
+    cabal install gtk2hs-buildtools
+    cabal install gtk
+4. Optioneel: Glade installeren : sudo apt-get install glade
+
+5. voor Glade werkend te krijgen met GTK 2 (eerst downloaden):
+    sudo dpkg --install libgladeui-1-11_3.8.0-0ubuntu6.1_amd64.deb
+    sudo dpkg --install glade-gtk2_3.8.0-0ubuntu6.1_amd64.deb
+
+6. Voor gtk te compileren en te runnen:
+ ghc --make test2.hs -o test2
+ ./test2

@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+<!ENTITY appversion "3.1.0">
+<!ENTITY manrevision "3.0">
+<!ENTITY app "Glade">
+]>
+<!-- 
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Apr 11, 2002
+-->
+<article id="index" lang="hi">
+
+  <articleinfo> 
+    <title>ग्लेड अंतराफलक रूपांकक किताब</title> 
+      
+    <abstract role="description"><para>गलेड एक् युजर् इन्तेरफ़ेस रूपांकक है जीतीके + प्रयोगो के लिये ।</para>
+    </abstract>
+
+    <copyright> 
+      <year>२००६</year> 
+      <holder>विनसेन्ट गेदेस</holder> 
+    </copyright>
+    <copyright> 
+      <year>२००४</year>
+      <year>२००३</year>
+      <holder>सन मायीक्र्रॊ सिस्तेम</holder> 
+    </copyright> 
+    <copyright> 
+      <year>२००२</year><year>२०००</year> 
+      <holder>माईकल वेन्स</holder> 
+    </copyright> 
+
+    <publisher> 
+      <publishername>ग्नोम  प्रलेखन परियोजना </publishername> 
+    </publisher> 
+
+   <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
+
+    <authorgroup> 
+      <author role="maintainer"> 
+	<firstname>Vincent</firstname> 
+	<surname>Geddes</surname> 
+	<affiliation> 
+	  <orgname>ग्नोम  प्रलेखन परियोजना </orgname>
+	  <address><email>vincent.geddes@gmail.com</email></address>
+	</affiliation>
+      </author> 
+      <author> 
+        <firstname>सन</firstname> 
+        <surname>ग्नोम प्रलेखन</surname> 
+        <affiliation> 
+          <orgname>सन मायीक्र्रॊ सिस्तेम</orgname> 
+        </affiliation> 
+       </author> 
+       <author> 
+         <firstname>माईकल</firstname> 
+         <surname>वेन्स</surname> 
+         <affiliation> 
+           <orgname>ग्नोम  प्रलेखन परियोजना </orgname> 
+           </affiliation> 
+       </author> 
+    </authorgroup>
+
+
+<!-- According to GNU FDL, revision history is mandatory if you are -->
+<!-- modifying/reusing someone else's document.  If not, you can omit it. -->
+<!-- Remember to remove the &manrevision; entity from the revision entries other
+-->
+<!-- than the current revision. -->
+<!-- The revision numbering system for GNOME manuals is as follows: -->
+<!-- * the revision number consists of two components -->
+<!-- * the first component of the revision number reflects the release version of the GNOME desktop. -->
+<!-- * the second component of the revision number is a decimal unit that is incremented with each revision of the manual. -->
+<!-- For example, if the GNOME desktop release is V2.x, the first version of the manual that -->
+<!-- is written in that desktop timeframe is V2.0, the second version of the manual is V2.1, etc. -->
+<!-- When the desktop release version changes to V3.x, the revision number of the manual changes -->
+<!-- to V3.0, and so on. -->  
+    <revhistory>
+        <revision> 
+		<revnumber>ग्लेद पुस्तक ३.०</revnumber> 
+		<date>५ दिसम्बर २००६</date>
+		<revdescription> 
+	  		<para role="author">विनसेन्ट गेदेस</para>
+	  		<para role="publisher">ग्नोम  प्रलेखन परियोजना </para>
+		</revdescription> 
+        </revision>
+        <revision> 
+                <revnumber>ग्लेड पुस्तक २.१</revnumber> 
+                <date>१७ जुन २००४</date> 
+                <revdescription> 
+                        <para role="author">सन ग्नोम प्रलेखन दल</para>
+                        <para role="publisher">ग्नोम  प्रलेखन परियोजना </para>
+                </revdescription> 
+        </revision>
+        <revision> 
+                <revnumber>ग्लेड उपयोगकर्ता पुस्तक २.०</revnumber> 
+                <date>२५ फ़रबरी २००४</date> 
+                <revdescription> 
+                        <para role="author">सन ग्नोम प्रलेखन दल</para>
+                        <para role="publisher">ग्नोम  प्रलेखन परियोजना </para>
+                </revdescription> 
+        </revision>             
+        <revision> 
+                <revnumber>ग्लेड उपयोगकर्ता पुस्तक १.२</revnumber> 
+                <date>१० फ़ेब २००४</date> 
+                <revdescription> 
+                        <para role="author">सन ग्नोम प्रलेखन दल</para>
+                        <para role="publisher">ग्नोम  प्रलेखन परियोजना </para>
+                </revdescription> 
+        </revision>  
+        <revision> 
+                <revnumber>ग्लेड उपयोगकर्ता पुस्तक १.१</revnumber> 
+                <date>३० मार्च २००२</date> 
+                <revdescription> 
+                        <para role="author">माईकल वेन्स</para>
+                        <para role="publisher">ग्नोम  प्रलेखन परियोजना </para>
+                </revdescription> 
+        </revision> 
+        <revision> 
+                <revnumber>ग्लेड उपयोगकर्ता पुस्तक १.०</revnumber> 
+                <date>११ मई २०००</date> 
+                <revdescription> 
+                        <para role="author">माईकल वेन्स</para>
+                        <para role="publisher">ग्नोम  प्रलेखन परियोजना </para>
+                </revdescription> 
+        </revision> 
+    </revhistory> 
+
+    <releaseinfo>यह पुस्तक मे ग्लेड ३.१.० का विविरण है ।</releaseinfo> 
+    <legalnotice> 
+      <title>प्रतिपुष्टि</title> 
+      <para>किसी भी बग के बारे मे रिपोट करना हो या फिर ग्लेड या इस पुस्तक के बारे मे सुज़ाव देना है तो दिए गए लिन्क का अनुसरण किजिए <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink> ।</para>
+<!-- Translators may also add here feedback address for translations -->
+    </legalnotice> 
+  </articleinfo> 
+
+    <indexterm><primary>ग्लेड</primary></indexterm>
+    <indexterm><primary>उपयोगकर्ता अंतराफलक रूपांकक</primary></indexterm>
+
+
+<!-- ============= Document Body ============================= -->
+<!-- ============= Introduction ============================== -->
+<!-- Use the Introduction section to give a brief overview of what
+     the application is and what it does. -->
+  <sect1 id="introduction"> 
+    <title>भूमिका</title> 
+
+    <para><application>ग्लेड</application> अतराफलक रूपांकक आपको जीतीके + प्रयोगो के लिये उपयोगकर्ता अंतराफलक रूपांक की रचना और सम्पादन करने के लिए देता है ।</para>
+
+    <para>जीतीके+ लायीब्रेरी आपको उपयोगकर्ता अंतराफलक बिलडिंग ब्लौक का सन्ग्रह देता है जैसे की पाथय पेटी , इन बिलडिंग ब्लौक को <emphasis>विज़ेट</emphasis> कहा जाता है । आप गलेड को विज़ेट की जगह ग्रफिक युसेर इन्तेर्फ़ेस (ग्रफिक उपयोगकर्ता अंतराफलक) मे  इस्तेमाल कर सकते है । ग्लेड आपको विज़ेट की  विन्यास (लेआउट) और  गुणधर्म (प्रोपटी) को सुधारने का मौका देता है । आप ग्लेद को विज़ेट और सोर्स कोड के बीच सम्बन्ध बनाने के लिए इस्तेमाल कर सकते है ।</para>
+
+    <para>उपयोगकर्ता अंतराफलक (युजर इन्टरफ़ेस) जो कि ग्लेड मे रचा गया है ,एक्ष.अम.अल  फॉर्मेट मे रखा जाता है जॊ कि बाहरी यन्त्र के साथ आसानी से समाकलन हो जाता है । आप <application>लायीब्रेरीग्लेद</application> का उपयोग जीयुआई को एक्ष.अम.अल  से बनाने के लिए कर सकते है ।</para>
+
+  </sect1>
+
+  <sect1 id="getting-started"> 
+    <title>शुरुआत से</title> 
+
+    <sect2 id="glade-start">
+    <title>शुरु करने के लिये <application>ग्लेड</application></title>
+    <para>आप इस तरह शुरु कर सकते है :<application>ग्लेड</application></para> 
+    <variablelist>
+    	<varlistentry>
+    		<term><guimenu>प्रयोगो</guimenu> मेनु </term>
+    		<listitem>
+    		<para>चुनिये <menuchoice><guisubmenu>प्रोग्रामिग</guisubmenu>ग्लेड अंतराफलक रूपांकक<guimenuitem/></menuchoice> ।</para>
+    		</listitem>
+    	</varlistentry>
+    	<varlistentry>
+    		<term>कमान्ड लाईन</term>
+    		<listitem>
+    		<para>शुरु करने के लिए <application>ग्लेद</application> को कमान्ड लाईन मे लिखिये और फिर <keycap>वापस</keycap>: <command>ग्लेड</command></para>	 
+    		</listitem>
+    	</varlistentry>
+    </variablelist>
+    </sect2>
+
+    <sect2 id="glade-when-start">
+    <title>जब आप शुरु करे <application>ग्लेड</application></title>
+    <para>जब आप शुरु करेगे तब आपको यह विन्डो पे दिखाई देगा <application>ग्लेड</application></para>
+
+        <figure id="main-window-fig"> 
+          <title><application>ग्लेड</application>विन्डो</title> 
+            <screenshot> 
+              <mediaobject>
+                <imageobject><imagedata fileref="figures/main-window.png" format="PNG"/></imageobject>
+                <textobject><phrase><प्लेसहोलड-१/>विन्डो को दिखाईये ।</phrase></textobject> 
+              </mediaobject> 
+            </screenshot> 
+        </figure>
+        
+        <para><application>ग्लेड</application> विन्डो मे दिये गये अशं है ।</para>
+
+        <variablelist>
+          <varlistentry> <term>मेनू बार</term>
+            <listitem>
+            <para>मेनू बार के मेनू मे सारे कमान्ड दिये गये है जिस से आप फ़ाईल से <application>ग्लेड</application> मे काम कर सकते है ।</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry> <term>टूल बार</term>
+            <listitem>
+            <para>टूल बार मे  कमान्ड के सबसेट होते है जो मेनू बार को नियन्त्रित करके रखते है ।</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry> <term>डिजाईन छेऋ</term>
+            <listitem>
+            <para>डिजाईन छेऋ वह है जहाँ उपयोगकर्ता रूपांकक कॊ विसुअली संपादित किया जा सकता है ।</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry> <term>पेलेटी</term>
+            <listitem>
+            <para>पेलेटी मे विज़ेट होता है जो कि उपयोगकर्ता रूपांकक को बनाने के काम आता है ।</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry> <term>इन्स्पेक्टर</term>
+            <listitem>
+            <para>इन्स्पेक्टर का काम है कि वह किसी भी प्रोजेक्ट में विज़ेट के बारे में जानकारी दे ।</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry> <term>प्रोपेटी संपादक</term>
+            <listitem>
+            <para>प्रोपेटी संपादक का काम यह है कि वह विज़ेट कि गुणो को काबु करे , साथ ही साथ यह सोर्स कोड में कनेक्सन जोड़ता है । </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry> <term>दशा बार</term>
+            <listitem>
+            <para>दशा बार का काम है कि वह तत्काल गतिविधि के बारे में जानकारी दे तथा मेनु विषयो के बारे में प्रासंगिक जानकारी दे ।</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+    </sect2>
+  </sect1>
+
+  <sect1 id="working-with-projects"> 
+         <title>प्रोजेक्ट के साथ काम करना </title> 
+  
+ 
+<!-- To Create a New Project  -->
+	 <sect2 id="glade-create-new-project"> 
+		<title>नया प्रोजेक्ट बनाना</title>
+		<para>नया प्रोजेक्ट बनाने के लिए  </para>
+	 </sect2>
+
+	 <sect2 id="glade-open-project"> 
+		<title>प्रोजेक्ट को खोलना </title>
+		<para>अगर किसी भी स्थायी प्रोजेक्ट को खोलना है तो <menuchoice><guimenu>फ़ाईल</guimenu><guimenuitem>खोलो</guimenuitem></menuchoice> को चुनिए । यह प्रयोग प्रोजेक्ट को <application>ग्लेड</application> विन्डो में दिखाता है ।</para>
+	 </sect2>
+
+<!-- To Save a Project -->
+	 <sect2 id="glade-save-project"> 
+		<title>प्रोजेक्ट की सुरक्षा </title>
+		<para>आप प्रोजेक्ट को  सुरक्षित दिये गये  नियमों से कर सकते है : </para>
+		<itemizedlist> 
+		  <listitem><para>अगर किसी भी स्थायी प्रोजेक्ट मे कोई बदलाव को अगर  सुरक्षित रखना है तो <menuchoice><guimenu>फ़ाईल</guimenu><guimenuitem>सुरक्षा</guimenuitem></menuchoice> को चुनिये ।</para>
+		  </listitem>
+		  <listitem><para>अगर किसी नये प्रोजेक्ट को सुरक्षित करना है या फिर किसी स्थायी प्रोजेक्ट को किसी नए नाम से सुरक्षित रखना है तो <menuchoice><guimenu>फ़ाईल</guimenu><guimenuitem>सुरक्षित करे,</guimenuitem></menuchoice> को चुनिये । प्रोजेक्ट फ़ाईल का नाम  <guilabel>सुरक्षित करे । </guilabel>  में अन्दर डाले और <guibutton>सुरक्षा</guibutton> पर क्लिक करे ।</para>
+		  </listitem>
+		</itemizedlist>
+	 </sect2>
+  </sect1>
+
+
+  <sect1 id="working-with-widgets"> 
+         <title>विज़ेट के साथ काम </title>
+         <sect2 id="select-widgets-palette">
+                <title>पेलेटी विन्डो से विज़ेट चुनना ।</title>
+                <para>आप विज़ेट के साथ <guilabel>पेलेटी</guilabel>विन्डो पे दिये गये  नियमों से काम कर सकते है ।</para>
+                <variablelist> 
+                  <varlistentry> 
+                         <term>सेलेक्सन मोड</term> 
+                         <listitem>
+                                <para>सेलेक्सन मोड को काम में लाने के लिये <guilabel>सेलेकटर</guilabel> तीर पर क्लिक करे । यह निशान तीर मे परिवर्तित हो जाता है ताकि सेलेक्सन मोड को सक्रिय दिखा सके ।इस मोड मे आप माउस को प्रोजेक्ट के लिये विदगेट चुनने के लिये काम में लाते है । आप तब <guilabel>प्रोपर्टी</guilabel> विन्डो को विदगेट कि प्रोपर्टी का संपादन करने के लिये उपयोग कर सकते है ।</para>
+<para>आप विदगेट कोन्टेकस्ट मेनु को विज़ेट का चुनाव करने के लिए इस्तेमाल कर सकते है । विज़ेट कोन्टेकस्ट मेनु को खोलने के लिए विज़ेट पर दायॉ क्लिक करे ।</para><para>आप अपने प्रोजेक्ट मे एक से ज्यादा विज़ेट( किसी एक विशेष किस्म का विदगेट )  <guilabel>पेलेटी</guilabel> लगा सकते है । इसके लिये आपको <keycap>नियंत्रण</keycap> बटन को दबा कर रखना होगा , जब आप विज़ेट का चुनाव कर रहे होते है । आपको <guilabel>सेलेकटर</guilabel> तीर को क्लिक करना होगा या फिर किसी दुसरे विज़ेट<guilabel>पेलेटी</guilabel> को नोर्मल मोड में वापस जाने के लिये क्लिक करना होगा ।</para>
+                         </listitem> 
+                  </varlistentry> 
+                </variablelist> 
+                <variablelist> 
+                  <varlistentry> 
+                         <term>विज़ेट प्लेसमेन्ट मोड </term> 
+                         <listitem> 
+                                <para>विज़ेट प्लेसमेन्ट मोड को काम में लाने के लिए , विज़ेट को <guilabel>पेलेटी</guilabel> विन्डो में चुनिये । जब आप ज्यादा विज़ेट को चुनते है तो सूचक , सूचक और क्रोस में परिवर्तित हो जाता है । अब आप विज़ेट को क्न्टेनर , ऊचे कोटी विदगेट इत्यादि के अन्दर रख सकते हैं । विज़ेट को अन्दर रखने के बाद , मोड , चुनाव मोड मे वापस चला जाता है । </para>
+                         </listitem> 
+                  </varlistentry> 
+                </variablelist> 
+                <variablelist> 
+                  <varlistentry> 
+                         <term>ऊच्च कोटी प्लेसमेन्ट मोड </term> 
+                         <listitem> 
+                                <para>ऊच्च कोटी प्लेसमेन्ट मोड को इस्तेमाल करने के लिए , ऊच्च कोटी विज़ेट को <application>पेलेटी</application>  विन्डो मे चुनिये । जब आप ऊच्च कोटी विज़ेट को <guilabel>पेलेटी</guilabel> मे चुनते है तो विदगेट आपके कम्पयुटर पर तुरन्त ही दिख जाता है । आप विज़ेट को संपादन भी कर सकते है । ऊच्च कोटी विज़ेट को चुनने के बाद मोड , चुनाव मोड मे वापस चला जाता है ।</para>
+                         </listitem> 
+                  </varlistentry> 
+                </variablelist> 
+         </sect2>
+<sect2 id="organize-widgets">
+<title>विज़ेट को अपने प्रोजेक्ट मे रचना </title>
+<para>आप विज़ेट कन्टेनर या डिब्बे को प्रोजेक्ट विन्डो मे विज़ेट के लेआऊट और निर्माण  के लिए इस्तेमाल किया जाता है । आप दिए गए विज़ेट कन्टेनरो को <guilabel>पेलेटी</guilabel>  विन्डो से चुन सकते है ।</para>
+<itemizedlist>
+<listitem><para>क्षैतिज डिब्बा</para>
+</listitem><listitem><para>लंबरूप डिब्बा</para></listitem>
+<listitem><para>टेबल</para></listitem>
+<listitem><para>स्थिर स्थिति</para></listitem>
+<listitem><para>क्षैतिज बटन डिब्बा</para></listitem>
+<listitem><para>लंबरूप बटन डिब्बा</para></listitem>
+<listitem><para>क्षैतिज पेन्स</para></listitem>
+<listitem><para>लंबरूप पेन्स</para></listitem>
+<listitem><para>कोपी</para></listitem>
+<listitem><para>फ़्रेम</para></listitem>
+<listitem><para>स्क्रोल विन्डो</para></listitem>
+<listitem><para>प्रेक्षक अभिप्राय</para></listitem>
+</itemizedlist>
+<para>आप डिब्बो को जटिल अभिन्यास (लेआऊट) संरचना बनाने के लिए नेस्ट कर सकते है । जब आप क्षैतिज लंबरूप डिब्बे बनाते है , तब <application>ग्लेड</application> आपको पुछता है कि कितने रो और कोलम बनाने है , जबकि रो और कोलम को बड़ी आसानी से बाद मे जोड़ा या घटाया जा सकता है ।</para>
+<para>जब आप जरुरत कि सारी डिब्बे बना लेते है तब आप उसमे कुछ अलग विज़ेट जोड़ सकते हैं जैसे कि लेबल , बटन और बहुत सी कठीन विज़ेट । ये ध्यान रखे कि <application>ग्लेड</application> विज़ेट को एक अभिन्यास (लेआऊट) मे बन्द कर देता है जिससे यह काम को आसान कर देता है । इन डिब्बो के इस्तेमाल से विन्डो अपने आकार को बदल सकता है ताकि तरह-तरह के आकार के लेबल को अलग-अलग भाषाओ मे डाल सके , तब जब प्रयोग लोकलाईज हो ।</para></sect2>
+         <sect2 id="place-widgets-clipboard"> 
+                <title> विज़ेट को क्लिपबोड़ पे रखना</title> 
+                <para>किसी विज़ेट को किसी पेरेन्ट से अलग करने के लिये और उसे क्लिपबोड़ पे रेखने के लिये विदगेट को चुनिये , फिर <menuchoice><guimenu>संपादन</guimenu><guisubmenu>काटिये</guisubmenu></menuchoice> को चुनिये ।</para>
+         </sect2> 
+         <sect2 id="copy-widget-clipboard"> 
+                <title>विज़ेट की नकल करके क्लिपबोड़ पे लगाना</title> 
+                <para>विज़ेट की नकल करके क्लिपबोड़ पे लगाने के लिये विदगेट को चुनिये और फिर <menuchoice><guimenu>संपादन</guimenu><guisubmenu>नकल</guisubmenu></menuchoice> किजिये । असली विज़ेट अपने पिता के साथ जुड़ा रहता है ।</para>
+         </sect2> 
+         <sect2 id="paste-widget-clipboard"> 
+                <title>विज़ेट को क्लिपबोड़ से अपने प्रोजेक्ट मे चिपकाना</title> 
+                <para>विज़ेट को क्लिपबोड़ से अपने प्रोजेक्ट मे चिपकाने के लिए <menuchoice><guimenu>संपादन</guimenu><guisubmenu>चिपका</guisubmenu></menuchoice> चुनिये ।</para><para>हर विज़ेट का एक अलग नाम <application>ग्लेड</application> के अन्दर होना चाहिए ।अगर आप एक विज़ेट को काटते है तो उसे अपने प्रोजेक्ट मे चिपका दिजिए , तब विज़ेट और उसके बच्चे के असली नाम बने रहते है । अगर आप एक विज़ेट कि नकल करते हो या फिर अपने प्रोजेक्ट मे कई बार चिपकाते हैं तो <application>ग्लेड</application> सब नकल कि हुई विज़ेट को नया नाम दे देता है ।</para>
+         </sect2> 
+         <sect2 id="delete-widget"> 
+                <title>विज़ेट को मिटाना</title> 
+                <para>विज़ेट को पिता के पास से मिटाने के लिये , बिना किसी विज़ेट को क्लिपबोड़ से हिलाके , विज़ेट को चुनिये और <menuchoice><guimenu>संपादन</guimenu><guisubmenu>मिटाना</guisubmenu></menuchoice> को चुनिये ।</para>
+                 
+         </sect2> 
+         
+         <sect2 id="edit-widget"> 
+                <title>विज़ेट कि गुणस्वभाव को बदलना</title> 
+                <para>गुणस्वभाव संपादक को कुछ चुने गये विज़ेट के गुणस्वभाव को संपादन करने के काम मे लाया जाता है । विज़ेट कि गुणस्वभाव को बदलने के लिये विज़ेट को चुनिये और फिर किसी एक गुणस्वभाव विन्डो गुणस्वभाव मैदान मे ऊचित मान दे ।</para>
+                
+                
+         </sect2> 
+  </sect1>
+  
+<sect1 id="about"> 
+    <title>ग्लेड के बारे मे </title> 
+    <para>ग्लेड को ग्लेड विकासक और ग्नोम स्वयंसेवक कि देखरेख मे रहता है । ग्लेड के बारे मे ज्यादा जानने के लिए <ulink url="http://glade.gnome.org" type="http">Glade Web site</ulink> साईट पर जाईए ।</para>
+    <para>इस किताब की गुणस्वभाव कि किसी भी गलती के बारे मे रिपोर्ट देने के लिए या कोई सुझाव देने के लिए आप ulink url="http://bugzilla.gnome.org/enter_bug.cgi?product=glade3" type="http"&gt;bugzilla</para>
+
+    <para>और दुसरे ग्लेड साईट है <ulink url="http://lists.ximian.com/mailman/listinfo/glade-users" type="http">user</ulink> and <ulink url="http://lists.ximian.com/mailman/listinfo/glade-devel" type="http">developer</ulink> मेलिग पर्ची ।</para>
+
+    <para>इस् प्रलेखन को जिनयो आम जनता लाईसेन्स के अन्दर वितरित किया गया है , जैसा कि मुफ़्त सॉफ्टवेयर फ़ाऊनदेशन मे प्रकाशित किया है ; या तो लाईसेन्स का पाठ २ या फिर कोई बाद के पाठ । इस लाईसेन्स कि कोपी आपको <ulink url="ghelp:gpl" type="help">link</ulink> मे मिल जायेगा या फिर COPYING फ़ाईल मे इस प्रलेखन के सोर्स कोड के साथ मिल जायेगा । </para>
+  </sect1> 
+
+</article>

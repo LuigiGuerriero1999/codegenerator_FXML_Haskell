@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glade-catalog supports="libglade" name="canvas" library="gladegnome" icon-prefix="gnome" domain="glade3" depends="gnome">
+  <glade-widget-classes>
+    <glade-widget-class name="GnomeCanvas" generic-name="canvas" title="GNOME Canvas">
+      <set-property-function>glade_gnome_canvas_set_property</set-property-function>
+      <properties>
+        <property id="scroll-x1" name="Min X">
+	  <tooltip>The minimum X coordinate</tooltip>
+	  <spec>glade_standard_float_spec</spec>
+	</property>
+        <property id="scroll-y1" name="Min Y">
+	  <tooltip>The minimum Y coordinate</tooltip>
+	  <spec>glade_standard_float_spec</spec>
+	</property>
+        <property id="scroll-x2" name="Max X">
+	  <tooltip>The maximum X coordinate</tooltip>
+	  <spec>glade_standard_float_spec</spec>
+	</property>
+        <property id="scroll-y2" name="Max Y">
+	  <tooltip>The maximum Y coordinate</tooltip>
+	  <spec>glade_standard_float_spec</spec>
+	</property> 
+        <property id="pixels-per-unit" name="Pixels per unit">
+	  <tooltip>The number of pixels corresponding to one unit</tooltip>
+	  <spec>glade_standard_float_spec</spec>
+	</property>
+      </properties>
+    </glade-widget-class>
+
+    
+    <glade-widget-class name="GnomeIconList" generic-name="iconlist" title="GNOME Icon List">
+      <post-create-function>glade_gnome_icon_list_post_create</post-create-function>
+      <set-property-function>glade_gnome_icon_list_set_property</set-property-function>
+      <properties>
+        <property id="scroll-x1" disabled="True"/>
+        <property id="scroll-y1" disabled="True"/>
+        <property id="scroll-x2" disabled="True"/>
+        <property id="scroll-y2" disabled="True"/>
+        <property id="pixels-per-unit" disabled="True"/>
+        <property id="selection-mode" name="Selection Mode">
+	  <parameter-spec>
+	    <type>GParamEnum</type>
+	    <value-type>GnomeIconListMode</value-type>
+	  </parameter-spec>
+	  <tooltip>The selection mode</tooltip>
+          <displayable-values>
+            <value id="GNOME_ICON_LIST_ICONS" name="List Icons"></value>
+            <value id="GNOME_ICON_LIST_TEXT_BELOW" name="Text Below"></value>
+            <value id="GNOME_ICON_LIST_TEXT_RIGHT" name="Text Right"></value>
+          </displayable-values>
+	</property>
+        <property id="icon-width" default="78" name="Icon Width">
+          <tooltip>The width of each icon</tooltip>
+          <spec>glade_standard_int_spec</spec>
+        </property>
+        <property id="row-spacing" default="4" name="Row Spacing">
+          <tooltip>The number of pixels between rows of icons</tooltip>
+          <spec>glade_standard_int_spec</spec>
+        </property>
+        <property id="column-spacing" default="2" name="Column Spacing">
+          <tooltip>The number of pixels between columns of icons</tooltip>
+          <spec>glade_standard_int_spec</spec>
+        </property>
+        <property id="text-spacing" default="2" name="Text Spacing">
+          <tooltip>The number of pixels between the text and the icon</tooltip>
+          <spec>glade_standard_int_spec</spec>
+        </property>
+        <property ignore="True" id="text-editable" name="Text Editable">
+          <tooltip>If the icon text can be edited by the user</tooltip>
+          <spec>glade_standard_boolean_spec</spec>
+        </property>
+        <property ignore="True" id="text-static" name="Text Static">
+          <tooltip>If the icon text is static, in which case it will not be copied by the GnomeIconList</tooltip>
+          <spec>glade_standard_boolean_spec</spec>
+        </property>
+      </properties>
+    </glade-widget-class>
+  </glade-widget-classes>
+  
+  <glade-widget-group name="gnome-canvas" title="GNOME Canvas">
+    <glade-widget-class-ref name="GnomeCanvas"/>
+    <glade-widget-class-ref name="GnomeIconList"/>
+  </glade-widget-group>
+</glade-catalog>

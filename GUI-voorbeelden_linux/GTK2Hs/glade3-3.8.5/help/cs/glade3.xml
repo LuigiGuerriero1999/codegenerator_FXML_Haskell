@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+<!ENTITY appversion "3.1.0">
+<!ENTITY manrevision "3.0">
+<!ENTITY app "Glade">
+]>
+<!-- 
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Apr 11, 2002
+-->
+<article id="index" lang="cs">
+
+  <articleinfo> 
+    <title>Příručka k návrháři rozhraní Glade</title> 
+      
+    <abstract role="description"><para>Glade je návrhář uživatelského rozhraní pro applikace GTK+.</para>
+    </abstract>
+
+    <copyright> 
+      <year>2006</year> 
+      <holder>Vincent Geddes</holder> 
+    </copyright>
+    <copyright> 
+      <year>2004</year>
+      <year>2003</year>
+      <holder>Sun Microsystems</holder> 
+    </copyright> 
+    <copyright> 
+      <year>2002</year><year>2000</year> 
+      <holder>Michael Vance</holder> 
+    </copyright> 
+
+    <publisher> 
+      <publishername>Dokumentační projekt GNOME</publishername> 
+    </publisher> 
+
+   <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
+
+    <authorgroup> 
+      <author role="maintainer"> 
+	<firstname>Vincent</firstname> 
+	<surname>Geddes</surname> 
+	<affiliation> 
+	  <orgname>Dokumentační projekt GNOME</orgname>
+	  <address><email>vincent.geddes@gmail.com</email></address>
+	</affiliation>
+      </author> 
+      <author> 
+        <firstname>Sun</firstname> 
+        <surname>Dokumentační tým GNOME</surname> 
+        <affiliation> 
+          <orgname>Sun Microsystems</orgname> 
+        </affiliation> 
+       </author> 
+       <author> 
+         <firstname>Michael</firstname> 
+         <surname>Vance</surname> 
+         <affiliation> 
+           <orgname>Dokumentační projekt GNOME</orgname> 
+           </affiliation> 
+       </author> 
+    </authorgroup>
+
+
+<!-- According to GNU FDL, revision history is mandatory if you are -->
+<!-- modifying/reusing someone else's document.  If not, you can omit it. -->
+<!-- Remember to remove the &manrevision; entity from the revision entries other
+-->
+<!-- than the current revision. -->
+<!-- The revision numbering system for GNOME manuals is as follows: -->
+<!-- * the revision number consists of two components -->
+<!-- * the first component of the revision number reflects the release version of the GNOME desktop. -->
+<!-- * the second component of the revision number is a decimal unit that is incremented with each revision of the manual. -->
+<!-- For example, if the GNOME desktop release is V2.x, the first version of the manual that -->
+<!-- is written in that desktop timeframe is V2.0, the second version of the manual is V2.1, etc. -->
+<!-- When the desktop release version changes to V3.x, the revision number of the manual changes -->
+<!-- to V3.0, and so on. -->  
+    <revhistory>
+        <revision> 
+		<revnumber>Příručka 3.0 k aplikaci Glade</revnumber> 
+		<date>5. prosinec 2006</date>
+		<revdescription> 
+	  		<para role="author">Vincent Geddes</para>
+	  		<para role="publisher">Dokumentační projekt GNOME</para>
+		</revdescription> 
+        </revision>
+        <revision> 
+                <revnumber>Příručka 2.1 k aplikaci Glade</revnumber> 
+                <date>17. červen 2004</date> 
+                <revdescription> 
+                        <para role="author">Dokumentační tým GNOME firmy Sun</para>
+                        <para role="publisher">Dokumentační projekt GNOME</para>
+                </revdescription> 
+        </revision>
+        <revision> 
+                <revnumber>Uživatelská příručka 2.0 k aplikaci Glade</revnumber> 
+                <date>25. únor 2004</date> 
+                <revdescription> 
+                        <para role="author">Dokumentační tým GNOME firmy Sun</para>
+                        <para role="publisher">Dokumentační projekt GNOME</para>
+                </revdescription> 
+        </revision>             
+        <revision> 
+                <revnumber>Uživatelská příručka 1.2 k aplikaci Glade</revnumber> 
+                <date>10. únor 2004</date> 
+                <revdescription> 
+                        <para role="author">Dokumentační tým GNOME firmy Sun</para>
+                        <para role="publisher">Dokumentační projekt GNOME</para>
+                </revdescription> 
+        </revision>  
+        <revision> 
+                <revnumber>Uživatelská příručka 1.1 k aplikaci Glade</revnumber> 
+                <date>30. březen 2002</date> 
+                <revdescription> 
+                        <para role="author">Michael Vance</para>
+                        <para role="publisher">Dokumentační projekt GNOME</para>
+                </revdescription> 
+        </revision> 
+        <revision> 
+                <revnumber>Uživatelská příručka 1.0 k aplikaci Glade</revnumber> 
+                <date>11. květen 2000</date> 
+                <revdescription> 
+                        <para role="author">Michael Vance</para>
+                        <para role="publisher">Dokumentační projekt GNOME</para>
+                </revdescription> 
+        </revision> 
+    </revhistory> 
+
+    <releaseinfo>Tato příručka popisuje aplikaci Glade ve verzi 3.1.0.</releaseinfo> 
+    <legalnotice> 
+      <title>Ohlasy</title> 
+      <para>Pokud chcete oznámit chybu nebo navrhnout vylepšení vztahující se k aplikaci Glade nebo této příručce, postupujte dle instrukcí na <ulink url="ghelp:gnome-feedback" type="help">stránce s ohlasy ke GNOME</ulink>.</para>
+<!-- Translators may also add here feedback address for translations -->
+    </legalnotice> 
+  </articleinfo> 
+
+    <indexterm><primary>glade</primary></indexterm>
+    <indexterm><primary>návrhář uživatelského rozhraní</primary></indexterm>
+
+
+<!-- ============= Document Body ============================= -->
+<!-- ============= Introduction ============================== -->
+<!-- Use the Introduction section to give a brief overview of what
+     the application is and what it does. -->
+  <sect1 id="introduction"> 
+    <title>Úvod</title> 
+
+    <para>Návrhář rozhraní <application>Glade</application> vám umožňuje vytvářet a upravovat návrhy uživatelského rozhraní pro aplikace <application>GTK+</application>.</para>
+
+    <para>Knihovna GTK+ poskytuje rozsáhlou sbírku dílů uživatelského rozhraní, jako jsou textová pole, popisky dialogových oken, číselníky, zaškrtávací pole a nabídky. Tyto díly, ze kterých se uživatelské rozhraní sestavuje, se nazývají anglicky <emphasis>widget</emphasis>, česky je budeme označovat <emphasis>ovládací prvky</emphasis>. V aplikaci Glade můžete z těchto ovládacích prvků sestavovat grafické uživatelské rozhraní (bývá označováno anglickou zkratkou GUI). Aplikace Glade vám umožní u ovládacích prvků upravovat podobu a vlastnosti. Můžete rovněž přidávat propojení mezi ovládacími prvky a zdrojovým kódem aplikace.</para>
+
+    <para>Návrhy uživatelských rozhraní ukládá aplikace Glade ve formátu XML, což dovoluje snadnou integraci s externími nástroji. Uživatelské rozhraní můžete vytvářet z těchto popisů v XML dynamicky za běhu s použitím knihovny <application>libglade</application>.</para>
+
+  </sect1>
+
+  <sect1 id="getting-started"> 
+    <title>Začínáme</title> 
+
+    <sect2 id="glade-start">
+    <title>Spuštění aplikace <application>Glade</application></title>
+    <para>Aplikaci <application>Glade</application> můžete spustit následujícími způsoby:</para> 
+    <variablelist>
+    	<varlistentry>
+    		<term>Nabídka <guimenu>Aplikace</guimenu></term>
+    		<listitem>
+    		<para>Zvolte <menuchoice><guisubmenu>Programování</guisubmenu><guimenuitem>Návrhář rozhraní Glade</guimenuitem></menuchoice>.</para>
+    		</listitem>
+    	</varlistentry>
+    	<varlistentry>
+    		<term>Příkazový řádek</term>
+    		<listitem>
+    		<para>Pokud chcete aplikaci <application>Glade</application> spustit z příkazové řádky, zadejte následující příkaz a zmáčkněte <keycap>Return</keycap>: <command>glade-3</command></para>	 
+    		</listitem>
+    	</varlistentry>
+    </variablelist>
+    </sect2>
+
+    <sect2 id="glade-when-start">
+    <title>Když spustíte aplikaci <application>Glade</application></title>
+    <para>Po spuštění aplikace <application>Glade</application> se zobrazí následující okno.</para>
+
+        <figure id="main-window-fig"> 
+          <title>Okno aplikace <application>Glade</application></title> 
+            <screenshot> 
+              <mediaobject>
+                <imageobject><imagedata fileref="figures/main-window.png" format="PNG"/></imageobject>
+                <textobject><phrase>Ukazuje okno aplikace <application>Glade</application></phrase></textobject> 
+              </mediaobject> 
+            </screenshot> 
+        </figure>
+        
+        <para>Okno aplikace <application>Glade</application> obsahuje následující části:</para>
+
+        <variablelist>
+          <varlistentry> <term>Panel nabídek</term>
+            <listitem>
+            <para>Nabídky v panelu nabídek obsahují všechny příkazy, které potřebujete pro práci se soubory v aplikaci <application>Glade</application>.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry> <term>Panel nástrojů</term>
+            <listitem>
+            <para>Panel nástrojů obsahuje vybranou část příkazů, ke kterým se jinak dostáváte přes panel nabídek.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry> <term>Návrhářská plocha</term>
+            <listitem>
+            <para>Návrhářská plocha je místo, na kterém vizuálně upravujete uživatelské rozhraní.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry> <term>Paleta</term>
+            <listitem>
+            <para>Paleta obsahuje ovládací prvky, které můžete použít při sestavování uživatelského rozhraní.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry> <term>Inspektor</term>
+            <listitem>
+            <para>Inspektor zobrazuje informace o ovládacích prvcích v projektu.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry> <term>Editor vlastností</term>
+            <listitem>
+            <para>Editor vlastností se používá k úpravám vlastností ovládacích prvků a k přidávání propojení na zdrojový kód.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry> <term>Stavový řádek</term>
+            <listitem>
+            <para>Stavový řádek zobrazuje informace o současné činnosti aplikace <application>Glade</application> a kontextové informace k položkám nabídky.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+    </sect2>
+  </sect1>
+
+  <sect1 id="working-with-projects"> 
+         <title>Práce s projekty</title> 
+  
+ 
+<!-- To Create a New Project  -->
+	 <sect2 id="glade-create-new-project"> 
+		<title>Vytváření nového projektu</title>
+		<para>Pokud chcete vytvořit nový projekt, zvolte <menuchoice><guimenu>Soubor</guimenu><guimenuitem>Nový</guimenuitem></menuchoice>. Aplikace zobrazí v okně <application>Glade</application> nový prázdný projekt.</para>
+	 </sect2>
+
+	 <sect2 id="glade-open-project"> 
+		<title>Otevírání projektu</title>
+		<para>Pokud chcete otevřít existující projekt, zvolte <menuchoice><guimenu>Soubor</guimenu><guimenuitem>Otevřít</guimenuitem></menuchoice>. Aplikace zobrazí v okně <application>Glade</application> vybraný projekt.</para>
+	 </sect2>
+
+<!-- To Save a Project -->
+	 <sect2 id="glade-save-project"> 
+		<title>Ukládání projektu</title>
+		<para>Projekt můžete uložit těmito způsoby:</para>
+		<itemizedlist> 
+		  <listitem><para>Jestliže chcete uložit změny do stávajícího souboru, zvolte <menuchoice><guimenu>Soubor</guimenu><guimenuitem>Uložit</guimenuitem></menuchoice>.</para>
+		  </listitem>
+		  <listitem><para>Jestliže chcete uložit nový projekt nebo uložit stávající projekt pod novým názvem, zvolte <menuchoice><guimenu>Soubor</guimenu><guimenuitem>Uložit jako</guimenuitem></menuchoice>. V dialogovém okně <guilabel>Uložit jako</guilabel> zadejte název pro soubor s projektem a klikněte na <guibutton>Uložit</guibutton>.</para>
+		  </listitem>
+		</itemizedlist>
+	 </sect2>
+  </sect1>
+
+
+  <sect1 id="working-with-widgets"> 
+         <title>Práce s ovládacími prvky</title>
+         <sect2 id="select-widgets-palette">
+                <title>Výběr ovládacích prvků z palety</title>
+                <para>V panelu <guilabel>Paleta</guilabel> můžete s ovládacími prvky pracovat následujícími způsoby:</para>
+                <variablelist> 
+                  <varlistentry> 
+                         <term>Režim výběru</term> 
+                         <listitem>
+                                <para>Režim výběru zvolíte kliknutím na šipku <guilabel>Výběr</guilabel> na panelu nástrojů. Ukazatel se změní na šipku, která symbolizuje, že je aktivní režim výběru. V tomto režimu můžete myší vybírat ovládací prvky ve vašem projektu. Můžete používat panel <guilabel>Vlastnosti</guilabel> ke změnám vlastností ovládacích prvků.</para>
+<para>Můžete také používat kontextovou nabídku ovládacího prvku. Tu otevřete kliknutím pravým tlačítkem na ovládací prvek.</para><para>Z <guilabel>Palety</guilabel> můžete ovládací prvek určitého typu vložit vícekrát tak, že při jeho výběru v <guilabel>Paletě</guilabel> podržíte zmáčknutou klávesu <keycap>Control</keycap>. Pro návrat do normálního režimu musíte kliknout na šípku <guilabel>Výběr</guilabel> nebo na jiný ovládací prvek v <guilabel>Paletě</guilabel>.</para>
+                         </listitem> 
+                  </varlistentry> 
+                </variablelist> 
+                <variablelist> 
+                  <varlistentry> 
+                         <term>Režim umisťování ovládacího prvku</term> 
+                         <listitem> 
+                                <para>Do režimu umisťování ovládacího prvku se přepnete po vybraní ovládacího prvku na panelu <guilabel>Paleta</guilabel>. U většiny vybraných ovládacích prvků se ukazatel změní na křížek. Nyní můžete ovládací prvek umístit do kontejneru, do ovládacího prvku nejvyšší úrovně a pod. Po umístění ovládacího prvku se automaticky zapne režim výběru.</para>
+                         </listitem> 
+                  </varlistentry> 
+                </variablelist> 
+                <variablelist> 
+                  <varlistentry> 
+                         <term>Režim umisťování v nejvyšší úrovni</term> 
+                         <listitem> 
+                                <para>Do režimu umisťování v nejvyšší úrovni se přepnete výběrem ovládacího prvku ve skupině Nejvyšší úroveň na panelu <application>Paleta</application>. Po výběru ovládacího prvku nejvyšší úrovně v <application>Paletě</application> se ovládací prvek ihned objeví na návrhářské ploše. Hned se také zapne režimu výběru a vy můžete ovládací prvek upravovat.</para>
+                         </listitem> 
+                  </varlistentry> 
+                </variablelist> 
+         </sect2>
+<sect2 id="organize-widgets">
+<title>Rozmístění ovládacích prvků ve vašem projektu</title>
+<para>K přizpůsobení vzhledu a uspořádání ovládacích prvku ve vašem okně projektu můžete použít ovládací prvky typu kontejner. Konkrétně si můžete na panelu <guilabel>Paleta</guilabel> vybrat následující ovládací prvky:</para>
+<itemizedlist>
+<listitem><para>Vodorovný box</para>
+</listitem><listitem><para>Svislý box</para></listitem>
+<listitem><para>Tabulku</para></listitem>
+<listitem><para>Pevné pozice</para></listitem>
+<listitem><para>Vodorovný tlačítkový box</para></listitem>
+<listitem><para>Svislý tlačítkový box</para></listitem>
+<listitem><para>Vodorovné panely</para></listitem>
+<listitem><para>Svislé panely</para></listitem>
+<listitem><para>Karty</para></listitem>
+<listitem><para>Rám</para></listitem>
+<listitem><para>Okno s posuvníky</para></listitem>
+<listitem><para>Průhled</para></listitem>
+</itemizedlist>
+<para>Pomocí vkládání boxů můžete vytvořit komplexní strukturu rozložení. Když vytváříte vodorovné a svislé boxy, aplikace <application>Glade</application> se vás dotáže na počet řádků respektive sloupců, které má vytvořit. Řádky respektive sloupce můžete jednoduše přidávat nebo odebírat i dodatečně.</para>
+<para>Až máte vytvořené všechny boxy, které požadujete, můžete do nich přidávat konkrétní ovládací prvky jako popisy, tlačítka a další pokročilejší ovládací prvky. Poznamenejme, že aplikace <application>Glade</application> provede sbalení (pack) ovládacího prvku do rozvržení, čímž vám ušetří nudnou práci. Díky boxům mohou okna měnit velikost tak, aby vyhovovala velikosti popisů pro různé jazyky, do kterých je aplikace lokalizovaná.</para></sect2>
+         <sect2 id="place-widgets-clipboard"> 
+                <title>Umístění ovládacího prvku do schárnky</title> 
+                <para>Volbou <menuchoice><guimenu>Upravit</guimenu><guisubmenu>Vyjmout</guisubmenu></menuchoice> vybraný ovládací prvek odeberete z rodičovského ovládacího prvku a umístíte jej do schránky.</para>
+         </sect2> 
+         <sect2 id="copy-widget-clipboard"> 
+                <title>Zkopírování ovládacího prvku do schárnky</title> 
+                <para>Pokud chcete zkopírovat ovládací prvek do schránky, vyberte jej a zvolte <menuchoice><guimenu>Upravit</guimenu><guisubmenu>Kopírovat</guisubmenu></menuchoice>. Originál zůstane vložený v rodičovském ovládacím prvku.</para>
+         </sect2> 
+         <sect2 id="paste-widget-clipboard"> 
+                <title>Vložení ovládacího prvku ze schránky do vašeho projektu</title> 
+                <para>Vložit ovládací prvek, který je umístěný ve schránce, do vašeho projektu můžete zvolením <menuchoice><guimenu>Upravit</guimenu><guisubmenu>Vložit</guisubmenu></menuchoice>.</para><para>Všechny ovládací prvky musí mít v aplikaci <application>Glade</application> jedinečný název. V případě, že ovládací prvek vyjmete a opět ho do svého projektu vložíte, zachovají si dotyčný ovládací prvek a všichni jeho potomci původní název. Pokud jste jej ale do schránky nakopírovali nebo jej vložíte do svého projektu vícekrát, vygeneruje aplikace pro kopie ovládacího prvku nové názvy.</para>
+         </sect2> 
+         <sect2 id="delete-widget"> 
+                <title>Smazání ovládacího prvku</title> 
+                <para>Jestliže chcete ovládací prvek z rodičovského prvku odstranit (aniž byste jej vkládali do schránky), tak daný prvek vyberte a zvolte <menuchoice><guimenu>Upravit</guimenu><guisubmenu>Smazat</guisubmenu></menuchoice>.</para>
+                 
+         </sect2> 
+         
+         <sect2 id="edit-widget"> 
+                <title>Změna vlastnosti ovládacího prvku</title> 
+                <para>Editor vlastností se používá k úpravám vlastností vybraného ovládacího prvku. Pokud chcete změnit některou z vlastností některého z ovládacích prvků, dotyčný ovládací prvek vyberte a do pole příslušné vlastnosti v panelu Vlastnosti vložte požadovanou hodnotu.</para>
+                
+                
+         </sect2> 
+  </sect1>
+  
+<sect1 id="about"> 
+    <title>O aplikaci Glade</title> 
+    <para>O údržbu aplikace Glade se starají vývojáři Glade a komunita dobrovolníků GNOME. Pokud hledáte o aplikaci Glade více informací, navštivte prosím <ulink url="http://glade.gnome.org" type="http">web Glade</ulink>.</para>
+    <para>Pokud chcete oznámit chybu nebo navrhnout vylepšení vztahující se k této aplikaci nebo této příručce, zašlete je pomocí <ulink url="http://bugzilla.gnome.org/enter_bug.cgi?product=glade3" type="http">stránek bugzilla</ulink>.</para>
+
+    <para>Dalším vynikajícím zdrojem informací jsou poštovní konference <ulink url="http://lists.ximian.com/mailman/listinfo/glade-users" type="http">uživatelů</ulink> a <ulink url="http://lists.ximian.com/mailman/listinfo/glade-devel" type="http">vývojářů</ulink> Glade. Můžete se přihlásit k odběru těchto konferencí a nebo si jen procházet jejich archivy, které rovněž najdete pod uvedenými odkazy.</para>
+
+    <para>Tento program je šířen podle ustanovení GNU General Public License, vydávaném Free Software Foundation; a to buď verze 2 této licence anebo (podle vlastního uvážení) kterékoliv pozdější verze. Kopii této licence naleznete pod tímto <ulink url="ghelp:gpl" type="help">odkazem</ulink> nebo v souboru COPYING přiloženém ke zdrojovým kódům tohoto programu. </para>
+  </sect1> 
+
+</article>

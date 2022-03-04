@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+<!ENTITY appversion "3.1.0">
+<!ENTITY manrevision "3.0">
+<!ENTITY app "Glade">
+]>
+<!-- 
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Apr 11, 2002
+-->
+<article id="index" lang="eu">
+
+  <articleinfo> 
+    <title>Glade interfaze-diseinatzailearen eskuliburua</title> 
+      
+    <abstract role="description"><para>GTK+ aplikazioen erabiltzaile-interfazeen diseinatzailea da Glade.</para>
+    </abstract>
+
+    <copyright> 
+      <year>2006</year> 
+      <holder>Vincent Geddes</holder> 
+    </copyright>
+    <copyright> 
+      <year>2004</year>
+      <year>2003</year>
+      <holder>Sun Microsystems</holder> 
+    </copyright> 
+    <copyright> 
+      <year>2002</year><year>2000</year> 
+      <holder>Michael Vance</holder> 
+    </copyright><copyright><year>2008.</year><holder>Hizkuntza Politikarako Sailburuordetza (hizpol@ej-gv.es)</holder></copyright> 
+
+    <publisher> 
+      <publishername>GNOMEren dokumentazio-proiektua</publishername> 
+    </publisher> 
+
+   <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
+
+    <authorgroup> 
+      <author role="maintainer"> 
+	<firstname>Vincent</firstname> 
+	<surname>Geddes</surname> 
+	<affiliation> 
+	  <orgname>GNOMEren dokumentazio-proiektua</orgname>
+	  <address><email>vincent.geddes@gmail.com</email></address>
+	</affiliation>
+      </author> 
+      <author> 
+        <firstname>Sun</firstname> 
+        <surname>GNOMEren dokumentazio-taldea</surname> 
+        <affiliation> 
+          <orgname>Sun Microsystems</orgname> 
+        </affiliation> 
+       </author> 
+       <author> 
+         <firstname>Michael</firstname> 
+         <surname>Vance</surname> 
+         <affiliation> 
+           <orgname>GNOMEren dokumentazio-proiektua</orgname> 
+           </affiliation> 
+       </author> 
+    </authorgroup>
+
+
+<!-- According to GNU FDL, revision history is mandatory if you are -->
+<!-- modifying/reusing someone else's document.  If not, you can omit it. -->
+<!-- Remember to remove the &manrevision; entity from the revision entries other
+-->
+<!-- than the current revision. -->
+<!-- The revision numbering system for GNOME manuals is as follows: -->
+<!-- * the revision number consists of two components -->
+<!-- * the first component of the revision number reflects the release version of the GNOME desktop. -->
+<!-- * the second component of the revision number is a decimal unit that is incremented with each revision of the manual. -->
+<!-- For example, if the GNOME desktop release is V2.x, the first version of the manual that -->
+<!-- is written in that desktop timeframe is V2.0, the second version of the manual is V2.1, etc. -->
+<!-- When the desktop release version changes to V3.x, the revision number of the manual changes -->
+<!-- to V3.0, and so on. -->  
+    <revhistory>
+        <revision> 
+		<revnumber>Glade-ren eskuliburua 3.0</revnumber> 
+		<date>2006ko abenduaren 5a</date>
+		<revdescription> 
+	  		<para role="author">Vincent Geddes</para>
+	  		<para role="publisher">GNOMEren dokumentazio-proiektua</para>
+		</revdescription> 
+        </revision>
+        <revision> 
+                <revnumber>Glade-ren eskuliburua 2.1</revnumber> 
+                <date>2004ko ekainaren 17a</date> 
+                <revdescription> 
+                        <para role="author">Sun-eko GNOMEren dokumentazio-taldea</para>
+                        <para role="publisher">GNOMEren dokumentazio-proiektua</para>
+                </revdescription> 
+        </revision>
+        <revision> 
+                <revnumber>Glade-ren erabiltzailearen eskuliburua 2.0</revnumber> 
+                <date>2004ko otsailaren 25a</date> 
+                <revdescription> 
+                        <para role="author">Sun-eko GNOMEren dokumentazio-taldea</para>
+                        <para role="publisher">GNOMEren dokumentazio-proiektua</para>
+                </revdescription> 
+        </revision>             
+        <revision> 
+                <revnumber>Glade-ren erabiltzailearen eskuliburua 1.2</revnumber> 
+                <date>2004ko otsailaren 10a</date> 
+                <revdescription> 
+                        <para role="author">Sun-eko GNOMEren dokumentazio-taldea</para>
+                        <para role="publisher">GNOMEren dokumentazio-proiektua</para>
+                </revdescription> 
+        </revision>  
+        <revision> 
+                <revnumber>Glade-ren erabiltzailearen eskuliburua 1.1</revnumber> 
+                <date>2002ko martxoaren 30a</date> 
+                <revdescription> 
+                        <para role="author">Michael Vance</para>
+                        <para role="publisher">GNOMEren dokumentazio-proiektua</para>
+                </revdescription> 
+        </revision> 
+        <revision> 
+                <revnumber>Glade-ren erabiltzailearen eskuliburua 1.0</revnumber> 
+                <date>2000ko maiatzaren 11</date> 
+                <revdescription> 
+                        <para role="author">Michael Vance</para>
+                        <para role="publisher">GNOMEren dokumentazio-proiektua</para>
+                </revdescription> 
+        </revision> 
+    </revhistory> 
+
+    <releaseinfo>Eskuliburu honetan Glade-ren 3.1.0 bertsioa azaltzen da.</releaseinfo> 
+    <legalnotice> 
+      <title>Ohar-bidaltzea</title> 
+      <para>Glade aplikazioari buruzko akatsen berri emateko edo oharrak bidaltzeko, <ulink url="ghelp:gnome-feedback" type="help">GNOMEra oharrak bidaltzeko orria</ulink>n aurkituko dituzu argibideak.</para>
+<!-- Translators may also add here feedback address for translations -->
+    </legalnotice> 
+  </articleinfo> 
+
+    <indexterm><primary>glade</primary></indexterm>
+    <indexterm><primary>erabiltzaile-interfazeen diseinatzailea</primary></indexterm>
+
+
+<!-- ============= Document Body ============================= -->
+<!-- ============= Introduction ============================== -->
+<!-- Use the Introduction section to give a brief overview of what
+     the application is and what it does. -->
+  <sect1 id="introduction"> 
+    <title>Sarrera</title> 
+
+    <para><application>Glade</application> interfaze-diseinatzailea erabiliz <application>GTK+</application> aplikazioen erabiltzaile-interfazeen diseinuak sortu eta edita daitezke.</para>
+
+    <para>Erabiltzailearen interfazea eraikitzeko blokeen aukera zabala ematen du GTK+ liburutegiak, hala nola testu-koadroak, elkarrizketa-koadroen etiketak, kontrol-laukiak eta menuak. Eraikitzeko bloke horiei <emphasis>trepetak</emphasis> esaten zaie. Erabiltzailearen interfaze grafiko batean trepetak jartzeko erabil dezakezu Glade. Trepeta horien diseinua eta propietateak aldatzeko aukera ematen du Glade-k. Trepeten eta aplikazioen iturburu-kodearen arteko konexioak gehitzeko ere erabil daiteke Glade.</para>
+
+    <para>Glade-n diseinatutako erabiltzailearen interfazeak XML formatuan gordetzen dira, kanpoko tresnetan integratzea errazteko. XML deskribapenetatik erabiltzailearen interfaze grafikoak dinamikoki sortzeko, <application>libglade</application> liburutegia erabil daiteke.</para>
+
+  </sect1>
+
+  <sect1 id="getting-started"> 
+    <title>Erabiltzen hastea</title> 
+
+    <sect2 id="glade-start">
+    <title><application>Glade</application> abiaraztea</title>
+    <para>Aukera hauek dituzu <application>Glade</application> abiarazteko:</para> 
+    <variablelist>
+    	<varlistentry>
+    		<term><guimenu>Aplikazioak</guimenu> menua</term>
+    		<listitem>
+    		<para>Aukeratu <menuchoice><guisubmenu>Programazioa</guisubmenu><guimenuitem>Glade interfaze-diseinatzailea</guimenuitem></menuchoice>.</para>
+    		</listitem>
+    	</varlistentry>
+    	<varlistentry>
+    		<term>Komando-lerroa</term>
+    		<listitem>
+    		<para><application>Glade</application> komando-lerrotik abiarazteko, idatzi komando hau, eta sakatu <keycap>Sartu</keycap>: <command>glade-3</command></para>	 
+    		</listitem>
+    	</varlistentry>
+    </variablelist>
+    </sect2>
+
+    <sect2 id="glade-when-start">
+    <title><application>Glade</application> abiaraztean</title>
+    <para><application>Glade;</application> abiaraztean, leiho hau bistaratzen da.</para>
+
+        <figure id="main-window-fig"> 
+          <title><application>Glade</application>ren eskuliburua</title> 
+            <screenshot> 
+              <mediaobject>
+                <imageobject><imagedata fileref="figures/main-window.png" format="PNG"/></imageobject>
+                <textobject><phrase><application>Glade</application> leihoa bistaratzen du.</phrase></textobject> 
+              </mediaobject> 
+            </screenshot> 
+        </figure>
+        
+        <para><application>Glade</application>ren leihoan elementu hauek daude:</para>
+
+        <variablelist>
+          <varlistentry> <term>Menu-barra</term>
+            <listitem>
+            <para>Menu-barrako menuek <application>Glade</application>ren fitxategiekin lan egiteko behar dituzun komando guztiak dituzte.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry> <term>Tresna-barra</term>
+            <listitem>
+            <para>Menu-barratik atzi ditzakezun komandoen azpimultzo bat dago tresna-barran.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry> <term>Diseinu-area</term>
+            <listitem>
+            <para>Erabiltzailearen interfazea bisualki edita daiteke diseinu-arean.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry> <term>Paleta</term>
+            <listitem>
+            <para>Erabiltzailearen interfazea eraikitzeko erabil daitezkeen trepetak daude paletan.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry> <term>Ikuskatzailea</term>
+            <listitem>
+            <para>Proiektuko trepetei buruzko informazioa bistaratzen du ikuskatzaileak.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry> <term>Propietate-editorea</term>
+            <listitem>
+            <para>Trepeten propietateak aldatzeko eta iturburu-kodeari konexioak gehitzeko erabiltzen da propietate-editorea.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry> <term>Egoera-barra</term>
+            <listitem>
+            <para><application>Glade</application>ren uneko jarduerari buruzko informazioa eta menu-elementuei buruzko testuinguru-informazioa bistaratzen ditu egoera-barrak.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+    </sect2>
+  </sect1>
+
+  <sect1 id="working-with-projects"> 
+         <title>Proiektuekin lan egitea</title> 
+  
+ 
+<!-- To Create a New Project  -->
+	 <sect2 id="glade-create-new-project"> 
+		<title>Proiektu berria sortzea</title>
+		<para>Proiektu berri bat sortzeko, aukeratu <menuchoice><guimenu>Fitxategia</guimenu><guimenuitem>Berria</guimenuitem></menuchoice>. Proiektu huts bat bistaratzen du aplikazioak <application>Glade</application>ren leihoan.</para>
+	 </sect2>
+
+	 <sect2 id="glade-open-project"> 
+		<title>Proiektu bat irekitzea</title>
+		<para>Lehendik dagoen proiektu bat irekitzeko, aukeratu <menuchoice><guimenu>Fitxategia</guimenu><guimenuitem>Ireki</guimenuitem></menuchoice>. Aplikazioak <application>Glade</application>ren leihoan bistaratzen du proiektua.</para>
+	 </sect2>
+
+<!-- To Save a Project -->
+	 <sect2 id="glade-save-project"> 
+		<title>Proiektua gordetzea</title>
+		<para>Aukera hauek dituzu proiektuak gordetzeko:</para>
+		<itemizedlist> 
+		  <listitem><para>Lehendik dagoen proiektu-fitxategi batean aldaketak gordetzeko, aukeratu <menuchoice><guimenu>Fitxategia</guimenu><guimenuitem>Gorde</guimenuitem></menuchoice>.</para>
+		  </listitem>
+		  <listitem><para>Proiektu-fitxategi berri bat gordetzeko edo lehendik dagoen proiektu-fitxategi bat beste izen batekin gordetzeko, aukeratu <menuchoice><guimenu>Fitxategia</guimenu><guimenuitem>Gorde honela</guimenuitem></menuchoice>. Idatzi proiektu-fitxategiaren izena <guilabel>Gorde honela</guilabel> elkarrizketa-koadroan, eta sakatu <guibutton>Gorde </guibutton>.</para>
+		  </listitem>
+		</itemizedlist>
+	 </sect2>
+  </sect1>
+
+
+  <sect1 id="working-with-widgets"> 
+         <title>Trepetekin lan egitea</title>
+         <sect2 id="select-widgets-palette">
+                <title>Paletaren leihoko trepetak hautatzea</title>
+                <para><guilabel>Paleta</guilabel> leihoko trepetekin lan egiteko aukera hauek dituzu:</para>
+                <variablelist> 
+                  <varlistentry> 
+                         <term>Hautapen modua</term> 
+                         <listitem>
+                                <para>Hautapen modua erabiltzeko, egin klik <guilabel>Hautatzailea</guilabel> gezian. Erakusleak gezi-itxura hartzen du, hautapen modua aktibatua dagoela adierazteko. Modu horretan, proiektuko trepetak hautatzeko erabiltzen da sagua. Ondoren, <guilabel>Propietateak</guilabel> leihoa erabil dezakezu trepeten propietateak editatzeko.</para>
+<para>Trepeten laster-menuak ere erabil ditzakezu trepetak hautatzeko. Egin klik eskuineko botoiarekin trepetaren gainean, trepeten laster-menua irekitzeko.</para><para>Mota jakin bateko trepeta bat baino gehiago gehi ditzakezu <guilabel>Paleta</guilabel>tik, trepetak hautatzean <keycap>Kontrol</keycap> tekla sakatua mantenduta. <guilabel>Hautatzailea</guilabel> gezian edo <guilabel>Paleta</guilabel>ko beste trepeta batean klik egin behar da modu normalera itzultzeko.</para>
+                         </listitem> 
+                  </varlistentry> 
+                </variablelist> 
+                <variablelist> 
+                  <varlistentry> 
+                         <term>Trepetak kokatzeko modua</term> 
+                         <listitem> 
+                                <para>Trepetak kokatzeko modua erabiltzeko, hautatu <guilabel>Paleta</guilabel> leihoko trepeta bat. Erakusle-gehi-gurutze bihurtzen da erakuslea, trepeta gehienak aukeratzerakoan  Edukiontzien, goi-mailako trepeten eta abarren barruan koka ditzakezu trepetak. Trepeta kokatu ondoren, hautapen modura itzultzen da.</para>
+                         </listitem> 
+                  </varlistentry> 
+                </variablelist> 
+                <variablelist> 
+                  <varlistentry> 
+                         <term>Goi-mailako kokapen modua</term> 
+                         <listitem> 
+                                <para>Goi-mailako kokapen modua erabiltzeko, hautatu goi-mailako gisa definitutako trepeta bat <application>Paleta</application> leihoan. <guilabel>Paleta</guilabel> leihoan goi-mailako trepeta bat hautatzean, mahaigainean agertzen da trepeta hori. Trepeta hori edita dezakezu, orduan. Goi-mailako trepeta hautatu ondoren, hautapen modura itzultzen da.</para>
+                         </listitem> 
+                  </varlistentry> 
+                </variablelist> 
+         </sect2>
+<sect2 id="organize-widgets">
+<title>Proiektuko trepetak antolatzea</title>
+<para>Trepeten edukiontziak edo kutxak erabiltzen dira proiektu-leihoan trepetak konposatzeko eta antolatzeko. <guilabel>Paleta</guilabel> leihoko trepeta-edukiontzi hauek aukera ditzakezu:</para>
+<itemizedlist>
+<listitem><para>Kutxa horizontala</para>
+</listitem><listitem><para>Kutxa bertikala</para></listitem>
+<listitem><para>Taula</para></listitem>
+<listitem><para>Kokaleku finkoak</para></listitem>
+<listitem><para>Botoi-kutxa horizontala</para></listitem>
+<listitem><para>Botoi-kutxa bertikala</para></listitem>
+<listitem><para>Panel horizontalak</para></listitem>
+<listitem><para>Panel bertikalak</para></listitem>
+<listitem><para>Ohar-koadernoa</para></listitem>
+<listitem><para>Markoa</para></listitem>
+<listitem><para>Korritze-barrak dituen leihoa</para></listitem>
+<listitem><para>Leihatila</para></listitem>
+</itemizedlist>
+<para>Diseinu-egitura konplexuak sortzeko, kutxak habiara ditzakezu. Kutxa horizontalak eta bertikalak sortzean, zenbat errenkada edo zutabekoak sortu behar diren galdetzen du <application>Glade</application>k; baina, gero, erraz gehi edo ken daitezke errenkadak eta zutabeak.</para>
+<para>Behar dituzun kutxa guztiak sortu ondoren, bestelako trepetak gehi diezazkiekezu kutxei, hala nola etiketak, botoiak eta trepeta konplexuagoak. Kontuan izan trepetak konposizioaren arabera paketatzen dituela <application>Glade</application>k; hala, lan aspergarri handia ekiditen da. Aplikazioa lokalizatzean, hizkuntza desberdinetako etiketa-tamaina desberdinak sartzeko leihoen tamaina aldatzea gaitzen du kutxak erabiltzeak.</para></sect2>
+         <sect2 id="place-widgets-clipboard"> 
+                <title>Trepeta bat arbelean kokatzea</title> 
+                <para>Guraso bateko trepeta kendu eta arbelean kokatzeko, hautatu trepeta eta, ondoren, aukeratu <menuchoice><guimenu>Editatu</guimenu><guisubmenu>Ebaki</guisubmenu></menuchoice>.</para>
+         </sect2> 
+         <sect2 id="copy-widget-clipboard"> 
+                <title>Trepeta bat arbelean kopiatzea</title> 
+                <para>Trepeta bat arbelean kopiatzeko, hautatu trepeta eta, ondoren, aukeratu <menuchoice><guimenu>Editatu</guimenu><guisubmenu>Kopiatu</guisubmenu></menuchoice>. Gurasoari lotua gelditzen da jatorrizko trepeta.</para>
+         </sect2> 
+         <sect2 id="paste-widget-clipboard"> 
+                <title>Arbeleko trepeta proiektuan itsastea</title> 
+                <para>Arbeleko trepeta bat proiektuan itsasteko, aukeratu <menuchoice><guimenu>Editatu</guimenu><guisubmenu>Itsatsi</guisubmenu></menuchoice>.</para><para>Trepeta guztiek izen esklusiboa izan behar dute <application>Glade</application>n. Trepeta bat ebakitzen denean, eta, ondoren, trepeta hori proiektuan itsasten denean, trepetak eta trepetaren ume guztiek jatorrizko izenak mantentzen dituzte. Trepeta bat kopiatzen denean, edo trepeta bat proiektuan behin baino gehiagotan itsasten denean, izen berriak sortzen ditu <application>Glade</application>k kopiatutako trepetentzat.</para>
+         </sect2> 
+         <sect2 id="delete-widget"> 
+                <title>Trepeta bat ezabatzea</title> 
+                <para>Guraso bateko trepeta bat ezabatzeko, arbelean kokatu gabe, hautatu trepeta eta, ondoren, aukeratu <menuchoice><guimenu>Editatu</guimenu><guisubmenu>Ezabatu</guisubmenu></menuchoice>.</para>
+                 
+         </sect2> 
+         
+         <sect2 id="edit-widget"> 
+                <title>Trepeten propietateak aldatzea</title> 
+                <para>Propietate-editorea erabiltzen da hautatutako trepetaren propietateak editatzeko. Trepeta baten propietate bat aldatzeko, hautatu trepeta eta, ondoren, idatzi balio zuzena propietate-leihoko propietate-eremuetako batean.</para>
+                
+                
+         </sect2> 
+  </sect1>
+  
+<sect1 id="about"> 
+    <title>Glade-ri buruz</title> 
+    <para>Glade-ren garatzaileek eta GNOME komunitateko boluntarioek mantentzen dute Glade. Glade-ri buruzko informazio gehiago lortzeko, bisitatu <ulink url="http://glade.gnome.org" type="http">Glade-ren webgunea</ulink>.</para>
+    <para>Programa-errore baten berri emateko, edo aplikazio naiz eskuliburuari buruzko iradokizunak egiteko, erabili <ulink url="http://bugzilla.gnome.org/enter_bug.cgi?product=glade3" type="http">bugzilla</ulink>.</para>
+
+    <para>Informazio-iturri bikainak dira Glade-ren <ulink url="http://lists.ximian.com/mailman/listinfo/glade-users" type="http">erabiltzaileen</ulink> eta <ulink url="http://lists.ximian.com/mailman/listinfo/glade-devel" type="http">garatzaileen</ulink> posta-zerrendak ere. Izena emateaz gain, zerrendako fitxategiak araka ditzakezu esteka horiek berak erabiliz.</para>
+
+    <para>Programa hau Free Software Foundation-ek argitaratutako GNU Lizentzia Publiko Orokorraren 2. bertsioan, edo (nahiago baduzu) bertsio berriago batean, jasotako baldintzen arabera banatzen da. Lizentzia horren kopia <ulink url="ghelp:gpl" type="help">esteka</ulink>honetan, edo programa honen iturburu-kodean sartutako COPYING fitxategian aurkituko duzu.</para>
+  </sect1> 
+
+</article>

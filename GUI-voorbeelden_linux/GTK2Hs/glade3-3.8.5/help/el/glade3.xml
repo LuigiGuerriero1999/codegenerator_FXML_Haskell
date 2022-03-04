@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+<!ENTITY appversion "3.1.0">
+<!ENTITY manrevision "3.0">
+<!ENTITY app "Glade">
+]>
+<!-- 
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Apr 11, 2002
+-->
+<article id="index" lang="el">
+
+  <articleinfo> 
+    <title>Εγχειρίδιο του εργαλείου σχεδίασης διεπαφών Glade</title> 
+      
+    <abstract role="description"><para>Το Glade είναι ένα εργαλείο σχεδίασης διεπαφών για εφαρμογές GTK+.</para>
+    </abstract>
+
+    <copyright> 
+      <year>2006</year> 
+      <holder>Vincent Geddes</holder> 
+    </copyright>
+    <copyright> 
+      <year>2004</year>
+      <year>2003</year>
+      <holder>Sun Microsystems</holder> 
+    </copyright> 
+    <copyright> 
+      <year>2002</year><year>2000</year> 
+      <holder>Michael Vance</holder> 
+    </copyright> 
+
+    <publisher> 
+      <publishername>Έργο τεκμηρίωσης GNOME</publishername> 
+    </publisher> 
+
+   <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
+
+    <authorgroup> 
+      <author role="maintainer"> 
+	<firstname>Vincent</firstname> 
+	<surname>Geddes</surname> 
+	<affiliation> 
+	  <orgname>Έργο τεκμηρίωσης GNOME</orgname>
+	  <address><email>vincent.geddes@gmail.com</email></address>
+	</affiliation>
+      </author> 
+      <author> 
+        <firstname>Sun</firstname> 
+        <surname>Ομάδα τεκμηρίωσης GNOME</surname> 
+        <affiliation> 
+          <orgname>Sun Microsystems</orgname> 
+        </affiliation> 
+       </author> 
+       <author> 
+         <firstname>Michael</firstname> 
+         <surname>Vance</surname> 
+         <affiliation> 
+           <orgname>Έργο τεκμηρίωσης GNOME</orgname> 
+           </affiliation> 
+       </author> 
+    </authorgroup>
+
+
+<!-- According to GNU FDL, revision history is mandatory if you are -->
+<!-- modifying/reusing someone else's document.  If not, you can omit it. -->
+<!-- Remember to remove the &manrevision; entity from the revision entries other
+-->
+<!-- than the current revision. -->
+<!-- The revision numbering system for GNOME manuals is as follows: -->
+<!-- * the revision number consists of two components -->
+<!-- * the first component of the revision number reflects the release version of the GNOME desktop. -->
+<!-- * the second component of the revision number is a decimal unit that is incremented with each revision of the manual. -->
+<!-- For example, if the GNOME desktop release is V2.x, the first version of the manual that -->
+<!-- is written in that desktop timeframe is V2.0, the second version of the manual is V2.1, etc. -->
+<!-- When the desktop release version changes to V3.x, the revision number of the manual changes -->
+<!-- to V3.0, and so on. -->  
+    <revhistory>
+        <revision> 
+		<revnumber>Εγχειρίδιο Glade, έκδοση 3.0</revnumber> 
+		<date>5 Δεκεμβρίου 2006</date>
+		<revdescription> 
+	  		<para role="author">Vincent Geddes</para>
+	  		<para role="publisher">Έργο τεκμηρίωσης GNOME</para>
+		</revdescription> 
+        </revision>
+        <revision> 
+                <revnumber>Εγχειρίδιο Glade, έκδοση 2.1</revnumber> 
+                <date>17 Ιουνίου 2004</date> 
+                <revdescription> 
+                        <para role="author">Sun GNOME Documentation Team</para>
+                        <para role="publisher">Έργο τεκμηρίωσης GNOME</para>
+                </revdescription> 
+        </revision>
+        <revision> 
+                <revnumber>Εγχειρίδιο Glade, έκδοση 2.0</revnumber> 
+                <date>25 Φεβρουαρίου 2004</date> 
+                <revdescription> 
+                        <para role="author">Sun GNOME Documentation Team</para>
+                        <para role="publisher">Έργο τεκμηρίωσης GNOME</para>
+                </revdescription> 
+        </revision>             
+        <revision> 
+                <revnumber>Εγχειρίδιο Glade, έκδοση 1.2</revnumber> 
+                <date>10 Φεβρουαρίου 2004</date> 
+                <revdescription> 
+                        <para role="author">Sun GNOME Documentation Team</para>
+                        <para role="publisher">Έργο τεκμηρίωσης GNOME</para>
+                </revdescription> 
+        </revision>  
+        <revision> 
+                <revnumber>Εγχειρίδιο Glade, έκδοση 1.1</revnumber> 
+                <date>30 Μαρτίου 2002</date> 
+                <revdescription> 
+                        <para role="author">Michael Vance</para>
+                        <para role="publisher">Έργο τεκμηρίωσης GNOME</para>
+                </revdescription> 
+        </revision> 
+        <revision> 
+                <revnumber>Εγχειρίδιο Glade, έκδοση 1.0</revnumber> 
+                <date>11 Μαΐου 2000</date> 
+                <revdescription> 
+                        <para role="author">Michael Vance</para>
+                        <para role="publisher">Έργο τεκμηρίωσης GNOME</para>
+                </revdescription> 
+        </revision> 
+    </revhistory> 
+
+    <releaseinfo>Αυτό το εγχειρίδιο περιγράφει την έκδοση 3.1.0 του Glade.</releaseinfo> 
+    <legalnotice> 
+      <title>Ανάδραση</title> 
+      <para>Για να αναφέρετε ένα σφάλμα ή να κάνετε μία πρόταση σχετικά με την εφαρμογή ή το εγχειρίδιο, ακολουθήστε τις οδηγίες στη <ulink url="ghelp:gnome-feedback" type="help">σελίδα ανάδρασης του GNOME</ulink>.</para>
+<!-- Translators may also add here feedback address for translations -->
+    </legalnotice> 
+  </articleinfo> 
+
+    <indexterm><primary>glade</primary></indexterm>
+    <indexterm><primary>εργαλείο σχεδίασης διεπαφών</primary></indexterm>
+
+
+<!-- ============= Document Body ============================= -->
+<!-- ============= Introduction ============================== -->
+<!-- Use the Introduction section to give a brief overview of what
+     the application is and what it does. -->
+  <sect1 id="introduction"> 
+    <title>Εισαγωγή</title> 
+
+    <para>Το εργαλείο σχεδίασης διεπαφών <application>Glade</application> σας επιτρέπει να δημιουργείτε και να επεξεργάζεστε σχέδια διεπαφών χρήστη για εφαρμογές <application>GTK+</application>.</para>
+
+    <para>Η βιβλιοθήκη GTK+ παρέχει μια εκτεταμένη συλλογή δομικών συστατικών για διεπαφές χρήστη, όπως είναι τα πλαίσια κειμένου, οι ετικέτες διαλόγων, οι αριθμητικές εγγραφές, τα κουτάκια επιλογής και τα μενού. Αυτά τα δομικά συστατικά ονομάζονται <emphasis>γραφικά συστατικά</emphasis>. Μπορείτε να χρησιμοποιείτε το Glade για να τοποθετείτε γραφικά συστατικά στο GUI (Γραφική Διεπαφή Χρήστη). Το Glade σας επιτρέπει να τροποποιείτε τη διάταξη και τις ιδιότητες αυτών των γραφικών συστατικών. Επίσης, μέσω του Glade μπορείτε να συνδέετε τα γραφικά συστατικά με τον πηγαίο κώδικα της εφαρμογής.</para>
+
+    <para>Οι διεπαφές χρήστη που σχεδιάζονται στο Glade αποθηκεύονται σε μορφή XML, επιτρέποντας την εύκολη συνεργασία τους με εξωτερικά εργαλεία. Χρησιμοποιήστε τη βιβλιοθήκη <application>libglade</application> για να δημιουργήσετε GUI, δυναμικά, από αυτές τις περιγραφές XML.</para>
+
+  </sect1>
+
+  <sect1 id="getting-started"> 
+    <title>Ξεκινώντας</title> 
+
+    <sect2 id="glade-start">
+    <title>Εκκίνηση του <application>Glade</application></title>
+    <para>Μπορείτε να εκκινήσετε το <application>Glade</application> με τους εξής τρόπους:</para> 
+    <variablelist>
+    	<varlistentry>
+    		<term>Μενού <guimenu>Εφαρμογές</guimenu></term>
+    		<listitem>
+    		<para>Επιλέξτε <menuchoice><guisubmenu>Προγραμματισμός</guisubmenu><guimenuitem>Εργαλείο σχεδίασης διεπαφών Glade</guimenuitem></menuchoice>.</para>
+    		</listitem>
+    	</varlistentry>
+    	<varlistentry>
+    		<term>Γραμμή εντολών</term>
+    		<listitem>
+    		<para>Για να εκκινήσετε το <application>Glade</application> από τη γραμμή εντολών, πληκτρολογήστε την ακόλουθη εντολή και στη συνέχεια πατήστε <keycap>Return</keycap>: <command>glade-3</command></para>	 
+    		</listitem>
+    	</varlistentry>
+    </variablelist>
+    </sect2>
+
+    <sect2 id="glade-when-start">
+    <title>Μετά την εκκίνηση του <application>Glade</application></title>
+    <para>Αφού εκκινήσετε το <application>Glade</application>, εμφανίζεται το ακόλουθο παράθυρο.</para>
+
+        <figure id="main-window-fig"> 
+          <title>Παράθυρο <application>Glade</application></title> 
+            <screenshot> 
+              <mediaobject>
+                <imageobject><imagedata fileref="figures/main-window.png" format="PNG"/></imageobject>
+                <textobject><phrase>Εμφανίζει το παράθυρο <application>Glade</application>.</phrase></textobject> 
+              </mediaobject> 
+            </screenshot> 
+        </figure>
+        
+        <para>Το παράθυρο του <application>Glade</application> περιέχει τα ακόλουθα:</para>
+
+        <variablelist>
+          <varlistentry> <term>Γραμμή μενού</term>
+            <listitem>
+            <para>Τα μενού στη γραμμή μενού περιέχουν όλες τις εντολές που θα χρειαστείτε για να δουλέψετε με αρχεία στο <application>Glade</application>.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry> <term>Εργαλειοθήκη</term>
+            <listitem>
+            <para>Η εργαλειοθήκη περιέχει μερικές από τις εντολές στις οποίες μπορείτε να έχετε πρόσβαση και από τη γραμμή των μενού.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry> <term>Περιοχή σχεδίασης</term>
+            <listitem>
+            <para>Από την περιοχή σχεδίασης μπορείτε να επεξεργαστείτε οπτικά τη διεπαφή χρήστη.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry> <term>Παλέτα</term>
+            <listitem>
+            <para>Η παλέτα περιέχει τα γραφικά συστατικά που μπορούν να χρησιμοποιηθούν για τη δημιουργία μιας διεπαφής χρήστη.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry> <term>Επόπτης</term>
+            <listitem>
+            <para>Ο επόπτης εμφανίζει πληροφορίες για τα γραφικά συστατικά του έργου.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry> <term>Επεξεργαστής ιδιοτήτων</term>
+            <listitem>
+            <para>Ο επεξεργαστής ιδιοτήτων χρησιμοποιείται για την επεξεργασία των ιδιοτήτων των γραφικών συστατικών, καθώς και για τη σύνδεσή τους με τον πηγαίο κώδικα.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry> <term>Γραμμή κατάστασης</term>
+            <listitem>
+            <para>Η γραμμή κατάστασης εμφανίζει πληροφορίες για την τρέχουσα δραστηριότητα του <application>Glade</application> και πληροφορίες για τα στοιχεία των μενού.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+    </sect2>
+  </sect1>
+
+  <sect1 id="working-with-projects"> 
+         <title>Εργασία με έργα</title> 
+  
+ 
+<!-- To Create a New Project  -->
+	 <sect2 id="glade-create-new-project"> 
+		<title>Δημιουργία νέου έργου</title>
+		<para>Για να δημιουργήσετε ένα νέο έργο, επιλέξτε <menuchoice><guimenu>Αρχείο</guimenu><guimenuitem>Νέο</guimenuitem></menuchoice>. Η εφαρμογή εμφανίζει ένα νέο κενό έργο στο παράθυρο του <application>Glade</application>.</para>
+	 </sect2>
+
+	 <sect2 id="glade-open-project"> 
+		<title>Άνοιγμα έργου</title>
+		<para>Για να ανοίξετε ένα υπάρχον έργο, επιλέξτε <menuchoice><guimenu>Αρχείο</guimenu><guimenuitem>Άνοιγμα</guimenuitem></menuchoice>. Η εφαρμογή εμφανίζει το έργο στο παράθυρο του <application>Glade</application>.</para>
+	 </sect2>
+
+<!-- To Save a Project -->
+	 <sect2 id="glade-save-project"> 
+		<title>Αποθήκευση έργου</title>
+		<para>Μπορείτε να αποθηκεύετε έργα με τους εξής τρόπους:</para>
+		<itemizedlist> 
+		  <listitem><para>Για να αποθηκεύσετε τις αλλαγές σε ένα υπάρχον αρχείο έργου, επιλέξτε <menuchoice><guimenu>Αρχείο</guimenu><guimenuitem>Αποθήκευση</guimenuitem></menuchoice>.</para>
+		  </listitem>
+		  <listitem><para>Για να αποθηκεύσετε ένα νέο αρχείο έργου, ή να αποθηκεύσετε ένα υπάρχον αρχείο έργου με νέο όνομα, επιλέξτε <menuchoice><guimenu>Αρχείο</guimenu><guimenuitem>Αποθήκευση ως</guimenuitem></menuchoice>. Εισάγετε όνομα για το έργο στο διάλογο <guilabel>Αποθήκευση ως</guilabel> και κάντε κλικ στο <guibutton>Αποθήκευση</guibutton>.</para>
+		  </listitem>
+		</itemizedlist>
+	 </sect2>
+  </sect1>
+
+
+  <sect1 id="working-with-widgets"> 
+         <title>Εργασία με γραφικά συστατικά</title>
+         <sect2 id="select-widgets-palette">
+                <title>Επιλογή γραφικών συστατικών από την παλέτα</title>
+                <para>Μπορείτε να δουλεύετε με τα γραφικά συστατικά στο παράθυρο της <guilabel>Παλέτας</guilabel> με τους εξής τρόπους:</para>
+                <variablelist> 
+                  <varlistentry> 
+                         <term>Κατάσταση επιλογής</term> 
+                         <listitem>
+                                <para>Για να χρησιμοποιήσετε την κατάσταση επιλογής κάντε κλικ στο βέλος <guilabel>Επιλογέας</guilabel>. Ο δείκτης μετατρέπεται σε βέλος, υποδεικνύοντας ότι έχει ενεργοποιηθεί η κατάσταση επιλογής. Σε αυτή την κατάσταση χρησιμοποιείτε το ποντίκι για να επιλέγετε γραφικά συστατικά στο έργο σας. Στη συνέχεια, μπορείτε να χρησιμοποιείτε το παράθυρο <guilabel>Ιδιότητες</guilabel> για να επεξεργάζεστε τις ιδιότητες των γραφικών συστατικών</para>
+<para>Μπορείτε επίσης να χρησιμοποιήσετε το σχετικό μενού ενός γραφικού συστατικού για να το επιλέξετε. Για να ανοίξετε το σχετικό μενού ενός γραφικού συστατικού, κάντε κλικ πάνω του.</para><para>Μπορείτε να προσθέτετε στο έργο σας πολλαπλά γραφικά συστατικά του ίδιου τύπου, κρατώντας πατημένο το πλήκτρο <keycap>Control</keycap> όποτε επιλέγετε ένα γραφικό συστατικό. Για να επανέλθετε στην κανονική κατάσταση θα πρέπει να κάνετε κλικ στο βέλος <guilabel>Επιλογέας</guilabel> ή σε διαφορετικό γραφικό συστατικό στην <guilabel>Παλέτα</guilabel>.</para>
+                         </listitem> 
+                  </varlistentry> 
+                </variablelist> 
+                <variablelist> 
+                  <varlistentry> 
+                         <term>Κατάσταση τοποθέτησης γραφικών συστατικών</term> 
+                         <listitem> 
+                                <para>Για να χρησιμοποιήσετε την κατάσταση τοποθέτησης γραφικών συστατικών, επιλέξτε ένα γραφικό συστατικό της <guilabel>Παλέτας</guilabel>. Για τα περισσότερα γραφικά συστατικά, ο δείκτης μετατρέπεται σε δείκτη που συνοδεύεται από σταυρό. Στη συνέχεια, μπορείτε να τοποθετήσετε αυτό το γραφικό συστατικό μέσα σε πλαίσιο (container), γραφικό συστατικό ανώτατου επιπέδου, κτλ. Αφού τοποθετήσετε το γραφικό συστατικό, επανέρχεστε στην κατάσταση επιλογής.</para>
+                         </listitem> 
+                  </varlistentry> 
+                </variablelist> 
+                <variablelist> 
+                  <varlistentry> 
+                         <term>Κατάσταση τοποθέτησης ανώτατου επιπέδου</term> 
+                         <listitem> 
+                                <para>Για να χρησιμοποιήσετε την κατάσταση τοποθέτησης στο ανώτατο επίπεδο, επιλέξτε ένα γραφικό συστατικό ανώτατου επιπέδου της <guilabel>Παλέτας</guilabel>. Όταν επιλέγετε ένα γραφικό συστατικό ανώτατου επιπέδου από την <guilabel>Παλέτας</guilabel>, το συστατικό αυτό εμφανίζεται αμέσως στην επιφάνεια εργασίας. Στη συνέχεια μπορείτε να το επεξεργαστείτε. Αφού επιλέξετε το γραφικό συστατικό ανώτατου επιπέδου, επανέρχεστε στην κατάσταση επιλογής.</para>
+                         </listitem> 
+                  </varlistentry> 
+                </variablelist> 
+         </sect2>
+<sect2 id="organize-widgets">
+<title>Οργάνωση γραφικών συστατικών στο έργο</title>
+<para>Για να καθορίσετε τη διάταξη και οργάνωση των γραφικών συστατικών στο παράθυρο του έργου σας, χρησιμοποιείτε τα πλαίσια, ή containers, γραφικών συστατικών. Από το παράθυρο της <guilabel>Παλέτας</guilabel> μπορείτε να επιλέξετε τα ακόλουθα πλαίσια γραφικών συστατικών:</para>
+<itemizedlist>
+<listitem><para>Οριζόντιο κουτί (box)</para>
+</listitem><listitem><para>Κατακόρυφο κουτί (box)</para></listitem>
+<listitem><para>Πίνακας</para></listitem>
+<listitem><para>Σταθερή θέση</para></listitem>
+<listitem><para>Οριζόντιο button box</para></listitem>
+<listitem><para>Κατακόρυφο button box</para></listitem>
+<listitem><para>Οριζόντια panes</para></listitem>
+<listitem><para>Κατακόρυφα panes</para></listitem>
+<listitem><para>Σημειωματάριο</para></listitem>
+<listitem><para>Πλαίσιο (Frame)</para></listitem>
+<listitem><para>Κυλιόμενο παράθυρο</para></listitem>
+<listitem><para>Εμφάνιση γραμμών κειμένου (Viewport)</para></listitem>
+</itemizedlist>
+<para>Μπορείτε να τοποθετείτε κουτιά το ένα μέσα στο άλλο και να δημιουργείτε περίπλοκες διατάξεις. Όταν δημιουργείτε οριζόντια ή κατακόρυφα κουτιά, το <application>Glade</application> σας ρωτά πόσες γραμμές ή στήλες θέλετε να δημιουργηθούν, αν και μπορείτε, στη συνέχεια, να προσθέσετε ή να διαγράψετε στήλες ή γραμμές.</para>
+<para>Αφού δημιουργήσετε όσα κουτιά χρειάζεστε, μπορείτε να προσθέσετε στα κουτιά αυτά συγκεκριμένα γραφικά συστατικά, όπως ετικέτες, κουμπιά ή και πιο περίπλοκα συστατικά. Σημειώστε ότι το <application>Glade</application> πακετάρει τα γραφικά συστατικά μέσα στη διάταξή σας, διευκολύνοντας σημαντικά το έργο σας. Η χρήση κουτιών επιτρέπει στα παράθυρα να αλλάζουν το μέγεθός τους για να προσαρμόζονται στα διαφορετικά μεγέθη των ετικετών σε διαφορετικές γλώσσες (κατά την τοπικοποίηση της εφαρμογής).</para></sect2>
+         <sect2 id="place-widgets-clipboard"> 
+                <title>Τοποθέτηση γραφικών συστατικών στο πρόχειρο</title> 
+                <para>Για να αφαιρέσετε ένα γραφικό συστατικό από το γονέα του και να το τοποθετήσετε στο πρόχειρο, επιλέξτε το γραφικό συστατικό και στη συνέχεια επιλέξτε <menuchoice><guimenu>Επεξεργασία</guimenu><guisubmenu>Αποκοπή</guisubmenu></menuchoice>.</para>
+         </sect2> 
+         <sect2 id="copy-widget-clipboard"> 
+                <title>Αντιγραφή γραφικών συστατικών στο πρόχειρο</title> 
+                <para>Για να αντιγράψετε ένα γραφικό συστατικό στο πρόχειρο, επιλέξτε το γραφικό συστατικό και στη συνέχεια επιλέξτε <menuchoice><guimenu>Επεξεργασία</guimenu><guisubmenu>Αντιγραφή</guisubmenu></menuchoice>. Το αρχικό γραφικό συστατικό παραμένει στο γονέα του.</para>
+         </sect2> 
+         <sect2 id="paste-widget-clipboard"> 
+                <title>Επικόλληση γραφικών συστατικών από το πρόχειρο στο έργο</title> 
+                <para>Για να επικολλήσετε στο έργο σας ένα γραφικό συστατικό που βρίσκεται στο πρόχειρο, επιλέξτε <menuchoice><guimenu>Επεξεργασία</guimenu><guisubmenu>Επικόλληση</guisubmenu></menuchoice>.</para><para>Όλα τα γραφικά συστατικά στο <application>Glade</application> πρέπει να διαθέτουν ένα μοναδικό όνομα. Όταν αποκόπτετε ένα γραφικό συστατικό και το επικολλάτε στο έργο σας, το συστατικό αυτό και τα θυγατρικά του συστατικά διατηρούν τα αρχικά τους ονόματα. Όταν όμως αντιγράφετε ένα γραφικό συστατικό, ή το επικολλάτε περισσότερες από μία φορές, τότε το <application>Glade</application> δίνει νέα ονόματα στα αντίγραφα.</para>
+         </sect2> 
+         <sect2 id="delete-widget"> 
+                <title>Διαγραφή γραφικού συστατικού</title> 
+                <para>Για να διαγράψετε ένα γραφικό συστατικό από το γονέα χωρίς να το μεταφέρετε στο πρόχειρο, επιλέξτε το γραφικό συστατικό και στη συνέχεια επιλέξτε <menuchoice><guimenu>Επεξεργασία</guimenu><guisubmenu>Διαγραφή</guisubmenu></menuchoice>.</para>
+                 
+         </sect2> 
+         
+         <sect2 id="edit-widget"> 
+                <title>Αλλαγή ιδιοτήτων γραφικού συστατικού</title> 
+                <para>Χρησιμοποιήστε τον επεξεργαστή ιδιοτήτων για να επεξεργαστείτε τις ιδιότητες του επιλεγμένου γραφικού συστατικού. Για να αλλάξετε μια ιδιότητα ενός γραφικού συστατικού, επιλέξτε το συστατικό, και μετά εισάγετε την κατάλληλη τιμή σε ένα από τα πεδία ιδιοτήτων του παραθύρου ιδιοτήτων.</para>
+                
+                
+         </sect2> 
+  </sect1>
+  
+<sect1 id="about"> 
+    <title>Περί Glade</title> 
+    <para>Το Glade συντηρείται από τους προγραμματιστές του Glade και τους εθελοντές της κοινότητας του GNOME. Για περισσότερες πληροφορίες σχετικά με το Glade, παρακαλώ επισκεφθείτε τον <ulink url="http://glade.gnome.org" type="http">ιστότοπο του Glade</ulink>.</para>
+    <para>Για να αναφέρετε ένα σφάλμα ή να κάνετε μία πρόταση σχετικά με την εφαρμογή ή το εγχειρίδιο, χρησιμοποιήστε το <ulink url="http://bugzilla.gnome.org/enter_bug.cgi?product=glade3" type="http">bugzilla</ulink>.</para>
+
+    <para>Εξαιρετικές πηγές ενημέρωσης για το Glade είναι οι λίστες ταχυδρομείου <ulink url="http://lists.ximian.com/mailman/listinfo/glade-users" type="http">χρηστών</ulink> και <ulink url="http://lists.ximian.com/mailman/listinfo/glade-devel" type="http">προγραμματιστών</ulink>. Μπορείτε να γραφτείτε συνδρομητές ή να περιηγηθείτε στα αρχεία, που είναι διαθέσιμα στους παραπάνω συνδέσμους.</para>
+
+    <para>Αυτό το πρόγραμμα διανέμεται υπό τους όρους της  Γενικής Άδειας Δημόσιας Χρήσης GNU (GPL), όπως αυτή έχει δημοσιευτεί από το Ίδρυμα Ελεύθερου Λογισμικού (FSS) — είτε της έκδοσης 2 της ‘Αδειας, είτε (κατ' επιλογήν σας) οποιασδήποτε μεταγενέστερης έκδοσης. Αντίγραφο της άδειας είναι διαθέσιμο στον ακόλουθο  <ulink url="ghelp:gpl" type="help">σύνδεσμο</ulink>, ή στο αρχείο COPYING που διανέμεται μαζί με τον πηγαίο κώδικα αυτού του προγράμματος.</para>
+  </sect1> 
+
+</article>

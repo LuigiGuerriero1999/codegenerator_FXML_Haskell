@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+<!ENTITY appversion "3.1.0">
+<!ENTITY manrevision "3.0">
+<!ENTITY app "Glade">
+]>
+<!-- 
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Apr 11, 2002
+-->
+<article id="index" lang="sl">
+
+  <articleinfo> 
+    <title>Priročnik snovalnika uporabniških vmesnikov Glade</title> 
+      
+    <abstract role="description"><para>Glade je snovalnik uporabniških vmesnikov za programe GTK+.</para>
+    </abstract>
+
+    <copyright> 
+      <year>2006</year> 
+      <holder>Vincent Geddes</holder> 
+    </copyright>
+    <copyright> 
+      <year>2004</year>
+      <year>2003</year>
+      <holder>Sun Microsystems</holder> 
+    </copyright> 
+    <copyright> 
+      <year>2002</year><year>2000</year> 
+      <holder>Michael Vance</holder> 
+    </copyright><copyright><year>2010</year><holder>Peter Kragelj (peter.kragelj@gmail.com)</holder></copyright> 
+
+    <publisher> 
+      <publishername>Projekt dokumentacije GNOME</publishername> 
+    </publisher> 
+
+   <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
+
+    <authorgroup> 
+      <author role="maintainer"> 
+	<firstname>Vincent</firstname> 
+	<surname>Geddes</surname> 
+	<affiliation> 
+	  <orgname>Projekt dokumentacije GNOME</orgname>
+	  <address><email>vincent.geddes@gmail.com</email></address>
+	</affiliation>
+      </author> 
+      <author> 
+        <firstname>Sun</firstname> 
+        <surname>Skupina dokumentacije GNOME</surname> 
+        <affiliation> 
+          <orgname>Sun Microsystems</orgname> 
+        </affiliation> 
+       </author> 
+       <author> 
+         <firstname>Michael</firstname> 
+         <surname>Vance</surname> 
+         <affiliation> 
+           <orgname>Projekt dokumentacije GNOME</orgname> 
+           </affiliation> 
+       </author> 
+    </authorgroup>
+
+
+<!-- According to GNU FDL, revision history is mandatory if you are -->
+<!-- modifying/reusing someone else's document.  If not, you can omit it. -->
+<!-- Remember to remove the &manrevision; entity from the revision entries other
+-->
+<!-- than the current revision. -->
+<!-- The revision numbering system for GNOME manuals is as follows: -->
+<!-- * the revision number consists of two components -->
+<!-- * the first component of the revision number reflects the release version of the GNOME desktop. -->
+<!-- * the second component of the revision number is a decimal unit that is incremented with each revision of the manual. -->
+<!-- For example, if the GNOME desktop release is V2.x, the first version of the manual that -->
+<!-- is written in that desktop timeframe is V2.0, the second version of the manual is V2.1, etc. -->
+<!-- When the desktop release version changes to V3.x, the revision number of the manual changes -->
+<!-- to V3.0, and so on. -->  
+    <revhistory>
+        <revision> 
+		<revnumber>Priročnik Glade 3.0</revnumber> 
+		<date>5. december 2006</date>
+		<revdescription> 
+	  		<para role="author">Vincent Geddes</para>
+	  		<para role="publisher">Projekt dokumentacije GNOME</para>
+		</revdescription> 
+        </revision>
+        <revision> 
+                <revnumber>Priročnik Glade 2.1;</revnumber> 
+                <date>17. junij 2004</date> 
+                <revdescription> 
+                        <para role="author">Skupina dokumentacije Sun GNOME</para>
+                        <para role="publisher">Projekt dokumentacije GNOME</para>
+                </revdescription> 
+        </revision>
+        <revision> 
+                <revnumber>Uporabniški priročnik Glade 2.0</revnumber> 
+                <date>25. februar 2004</date> 
+                <revdescription> 
+                        <para role="author">Skupina dokumentacije Sun GNOME</para>
+                        <para role="publisher">Projekt dokumentacije GNOME</para>
+                </revdescription> 
+        </revision>             
+        <revision> 
+                <revnumber>Uporabniški priročnik Glade 1.2</revnumber> 
+                <date>10. februar 2004</date> 
+                <revdescription> 
+                        <para role="author">Skupina dokumentacije Sun GNOME</para>
+                        <para role="publisher">Projekt dokumentacije GNOME</para>
+                </revdescription> 
+        </revision>  
+        <revision> 
+                <revnumber>Uporabniški priročnik Glade 1.1</revnumber> 
+                <date>30. marec 2002</date> 
+                <revdescription> 
+                        <para role="author">Michael Vance</para>
+                        <para role="publisher">Projekt dokumentacije GNOME</para>
+                </revdescription> 
+        </revision> 
+        <revision> 
+                <revnumber>Uporabniški priročnik Glade 1.0</revnumber> 
+                <date>11. maj 2000</date> 
+                <revdescription> 
+                        <para role="author">Michael Vance</para>
+                        <para role="publisher">Projekt dokumentacije GNOME</para>
+                </revdescription> 
+        </revision> 
+    </revhistory> 
+
+    <releaseinfo>Priročnik opisuje Glade različice 3.1.0</releaseinfo> 
+    <legalnotice> 
+      <title>Odziv</title> 
+      <para>Da bi prijavili programski hrošč ali podali predlog glede programa Glade ali tega priročnika sledite navodilom na <ulink url="ghelp:gnome-feedback" type="help">GNOME spletnih straneh</ulink>.</para>
+<!-- Translators may also add here feedback address for translations -->
+    </legalnotice> 
+  </articleinfo> 
+
+    <indexterm><primary>glade</primary></indexterm>
+    <indexterm><primary>snovalnik uporabniškega vmesnika</primary></indexterm>
+
+
+<!-- ============= Document Body ============================= -->
+<!-- ============= Introduction ============================== -->
+<!-- Use the Introduction section to give a brief overview of what
+     the application is and what it does. -->
+  <sect1 id="introduction"> 
+    <title>Uvod</title> 
+
+    <para>Snovalnik uporabniških vmesnikov <application>Glade</application>, omogoča ustvarjanje in spreminjanje uporabniških vmesnikov za programe <application>GTK+</application>.</para>
+
+    <para>Knjižnica GTK+ določa obsežno zbirko sestavnih delov uporabniškega vmesnika, kot so na primer besedilna polja, nazivi pogovornih oken, številčne vnose, potrditvena polja in menije. Ti sestavni deli se imenujejo <emphasis>gradniki</emphasis>. Z Glade je mogoče postaviti gradnike v grafični vmesnik. Omogoča spreminjanje postavitve in lastnosti gradnikov. Glade lahko uporabite za dodajanje povezav med gradniki in izvorno kodo programa.</para>
+
+    <para>Uporabniški vmesniki zasnovani s programom Glade so shranjeni v zapisu XML, kar omogoča enostavno povezovanje z zunanjimi orodji. Za izgradnjo grafičnega vmesnika iz opisa XML lahko uporabite knjižnico <application>libglade</application>.</para>
+
+  </sect1>
+
+  <sect1 id="getting-started"> 
+    <title>Kako začeti</title> 
+
+    <sect2 id="glade-start">
+    <title>Zagon programa <application>Glade</application></title>
+    <para>Program <application>Glade</application> je mogoče zagnati na naslednje načine:</para> 
+    <variablelist>
+    	<varlistentry>
+    		<term><guimenu>Programski</guimenu> meni</term>
+    		<listitem>
+    		<para>Izberite <menuchoice><guisubmenu>Programiranje</guisubmenu><guimenuitem>Snovalnik vmesnika Glade</guimenuitem></menuchoice>.</para>
+    		</listitem>
+    	</varlistentry>
+    	<varlistentry>
+    		<term>Ukazna vrstica</term>
+    		<listitem>
+    		<para>Za zagon programa <application>Glade</application> iz ukazne vrstice, je treba vpisati ukaz <command>glade-3</command> in pritisniti tipko <keycap>Enter</keycap>.</para>	 
+    		</listitem>
+    	</varlistentry>
+    </variablelist>
+    </sect2>
+
+    <sect2 id="glade-when-start">
+    <title>Ko zaženete <application>Glade</application></title>
+    <para>Ko zaženete program <application>Glade</application> se prikaže naslednje okno.</para>
+
+        <figure id="main-window-fig"> 
+          <title>Okno <application>Glade</application></title> 
+            <screenshot> 
+              <mediaobject>
+                <imageobject><imagedata fileref="figures/main-window.png" format="PNG"/></imageobject>
+                <textobject><phrase>Pokaže okno <application>Glade</application>.</phrase></textobject> 
+              </mediaobject> 
+            </screenshot> 
+        </figure>
+        
+        <para>Okno programa <application>Glade</application> vsebuje naslednje predmete:</para>
+
+        <variablelist>
+          <varlistentry> <term>Menijska vrstica</term>
+            <listitem>
+            <para>Meniji v menijski vrstici vsebujejo vse ukaze, ki jih je mogoče uporabiti pri delu z datotekami <application>Glade</application>.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry> <term>Orodna vrstica</term>
+            <listitem>
+            <para>Orodna vrstica vsebuje podmnožico ukazov, ki so dostopni iz menijske vrstice.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry> <term>Snovalno območje</term>
+            <listitem>
+            <para>Snovalno območje je predel, kjer je mogoče vidno urejati uporabniški vmesnik.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry> <term>Paleta</term>
+            <listitem>
+            <para>Paleta vsebuje gradnike, ki se uporabljajo za izgradnjo uporabniškega vmesnika.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry> <term>Nadzornik</term>
+            <listitem>
+            <para>Nadzornik pokaže podrobnosti o gradnikih v projektu.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry> <term>Urejevalnik lastnosti</term>
+            <listitem>
+            <para>Urejevalnik lastnosti se uporablja za delo z lastnostmi gradnikov in za dodajanje povezav z izvorno kodo.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry> <term>Vrstica stanja</term>
+            <listitem>
+            <para>Vrstica stanja prikazuje podrobnosti o trenutni dejavnosti programa <application>Glade</application> in vsebinske podrobnosti o predmetih menija.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+    </sect2>
+  </sect1>
+
+  <sect1 id="working-with-projects"> 
+         <title>Delo s projekti</title> 
+  
+ 
+<!-- To Create a New Project  -->
+	 <sect2 id="glade-create-new-project"> 
+		<title>Ustvarjanje novega projekta</title>
+		<para>Za ustvarjanje novega projekta izberite <menuchoice><guimenu>Datoteka</guimenu><guimenuitem>Novo</guimenuitem></menuchoice>. Program pokaže nov prazen projekt v oknu <application>Glade</application>.</para>
+	 </sect2>
+
+	 <sect2 id="glade-open-project"> 
+		<title>Odpiranje projekta</title>
+		<para>Da bi odprli obstoječi projekt, izberite <menuchoice><guimenu>Datoteka</guimenu><guimenuitem>Odpri</guimenuitem></menuchoice>. Program pokaže projekt v oknu <application>Glade</application>.</para>
+	 </sect2>
+
+<!-- To Save a Project -->
+	 <sect2 id="glade-save-project"> 
+		<title>Shranjevanje projekta</title>
+		<para>Projekte lahko shranite na naslednje načine:</para>
+		<itemizedlist> 
+		  <listitem><para>Za shranjevanje obstoječega projekta, je treba izbrati <menuchoice><guimenu>Datoteka</guimenu><guimenuitem>Shrani</guimenuitem></menuchoice>.</para>
+		  </listitem>
+		  <listitem><para>Za shranjevanje novega projekta ali shranjevanje obstoječega projekta z novim imenom, izberite <menuchoice><guimenu>Datoteka</guimenu><guimenuitem>Shrani kot</guimenuitem></menuchoice>. Vnesite ime projekta v pogovornem oknu <guilabel>Shrani kot</guilabel> in nato pritisnite gumb <guibutton>Shrani</guibutton>.</para>
+		  </listitem>
+		</itemizedlist>
+	 </sect2>
+  </sect1>
+
+
+  <sect1 id="working-with-widgets"> 
+         <title>Delo z gradniki</title>
+         <sect2 id="select-widgets-palette">
+                <title>Izbiranje gradnikov iz okna palete</title>
+                <para>Z gradniki v oknu <guilabel>Paleta</guilabel> je mogoče delati na naslednje načine:</para>
+                <variablelist> 
+                  <varlistentry> 
+                         <term>Način izbiranja</term> 
+                         <listitem>
+                                <para>Za uporabo načina izbiranja pritisnite na puščico <guilabel>Izbirnika</guilabel>. Kazalnik se spremeni v puščico in tako pokaže da je način izbiranja dejaven. V tem načinu uporabljate miško za izbiranje gradnikov v projektu. Z uporabo okna <guilabel>Lastnosti</guilabel> je nato mogoče urejati lastnosti gradnikov.</para>
+<para>Za izbiranje gradnika lahko uporabite tudi vsebinski meni gradnika. Za odpiranje vsebinskega menija gradnika uporabite desni klik miške, postavljene na gradniku.</para><para>Več gradnikov iste vrste je mogoče dodati iz <guilabel>Palete</guilabel> v svoj projekt tako, da držite tipko <keycap>Ctrl</keycap>, ko izbirate gradnik. Za vrnitev v običajni način dela, je treba pritisniti na puščico <guilabel>Izbirnika</guilabel> ali drug gradnik v <guilabel>Paleti</guilabel>.</para>
+                         </listitem> 
+                  </varlistentry> 
+                </variablelist> 
+                <variablelist> 
+                  <varlistentry> 
+                         <term>Način postavitve gradnikov</term> 
+                         <listitem> 
+                                <para>Za uporabo načina umeščanja gradnikov izberite gradnik v oknu <guilabel>Paleta</guilabel>. Pri večini izbranih gradnikov se kazalnik spremeni v kazalnik s križem. Tedaj lahko umestite gradnik v zabojnike, gradnike najvišje ravni in podobno. Po umestitvi gradnika, se način delovanja povrne v način izbiranja.</para>
+                         </listitem> 
+                  </varlistentry> 
+                </variablelist> 
+                <variablelist> 
+                  <varlistentry> 
+                         <term>Način umeščanja na najvišje ravni</term> 
+                         <listitem> 
+                                <para>Za uporabo načina umeščanja najvišje ravni izberite določeno najvišjo raven gradnika v oknu <application>Paleta</application>. Ko je izberan v oknu <application>Paleta</application>, se gradnik pojavi na vašem namizju. Tedaj lahko urejate gradnik. Po izbiri se način delovanja povrne v način izbiranja.</para>
+                         </listitem> 
+                  </varlistentry> 
+                </variablelist> 
+         </sect2>
+<sect2 id="organize-widgets">
+<title>Urejanje gradnikov v projektu</title>
+<para>Za postavljanje in urejanje gradnikov v oknu projekta uporabite zabojnike in polja za gradnike.  V oknu <guilabel>Paleta</guilabel> lahko izberete naslednje zabojnike za gradnike:</para>
+<itemizedlist>
+<listitem><para>Vodoravno polje</para>
+</listitem><listitem><para>Navpično polje</para></listitem>
+<listitem><para>Preglednica</para></listitem>
+<listitem><para>Določen položaj</para></listitem>
+<listitem><para>Vodoravno polje gumbov </para></listitem>
+<listitem><para>Navpično polje gumbov</para></listitem>
+<listitem><para>Vodoraven pladenj</para></listitem>
+<listitem><para>Navpičen pladenj</para></listitem>
+<listitem><para>Beležnica</para></listitem>
+<listitem><para>Okvir</para></listitem>
+<listitem><para>Drsno okno</para></listitem>
+<listitem><para>Vidno polje</para></listitem>
+</itemizedlist>
+<para>Polja lahko ugnezdite in tako ustvarite zapletene postavitve. Ko ustvarite vodoravne in navpična polja, <application>Glade</application> vpraša koliko vrstic in stolpcev naj na začetku ustvari. Seveda pa je mogoče vrstice ali stolpce dodati in izbrisati tudi kasneje.</para>
+<para>Ko ste ustvarili vsa zahtevana polja, lahko vanje dodate določene gradnike kot so oznake, gumbe in tudi druge bolj zapletene gradnike. Program <application>Glade</application> združuje gradnike v postavitev, kar odstrani veliko dolgočasnega dela. Uporaba polj omogoča spreminjanje velikosti oken za nameščanje oznak različnih velikosti v različnih jezikih, ko je program krajevno prilagojen.</para></sect2>
+         <sect2 id="place-widgets-clipboard"> 
+                <title>Dodajanje gradnika v odložišče</title> 
+                <para>Da bi gradnik odstranili iz nadrejenega gradnika in ga prestavili v odložišče, izberite <menuchoice><guimenu>Uredi</guimenu><guisubmenu>Izreži</guisubmenu></menuchoice>.</para>
+         </sect2> 
+         <sect2 id="copy-widget-clipboard"> 
+                <title>Kopiranje gradnika v odložišče</title> 
+                <para>Da bi gradnik kopirali v odložišče, izberite gradnik in nato izberite <menuchoice><guimenu>Uredi</guimenu><guisubmenu>Kopiraj</guisubmenu></menuchoice>. Prvotni gradnik ostane pripet na nadrejeni gradnik.</para>
+         </sect2> 
+         <sect2 id="paste-widget-clipboard"> 
+                <title>Prelepljenje gradnika iz odložišča v projekt</title> 
+                <para>Da bi prilepili gradnik, ki je v odložišču, izberite <menuchoice><guimenu>Uredi</guimenu><guisubmenu>Prilepi</guisubmenu></menuchoice>.</para><para>Znotraj programa <application>Glade</application> morajo imeti vsi gradniki edinstvena imena. Če gradnik izrežete in ga nato prilepite v projekt, gradnik in vsi podrejeni gradniki ohranijo svoja prvotna imena. V kolikor pa gradnik kopirate ali večkrat prilepite v projekt, gradniku program <application>Glade</application> ustvari novo ime.</para>
+         </sect2> 
+         <sect2 id="delete-widget"> 
+                <title>Brisanje gradnika</title> 
+                <para>Za brisanje gradnika iz nadrejenega gradnika brez premikanja gradnika v odložišče, izberite gradnik in nato izberite <menuchoice><guimenu>Urejanje</guimenu><guisubmenu>Briši</guisubmenu></menuchoice>.</para>
+                 
+         </sect2> 
+         
+         <sect2 id="edit-widget"> 
+                <title>Spreminjanje lastnosti gradnika</title> 
+                <para>Urejevalnik lastnosti se uporablja za urejanje lastnosti izbranega gradnika. Za spreminjanje lastnosti gradnika izberite gradnik in vnesite želeno vrednost v enega izmed polj v oknu lastnosti.</para>
+                
+                
+         </sect2> 
+  </sect1>
+  
+<sect1 id="about"> 
+    <title>O Glade</title> 
+    <para>Snovalnik Glade vzdržujejo Glade razvijalci in prostovoljci skupnosti GNOME. Če želite o programu Glade najti več podrobnosti, sledite povezavi na <ulink url="http://glade.gnome.org" type="http">spletno stran Glade</ulink>.</para>
+    <para>V primeru, da želite prijaviti programski hrošč ali podati predloge glede programa in priročnika, lahko to naredite preko <ulink url="http://bugzilla.gnome.org/enter_bug.cgi?product=glade3" type="http">bugzille</ulink>.</para>
+
+    <para>Dodatni viri so tudi <ulink url="http://lists.ximian.com/mailman/listinfo/glade-users" type="http">uporabniški</ulink> in <ulink url="http://lists.ximian.com/mailman/listinfo/glade-devel" type="http">razvijalski</ulink> dopisni seznami. Seznami omogočajo tudi brskanje po arhivih dostopnih na istih povezavah.</para>
+
+    <para>Program se razširja pod pogoji Splošnega javnega dovoljenja GNU (GPL), kot je objavljen na strani Free Software Fundation; različice 2 ali (po vaši izbiri) katerekoli kasnejše različice. Kopijo dovoljenja je mogoče najti na <ulink url="ghelp:gpl" type="help">povezavi</ulink>, ali v datoteki COPYING, ki je priložena izvorni kodi programa.</para>
+  </sect1> 
+
+</article>

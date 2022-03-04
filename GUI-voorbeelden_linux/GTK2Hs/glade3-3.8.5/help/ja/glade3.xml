@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+<!ENTITY appversion "3.1.0">
+<!ENTITY manrevision "3.0">
+<!ENTITY app "Glade">
+]>
+<!-- 
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Apr 11, 2002
+-->
+<article id="index" lang="ja">
+
+  <articleinfo> 
+    <title>Glade インタフェース・デザイナ マニュアル</title> 
+      
+    <abstract role="description"><para>Glade はGTK+ アプリケーションのためのユーザ・インターフェース・デザイナです。</para>
+    </abstract>
+
+    <copyright> 
+      <year>2006</year> 
+      <holder>Vincent Geddes</holder> 
+    </copyright>
+    <copyright> 
+      <year>2004</year>
+      <year>2003</year>
+      <holder>Sun Microsystems</holder> 
+    </copyright> 
+    <copyright> 
+      <year>2002</year><year>2000</year> 
+      <holder>Michael Vance</holder> 
+    </copyright><copyright><year>2010.</year><holder>Hiroyuki Sekihara (hiroyuki.sekihara@gmail.com)</holder></copyright> 
+
+    <publisher> 
+      <publishername>GNOME Documentation Project</publishername> 
+    </publisher> 
+
+   <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
+
+    <authorgroup> 
+      <author role="maintainer"> 
+	<firstname>Vincent</firstname> 
+	<surname>Geddes</surname> 
+	<affiliation> 
+	  <orgname>GNOME Documentation Project</orgname>
+	  <address><email>vincent.geddes@gmail.com</email></address>
+	</affiliation>
+      </author> 
+      <author> 
+        <firstname>Sun</firstname> 
+        <surname>GNOME Documentation Team</surname> 
+        <affiliation> 
+          <orgname>Sun Microsystems</orgname> 
+        </affiliation> 
+       </author> 
+       <author> 
+         <firstname>Michael</firstname> 
+         <surname>Vance</surname> 
+         <affiliation> 
+           <orgname>GNOME Documentation Project</orgname> 
+           </affiliation> 
+       </author> 
+    </authorgroup>
+
+
+<!-- According to GNU FDL, revision history is mandatory if you are -->
+<!-- modifying/reusing someone else's document.  If not, you can omit it. -->
+<!-- Remember to remove the &manrevision; entity from the revision entries other
+-->
+<!-- than the current revision. -->
+<!-- The revision numbering system for GNOME manuals is as follows: -->
+<!-- * the revision number consists of two components -->
+<!-- * the first component of the revision number reflects the release version of the GNOME desktop. -->
+<!-- * the second component of the revision number is a decimal unit that is incremented with each revision of the manual. -->
+<!-- For example, if the GNOME desktop release is V2.x, the first version of the manual that -->
+<!-- is written in that desktop timeframe is V2.0, the second version of the manual is V2.1, etc. -->
+<!-- When the desktop release version changes to V3.x, the revision number of the manual changes -->
+<!-- to V3.0, and so on. -->  
+    <revhistory>
+        <revision> 
+		<revnumber>Glade マニュアル 3.0</revnumber> 
+		<date>5 December 2006</date>
+		<revdescription> 
+	  		<para role="author">Vincent Geddes</para>
+	  		<para role="publisher">GNOME Documentation Project</para>
+		</revdescription> 
+        </revision>
+        <revision> 
+                <revnumber>Glade マニュアル 2.1;</revnumber> 
+                <date>17 June 2004</date> 
+                <revdescription> 
+                        <para role="author">Sun GNOME Documentation Team</para>
+                        <para role="publisher">GNOME Documentation Project</para>
+                </revdescription> 
+        </revision>
+        <revision> 
+                <revnumber>Glade ユーザ マニュアル 2.0</revnumber> 
+                <date>25 February 2004</date> 
+                <revdescription> 
+                        <para role="author">Sun GNOME Documentation Team</para>
+                        <para role="publisher">GNOME Documentation Project</para>
+                </revdescription> 
+        </revision>             
+        <revision> 
+                <revnumber>Glade ユーザ マニュアル 1.2</revnumber> 
+                <date>10 Feb 2004</date> 
+                <revdescription> 
+                        <para role="author">Sun GNOME Documentation Team</para>
+                        <para role="publisher">GNOME Documentation Project</para>
+                </revdescription> 
+        </revision>  
+        <revision> 
+                <revnumber>Glade ユーザ マニュアル 1.1</revnumber> 
+                <date>30 Mar 2002</date> 
+                <revdescription> 
+                        <para role="author">Michael Vance</para>
+                        <para role="publisher">GNOME Documentation Project</para>
+                </revdescription> 
+        </revision> 
+        <revision> 
+                <revnumber>Glade ユーザ マニュアル 1.0</revnumber> 
+                <date>11 May 2000</date> 
+                <revdescription> 
+                        <para role="author">Michael Vance</para>
+                        <para role="publisher">GNOME Documentation Project</para>
+                </revdescription> 
+        </revision> 
+    </revhistory> 
+
+    <releaseinfo>このマニュアルではGladeのバージョン3.1.0 について説明しています。</releaseinfo> 
+    <legalnotice> 
+      <title>フィードバック</title> 
+      <para>アプリケーションやこのドキュメントに関するバグの報告や提案については <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink> に従ってください。</para>
+<!-- Translators may also add here feedback address for translations -->
+    </legalnotice> 
+  </articleinfo> 
+
+    <indexterm><primary>glade</primary></indexterm>
+    <indexterm><primary>ユーザ インタフェース デザイナ</primary></indexterm>
+
+
+<!-- ============= Document Body ============================= -->
+<!-- ============= Introduction ============================== -->
+<!-- Use the Introduction section to give a brief overview of what
+     the application is and what it does. -->
+  <sect1 id="introduction"> 
+    <title>イントロダクション</title> 
+
+    <para><application>Glade</application> インタフェース・デザイナは、 <application>GTK+</application> アプリケーションのユーザ・インタフェースのデザインを作成、編集することを可能にします。</para>
+
+    <para>GTK+ ライブラリは、ユーザ・インタフェースを構成するテキストボックス、ダイアログ・ラベル、数値入力、チェックボックス、そしてメニューなどの部品からなる巨大なコレクションです。これらの部品は <emphasis>ウィジェット</emphasis> と呼ばれます。Gladeを使ってこれらのウィジェットをGUIに配置したり、レイアウトやプロパティのの変更が可能になります。また、ウィジェットとアプリケーションのソースコードの関連を追加することもGladeにより可能になります。</para>
+
+    <para>Gladeでデザインされたユーザ・インタフェースはXML書式で格納されるため、外部ツールとの統合が容易です。このXMLから<application>libglade</application> ライブラリを使用して動的にGUIを構成することも可能です。</para>
+
+  </sect1>
+
+  <sect1 id="getting-started"> 
+    <title>さあ、はじめましょう</title> 
+
+    <sect2 id="glade-start">
+    <title><application>Glade</application> を開始する</title>
+    <para><application>Glade</application> を開始するには以下のような方法があります:</para> 
+    <variablelist>
+    	<varlistentry>
+    		<term><guimenu>アプリケーション</guimenu> メニュー</term>
+    		<listitem>
+    		<para><menuchoice><guisubmenu>プログラミング</guisubmenu><guimenuitem>Glade インタフェース・デザイナ</guimenuitem></menuchoice> を選択する。</para>
+    		</listitem>
+    	</varlistentry>
+    	<varlistentry>
+    		<term>コマンドライン</term>
+    		<listitem>
+    		<para><application>Glade</application> をコマンドラインから開始するには以下のコマンドを入力して<keycap>Return</keycap> キーを押します: <command>glade-3</command></para>	 
+    		</listitem>
+    	</varlistentry>
+    </variablelist>
+    </sect2>
+
+    <sect2 id="glade-when-start">
+    <title><application>Glade</application> を開始したとき</title>
+    <para><application>Glade</application> を開始すると、以下のようなウィンドウが表示されます。</para>
+
+        <figure id="main-window-fig"> 
+          <title><application>Glade</application> ウィンドウ</title> 
+            <screenshot> 
+              <mediaobject>
+                <imageobject><imagedata fileref="figures/main-window.png" format="PNG"/></imageobject>
+                <textobject><phrase>Shows the<application>Glade</application> window。</phrase></textobject> 
+              </mediaobject> 
+            </screenshot> 
+        </figure>
+        
+        <para><application>Glade</application> ウィンドウには以下の要素が含まれています:</para>
+
+        <variablelist>
+          <varlistentry> <term>メニューバー</term>
+            <listitem>
+            <para>メニューバーのメニューには、<application>Glade</application> ファイルにたいして作業するために必要なコマンドのすべてが含まれています。</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry> <term>ツールバー</term>
+            <listitem>
+            <para>ツールバーには、メニューからアクセスすることができるコマンドの一部が含まれています。</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry> <term>デザイン・エリア</term>
+            <listitem>
+            <para>デザイン・エリアは、ユーザ・インタフェースを視覚的に編集できるエリアです。</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry> <term>パレット</term>
+            <listitem>
+            <para>パレットには、ユーザ・インタフェイスを構築するのに使用することがでるウィジェットが含まれています。</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry> <term>インスペクタ</term>
+            <listitem>
+            <para>インスペクタには、プロジェクトに含まれるウィジェットについての情報が表示されます。</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry> <term>プロパティ・エディタ</term>
+            <listitem>
+            <para>プロパティ・エディタはウィジェットのプロパティを操作するために使用されます。同様に、ソースコードとの関連付けを追加するのにも使用されます。</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry> <term>ステータスバー</term>
+            <listitem>
+            <para>ステータスバーには<application>Glade</application> の活動状況や、メニューのアイテムについてのコンテキスト・ヘルプが表示されます。</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+    </sect2>
+  </sect1>
+
+  <sect1 id="working-with-projects"> 
+         <title>プロジェクトの使い方</title> 
+  
+ 
+<!-- To Create a New Project  -->
+	 <sect2 id="glade-create-new-project"> 
+		<title>プロジェクトの新規作成</title>
+		<para>プロジェクトを新規作成するには、<menuchoice><guimenu>ファイル</guimenu><guimenuitem>新規</guimenuitem></menuchoice> を選択します。これにより<application>Glade</application> ウィンドウに新しいブランク・プロジェクトが表示されます。</para>
+	 </sect2>
+
+	 <sect2 id="glade-open-project"> 
+		<title>プロジェクトを開く</title>
+		<para>既存のプロジェクトを開くには、<menuchoice><guimenu>ファイル</guimenu><guimenuitem>開く</guimenuitem></menuchoice> を選択します。これにより <application>Glade</application> ウィンドウにプロジェクトが表示されます。</para>
+	 </sect2>
+
+<!-- To Save a Project -->
+	 <sect2 id="glade-save-project"> 
+		<title>プロジェクトの保存</title>
+		<para>以下の方法によりプロジェクトを保存することができます:</para>
+		<itemizedlist> 
+		  <listitem><para>既存のプロジェクトへの変更を保存するには、<menuchoice><guimenu>ファイル</guimenu><guimenuitem>保存</guimenuitem></menuchoice> を選択します。</para>
+		  </listitem>
+		  <listitem><para>新しいプロジェクトを保存する場合や既存のプロジェクトを別のファイル名で保存する場合は、 <menuchoice><guimenu>ファイル</guimenu><guimenuitem>別名で保存</guimenuitem></menuchoice> を選択して表示される <guilabel>別名で保存</guilabel> ダイアログでプロジェクトのファイル名を入力して、 <guibutton>保存</guibutton> をクリックします。</para>
+		  </listitem>
+		</itemizedlist>
+	 </sect2>
+  </sect1>
+
+
+  <sect1 id="working-with-widgets"> 
+         <title>ウィジェットの使い方</title>
+         <sect2 id="select-widgets-palette">
+                <title>パレットウィンドウからウィジェットを選択する</title>
+                <para>以下の方法によりあなたがウィジェットで動作することができます<guilabel>パレット</guilabel> ウィンドウのウィジェットを操作できます：</para>
+                <variablelist> 
+                  <varlistentry> 
+                         <term>選択モード</term> 
+                         <listitem>
+                                <para>選択モードを使用するには、<guilabel>選択</guilabel> 矢印をクリックします。これによりマウスポインタが矢印に変化して、選択モードがアクティブになったことが示されます。このモードではプロジェクトのウィジェットをマウスで選択することができます。選択した後で <guilabel>プロパティ</guilabel> ウィンドウでウィジェットのプロパティを編集することができます。</para>
+<para>ウィジェットを右クリックして表示されるコンテキストメニューからも、ウィジェットを選択することができます。</para><para>ウィジェットを選択するときに<keycap>Control</keycap> キーを押しながら <guilabel>パレット</guilabel> のウィジェットを選択すると、特定のウィジェットを連続して追加することができます。通常のモードに復帰するためには<guilabel>選択</guilabel> 矢印をクリックする必要があります。</para>
+                         </listitem> 
+                  </varlistentry> 
+                </variablelist> 
+                <variablelist> 
+                  <varlistentry> 
+                         <term>ウィジェットの配置モード</term> 
+                         <listitem> 
+                                <para>ウィジェットの配置モードを使用するには、 <guilabel>パレット</guilabel> ウィンドウのウィジェットを選択します。ほとんどのウィジェットでは、選択した後にマウスポインタが十字(pointer-plus-cross)に変化します。この後にコンテナかトップレベルのウィジェットなどに、ウィジェットを配置することができます。ウィジェットを配置した後は、選択モードに復帰します。</para>
+                         </listitem> 
+                  </varlistentry> 
+                </variablelist> 
+                <variablelist> 
+                  <varlistentry> 
+                         <term>トップレベルの配置モード</term> 
+                         <listitem> 
+                                <para>トップレベルの配置モードを使用するには、<guilabel>パレット</guilabel> ウィンドウでトップレベルに定義されているウィジェットを選択します。。<guilabel>パレット</guilabel> ウィンドウでトップレベルのウィジェットを選択すると、即座にウィジェットがデスクトップに表示されます。その後でウィジェットを編集することができます。トップレベルのウィジェットを選択した後、モードは選択モードに復帰します。</para>
+                         </listitem> 
+                  </varlistentry> 
+                </variablelist> 
+         </sect2>
+<sect2 id="organize-widgets">
+<title>プロジェクトのウィジェットを整理する</title>
+<para>プロジェクトのウィジェットをレイアウトしたり組織化するために、コンテナやボックスのウィジェットを使用します。<guilabel>パレット</guilabel> ウィンドウから以下のコンテナを選択することができます:</para>
+<itemizedlist>
+<listitem><para>水平ボックス(Horizontal Box)</para>
+</listitem><listitem><para>垂直ボックス(Vertical Box)</para></listitem>
+<listitem><para>テーブル(Table)</para></listitem>
+<listitem><para>位置指定(Fixed Positions)</para></listitem>
+<listitem><para>水平方向のボタン・ボックス(Horizontal Button Box)</para></listitem>
+<listitem><para>垂直方向のボタン・ボックス(Vertical Button Box)</para></listitem>
+<listitem><para>水平方向のペイン(Horizontal Panes)</para></listitem>
+<listitem><para>垂直方向のペイン(Vertical Panes)</para></listitem>
+<listitem><para>ノートブック(Notebook)</para></listitem>
+<listitem><para>フレーム(Frame)</para></listitem>
+<listitem><para>スクロール・ウィンドウ(Scrolled Window)</para></listitem>
+<listitem><para>ビューポート(Viewport)</para></listitem>
+</itemizedlist>
+<para>複雑なレイアウト構造を作成するためにボックスを入れ子にすることができます。水平、または垂直ボックスを作成したときに、<application>Glade</application> は初期値として行、または列をいくつ作成するか尋ねます(行、および列は後から簡単に追加できるとしても)。</para>
+<para>必要なボックスをすべて作成した後に、ラベル、ボタン、もしくは、より複雑なウィジェットをボックスの中に配置することができます。<application>Glade</application> によるレイアウトへのウィジェットのパックは、多くの退屈な作業をなくしてくれるのに気づいてください。ボックスを使用することにより、アプリケーションがローカライズされていて異なる言語を表示する時も、ウィンドウがラベルのサイズを調整できるようになります。</para></sect2>
+         <sect2 id="place-widgets-clipboard"> 
+                <title>クリップボードにウィジェットを移動する</title> 
+                <para>ウィジェットを親ウィジェットから削除してクリップボードに移動するには、ウィジェットを選択してから <menuchoice><guimenu>編集</guimenu><guisubmenu>切り取り</guisubmenu></menuchoice> を選択します。</para>
+         </sect2> 
+         <sect2 id="copy-widget-clipboard"> 
+                <title>クリップボードにウィジェットをコピーする</title> 
+                <para>クリップボードにウィジェットをコピーするには、ウィジェットを選択してから <menuchoice><guimenu>編集</guimenu><guisubmenu>コピー</guisubmenu></menuchoice> を選択します。元のウィジェットは親ウィジェットに残されたままになります。</para>
+         </sect2> 
+         <sect2 id="paste-widget-clipboard"> 
+                <title>クリップボードからプロジェクトにウィジェットを貼り付ける</title> 
+                <para>クリップボードにあるウィジェットをプロジェクトに貼り付けるには <menuchoice><guimenu>編集</guimenu><guisubmenu>貼り付け</guisubmenu></menuchoice> を選択します。</para><para><application>Glade</application> ではウィジェットはユニークな名前を持たなければなりません。もしウィジェットを切り取ってからウィジェットを再び貼り付ける場合、ウィジェットとその子ウィジェットは元の名前のままとなります。もしウィジェットをコピーしてからウィジェットの貼り付けを何回か行った場合、<application>Glade</application> はウィジェットのコピーのために新しい名前を生成します。</para>
+         </sect2> 
+         <sect2 id="delete-widget"> 
+                <title>ウィジェットの削除</title> 
+                <para>ウィジェットをクリップボードに移動せずに親ウィジェットから削除する場合は、ウィジェットを選択してから <menuchoice><guimenu>編集</guimenu><guisubmenu>削除</guisubmenu></menuchoice> を選択します。</para>
+                 
+         </sect2> 
+         
+         <sect2 id="edit-widget"> 
+                <title>ウィジェットのプロパティを変更する</title> 
+                <para>プロパティ・エディタは選択されたウィジェットのプロパティを編集するために使用します。ウィジェットのプロパティを変更するには、ウィジェットを選択してから、プロパティ・ウィンドウのプロパティ・フィールドに適切な値を入力します。</para>
+                
+                
+         </sect2> 
+  </sect1>
+  
+<sect1 id="about"> 
+    <title>Gladeについて</title> 
+    <para>GladeはGlade開発者とGNOMEコミュニティのボランティアによって維持されています。Gladeについての詳細は <ulink url="http://glade.gnome.org" type="http">GladeのWebサイト</ulink> を参照してください。</para>
+    <para>アプリケーションやこのドキュメントに関するバグの報告や提案については <ulink url="http://bugzilla.gnome.org/enter_bug.cgi?product=glade3" type="http">bugzilla</ulink> に投稿してください。</para>
+
+    <para>その他の優れた情報源としてはGladeのメーリングリストである、<ulink url="http://lists.ximian.com/mailman/listinfo/glade-users" type="http">user</ulink> と <ulink url="http://lists.ximian.com/mailman/listinfo/glade-devel" type="http">developer</ulink> が挙げられます。これらのメーリングリストへの参加に加えて、同じリンク先で参照できるメーリングリストのアーカイブを読むことをおすすめします。</para>
+
+    <para>このプログラムはフリーソフトウェアです。あなたはこれを、フリーソフトウェア財団によって発行された GNU 一般公衆利用許諾契約書(バージョン2か、希望によってはそれ以降のバージョンのうちどれか)の定める条件の下で再頒布または改変することができます。このライセンスのコピーは <ulink url="ghelp:gpl" type="help">リンク先</ulink> で参照するか、プログラムのソースコードに含まれるCOPYINGファイルを参照してください。</para>
+  </sect1> 
+
+</article>

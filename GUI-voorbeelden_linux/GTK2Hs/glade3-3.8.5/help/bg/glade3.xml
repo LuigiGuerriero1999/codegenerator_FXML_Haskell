@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+<!ENTITY appversion "3.1.0">
+<!ENTITY manrevision "3.0">
+<!ENTITY app "Glade">
+]>
+<!-- 
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Apr 11, 2002
+-->
+<article id="index" lang="bg">
+
+  <articleinfo> 
+    <title>Ръководство на Glade, програма за проектиране на графични интерфейси</title> 
+      
+    <abstract role="description"><para>Glade е програма за проектиране на потребителски интерфейси за приложения на GTK+.</para>
+    </abstract>
+
+    <copyright> 
+      <year>2006</year> 
+      <holder>Vincent Geddes</holder> 
+    </copyright>
+    <copyright> 
+      <year>2004</year>
+      <year>2003</year>
+      <holder>„Сън Майкросистемс“</holder> 
+    </copyright> 
+    <copyright> 
+      <year>2002</year><year>2000</year> 
+      <holder>Michael Vance</holder> 
+    </copyright><copyright><year>2007</year><holder>Явор Доганов (yavor@gnu.org)</holder></copyright> 
+
+    <publisher> 
+      <publishername>Проект за документация на GNOME</publishername> 
+    </publisher> 
+
+   <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
+
+    <authorgroup> 
+      <author role="maintainer"> 
+	<firstname>Vincent</firstname> 
+	<surname>Geddes</surname> 
+	<affiliation> 
+	  <orgname>Проект за документация на GNOME</orgname>
+	  <address><email>vincent.geddes@gmail.com</email></address>
+	</affiliation>
+      </author> 
+      <author> 
+        <firstname>Екип на „Сън“</firstname> 
+        <surname>за документация на GNOME</surname> 
+        <affiliation> 
+          <orgname>„Сън Майкросистемс“</orgname> 
+        </affiliation> 
+       </author> 
+       <author> 
+         <firstname>Michael</firstname> 
+         <surname>Vance</surname> 
+         <affiliation> 
+           <orgname>Проект за документация на GNOME</orgname> 
+           </affiliation> 
+       </author> 
+    </authorgroup>
+
+
+<!-- According to GNU FDL, revision history is mandatory if you are -->
+<!-- modifying/reusing someone else's document.  If not, you can omit it. -->
+<!-- Remember to remove the &manrevision; entity from the revision entries other
+-->
+<!-- than the current revision. -->
+<!-- The revision numbering system for GNOME manuals is as follows: -->
+<!-- * the revision number consists of two components -->
+<!-- * the first component of the revision number reflects the release version of the GNOME desktop. -->
+<!-- * the second component of the revision number is a decimal unit that is incremented with each revision of the manual. -->
+<!-- For example, if the GNOME desktop release is V2.x, the first version of the manual that -->
+<!-- is written in that desktop timeframe is V2.0, the second version of the manual is V2.1, etc. -->
+<!-- When the desktop release version changes to V3.x, the revision number of the manual changes -->
+<!-- to V3.0, and so on. -->  
+    <revhistory>
+        <revision> 
+		<revnumber>Ръководство на Glade, версия 3.0</revnumber> 
+		<date>5 декември 2006</date>
+		<revdescription> 
+	  		<para role="author">Vincent Geddes</para>
+	  		<para role="publisher">Проект за документация на GNOME</para>
+		</revdescription> 
+        </revision>
+        <revision> 
+                <revnumber>Ръководство на Glade, версия 2.1</revnumber> 
+                <date>17 юни 2004</date> 
+                <revdescription> 
+                        <para role="author">Екип на „Сън“ за документация на GNOME</para>
+                        <para role="publisher">Проект за документация на GNOME</para>
+                </revdescription> 
+        </revision>
+        <revision> 
+                <revnumber>Потребителско ръководство на Glade, версия 2.0</revnumber> 
+                <date>25 февруари 2004</date> 
+                <revdescription> 
+                        <para role="author">Екип на „Сън“ за документация на GNOME</para>
+                        <para role="publisher">Проект за документация на GNOME</para>
+                </revdescription> 
+        </revision>             
+        <revision> 
+                <revnumber>Потребителско ръководство на Glade, версия 1.2</revnumber> 
+                <date>10 февруари 2004</date> 
+                <revdescription> 
+                        <para role="author">Екип на „Сън“ за документация на GNOME</para>
+                        <para role="publisher">Проект за документация на GNOME</para>
+                </revdescription> 
+        </revision>  
+        <revision> 
+                <revnumber>Потребителско ръководство на Glade, версия 1.1</revnumber> 
+                <date>30 март 2002</date> 
+                <revdescription> 
+                        <para role="author">Michael Vance</para>
+                        <para role="publisher">Проект за документация на GNOME</para>
+                </revdescription> 
+        </revision> 
+        <revision> 
+                <revnumber>Потребителско ръководство на Glade, версия 1.0</revnumber> 
+                <date>11 май 2000</date> 
+                <revdescription> 
+                        <para role="author">Michael Vance</para>
+                        <para role="publisher">Проект за документация на GNOME</para>
+                </revdescription> 
+        </revision> 
+    </revhistory> 
+
+    <releaseinfo>Това ръководство е за версия 3.1.0 на Glade.</releaseinfo> 
+    <legalnotice> 
+      <title>Обратна връзка</title> 
+      <para>За да докладвате за грешка или да направите предложение относно програмата Glade или това ръководство, следвайте указанията, описани в <ulink url="ghelp:gnome-feedback" type="help">Страницата за обратна връзка на GNOME</ulink>.</para>
+<!-- Translators may also add here feedback address for translations -->
+    </legalnotice> 
+  </articleinfo> 
+
+    <indexterm><primary>glade</primary></indexterm>
+    <indexterm><primary>проектиране на потребителски интерфейси</primary></indexterm>
+
+
+<!-- ============= Document Body ============================= -->
+<!-- ============= Introduction ============================== -->
+<!-- Use the Introduction section to give a brief overview of what
+     the application is and what it does. -->
+  <sect1 id="introduction"> 
+    <title>Въведение</title> 
+
+    <para>Програмата за проектиране на интерфейси <application>Glade</application> ви позволява да създавате или редактирате потребителски интерфейси за приложения на <application>GTK+</application>.</para>
+
+    <para>Библиотеката GTK+ осигурява обширна колекция от блокове за изграждане на потребителски интерфейс, като текстови полета, етикети на диалогови прозорци, полета за въвеждане, бутони за маркиране и менюта. Тези блокове за изграждане се наричат <emphasis>графични обекти</emphasis>. Може да използвате Glade да поставяте графичните обекти в ГПИ. Glade ви позволява да променяте изгледа и свойствата на тези графични обекти.  Може да използвате програмата и за да добавяте свързвания между графични обекти и изходния код на приложението.</para>
+
+    <para>Създадените от Glade потребителски интерфейси се съхраняват във формат XML, което позволява лесна интеграция с външни инструменти. Може да използвате библиотеката <application>libglade</application>, за динамично изграждане на ГПИ от описанието в XML.</para>
+
+  </sect1>
+
+  <sect1 id="getting-started"> 
+    <title>Първи стъпки</title> 
+
+    <sect2 id="glade-start">
+    <title>За да стартирате <application>Glade</application></title>
+    <para>Може да стартирате <application>Glade</application> по следните начини:</para> 
+    <variablelist>
+    	<varlistentry>
+    		<term>Менюто <guimenu>Програми</guimenu></term>
+    		<listitem>
+    		<para>Изберете <menuchoice><guisubmenu>Разработка</guisubmenu><guimenuitem>Проектиране на графични инструменти (Glade)</guimenuitem></menuchoice>.</para>
+    		</listitem>
+    	</varlistentry>
+    	<varlistentry>
+    		<term>Команден ред</term>
+    		<listitem>
+    		<para>За да стартирате <application>Glade</application> от командния ред, въведете следната команда и натиснете <keycap>Enter</keycap>: <command>glade-3</command></para>	 
+    		</listitem>
+    	</varlistentry>
+    </variablelist>
+    </sect2>
+
+    <sect2 id="glade-when-start">
+    <title>Когато стартирате <application>Glade</application></title>
+    <para>Когато стартирате <application>Glade</application> се изобразява следния прозорец.</para>
+
+        <figure id="main-window-fig"> 
+          <title>Прозорец на <application>Glade</application></title> 
+            <screenshot> 
+              <mediaobject>
+                <imageobject><imagedata fileref="figures/main-window.png" format="PNG"/></imageobject>
+                <textobject><phrase>Показва прозореца на <application>Glade</application>.</phrase></textobject> 
+              </mediaobject> 
+            </screenshot> 
+        </figure>
+        
+        <para>Прозорецът на <application>Glade</application> съдържа следните елементи:</para>
+
+        <variablelist>
+          <varlistentry> <term>Лента с менюта</term>
+            <listitem>
+            <para>Менютата включват всички команди, които са ви нужни за работа с файлове в <application>Glade</application>.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry> <term>Лента с инструменти</term>
+            <listitem>
+            <para>Лентата с инструменти съдържа част от командите, които са достъпни от лентата с менюта.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry> <term>Област за проектиране</term>
+            <listitem>
+            <para>Областта за редактиране е пространството, където потребителският интерфейст може да бъде редактиран визуално.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry> <term>Палитра</term>
+            <listitem>
+            <para>Палитрата съдържа графичните обекти, които могат да се използват за изграждането на потребителски интерфейс.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry> <term>Инспектор</term>
+            <listitem>
+            <para>Инспекторът изобразява информация относно графичните обекти в даден проект.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry> <term>Редактор на свойства</term>
+            <listitem>
+            <para>Редакторът на свойства се използва за обработването на свойствата на графичните обекти, както и за добавяне на свързвания към изходния код.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry> <term>Лента за състояние</term>
+            <listitem>
+            <para>Лентата за състоянието показва информация за текущата дейност на <application>Glade</application>, както и контекстна информация за елементите от менюто.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+    </sect2>
+  </sect1>
+
+  <sect1 id="working-with-projects"> 
+         <title>Работа с проекти</title> 
+  
+ 
+<!-- To Create a New Project  -->
+	 <sect2 id="glade-create-new-project"> 
+		<title>Създаване на нов проект</title>
+		<para>За да създадете нов проект, изберете <menuchoice><guimenu>Файл</guimenu><guimenuitem>Нов</guimenuitem></menuchoice>. Програмата показва нов, празен проект в прозореца на <application>Glade</application>.</para>
+	 </sect2>
+
+	 <sect2 id="glade-open-project"> 
+		<title>Отваряне на проект</title>
+		<para>За да отворите съществуващ проект, изберете <menuchoice><guimenu>File</guimenu><guimenuitem>Отваряне...</guimenuitem></menuchoice>. Програмата показва проекта в прозореца на <application>Glade</application>.</para>
+	 </sect2>
+
+<!-- To Save a Project -->
+	 <sect2 id="glade-save-project"> 
+		<title>Запазване на проект</title>
+		<para>Може да запазвате проекти по следните начини:</para>
+		<itemizedlist> 
+		  <listitem><para>За да запазите промените по съществуващ файл на проект, изберете <menuchoice>guimenu&gt;Файл</menuchoice></para>
+		  </listitem>
+		  <listitem><para>За да запазите нов проект или съществуващ файл на проект под друго име, изберете <menuchoice><guimenu>Файл</guimenu><guimenuitem>Запазване като...</guimenuitem></menuchoice>. Въведете име за файла на проекта в диалоговия прозорец <guilabel>Запазване като...</guilabel> и натиснете <guibutton>Запазване</guibutton>.</para>
+		  </listitem>
+		</itemizedlist>
+	 </sect2>
+  </sect1>
+
+
+  <sect1 id="working-with-widgets"> 
+         <title>Работа с графични обекти</title>
+         <sect2 id="select-widgets-palette">
+                <title>За да избирате графични обекти от палитрата</title>
+                <para>Може да работите с графичните обекти в <guilabel>Палитрата</guilabel> по следните начини:</para>
+                <variablelist> 
+                  <varlistentry> 
+                         <term>Режим на избиране</term> 
+                         <listitem>
+                                <para>За да използвате режима на избиране, натиснете върху стрелката <guilabel>Избор на графични обекти</guilabel>. Показалецът се променя на стрелка за да покаже, че режимът на избиране е активен. В този режим използвате мишката, за да избирате графични обекти в проекта. След това може да използвате прозореца <guilabel>Свойства</guilabel>, за да редактирате свойствата на графичните обекти.</para>
+<para>Може да използвате и контекстното меню на графичен обект, за да го изберете. За да отворите контекстното меню на графичен обект, натиснете с десния бутон на мишката.</para><para>Може да добавяте множество графични обекти от определен тип от <guilabel>Палитрата</guilabel> във вашия проект. За да направите това, задръжте клавиша <keycap>Control</keycap>, докато избирате графичен обект.  Трябва да натиснете стрелката <guilabel>Избор на графични обекти</guilabel> или друг графичен обект в <guilabel>Палитрата</guilabel>, за да се върнете към нормален режим.</para>
+                         </listitem> 
+                  </varlistentry> 
+                </variablelist> 
+                <variablelist> 
+                  <varlistentry> 
+                         <term>Режим на разполагане на графични обекти</term> 
+                         <listitem> 
+                                <para>За да използвате режима на разполагане на графични обекти, изберете графичен обект от <guilabel>Палитрата</guilabel>. Когато избирате повечето от графичните обекти, показалецът се променя на показалец и кръстче. След това може да поставяте графичния обект в контейнери, графични обекти от най-горно ниво и т.н. След като поставите графичен обект, режимът се връща към режим на избиране.</para>
+                         </listitem> 
+                  </varlistentry> 
+                </variablelist> 
+                <variablelist> 
+                  <varlistentry> 
+                         <term>Режим на разполагане на обекти от най-горно ниво</term> 
+                         <listitem> 
+                                <para>За да използвате режима на разполагане на обекти от най-горно ниво, изберете определен графичен обект от най-горно ниво от <guilabel>Палитрата</guilabel>. Когато изберете графичен обект от най-горно ниво в <guilabel>Палитрата</guilabel>, той се появява веднага в работното пространство. След това може да редактирате обекта. След като сте избрали графичен обект от най-горно ниво, режимът се връща към режим на избиране.</para>
+                         </listitem> 
+                  </varlistentry> 
+                </variablelist> 
+         </sect2>
+<sect2 id="organize-widgets">
+<title>За да организирате графични обекти в проекта ви</title>
+<para>Може да използвате контейнери или кутии, за да оформяте и организирате графични обекти в прозореца на проекта. Може да избирате следните контейнери на графични обекти от <guilabel>Палитрата</guilabel>:</para>
+<itemizedlist>
+<listitem><para>Хоризонтална кутия</para>
+</listitem><listitem><para>Вертикална кутия</para></listitem>
+<listitem><para>Таблица</para></listitem>
+<listitem><para>Фиксирани позиции</para></listitem>
+<listitem><para>Хоризонтална кутия с бутони</para></listitem>
+<listitem><para>Вертикална кутия с бутони</para></listitem>
+<listitem><para>Хоризонтални пана</para></listitem>
+<listitem><para>Вертикални пана</para></listitem>
+<listitem><para>Контейнер-бележник</para></listitem>
+<listitem><para>Рамка</para></listitem>
+<listitem><para>Прозорец с придвижване</para></listitem>
+<listitem><para>Изглед</para></listitem>
+</itemizedlist>
+<para>Може да влагате кутиите, за да създавате сложни структури. Когато създавате хоризонтални и вертикални кутии, <application>Glade</application> ви пита колко редове или колони да бъдат създадени първоначално, макар че те могат да бъдат лесно добавяни или премахвани по-късно.</para>
+<para>Когато сте създали всички кутии, които са ви необходими, може да добавяте определени графични обекти като етикети, бутони и по-сложни обекти в кутиите. Забележете, че <application>Glade</application> пакетира графичните обекти в общо оформление, което спестява доста еднообразна работа. Използването на кутии позволява прозорците да променят размерите си, за да побират етикети с различни размери на различни езици, когато програмата бива преведена.</para></sect2>
+         <sect2 id="place-widgets-clipboard"> 
+                <title>За да поставите графичен обект в буфера за обмен</title> 
+                <para>За да премахнете графичен обект от контейнер и да го поставите в буфера за обмен, изберете го и използвайте <menuchoice><guimenu>Редактиране</guimenu><guisubmenu>Отрязване</guisubmenu></menuchoice>.</para>
+         </sect2> 
+         <sect2 id="copy-widget-clipboard"> 
+                <title>За да копирате графичен обект в буфера за обмен</title> 
+                <para>За да копирате графичен обект в буфера за обмен, изберете го и използвайте <menuchoice><guimenu>Редактиране</guimenu><guisubmenu>Копиране. </guisubmenu></menuchoice></para>
+         </sect2> 
+         <sect2 id="paste-widget-clipboard"> 
+                <title>За да поставите графичен обект от буфера за обмен в проекта ви</title> 
+                <para>За да поставите графичен обект, съществуващ в буфера за обмен, в проекта ви, изберете <menuchoice><guimenu>Редактиране</guimenu><guisubmenu>Поставяне</guisubmenu></menuchoice>.</para><para>В рамките на <application>Glade</application>, всички графични обекти трябва да имат уникално име. Ако отрежете графичен обект и го поставите във вашия проект, тогава обекта и всичките му дъщерни елементи ще запазят оригиналните си имена. Ако копирате графичен обект, или го поставите многократно в проекта ви, тогава <application>Glade</application> генерира нови имена за копията на обекта.</para>
+         </sect2> 
+         <sect2 id="delete-widget"> 
+                <title>За да изтриете графичен обект</title> 
+                <para>За да изтриете графичен обект от контейнера, без да го местите в буфера за обмен, изберете графичния обект и използвайте <menuchoice><guimenu>Редактиране</guimenu><guisubmenu>Изтриване</guisubmenu></menuchoice>.</para>
+                 
+         </sect2> 
+         
+         <sect2 id="edit-widget"> 
+                <title>За да промените свойство на графичен обект</title> 
+                <para>Редакторът на свойства се използва за редактиране на свойствата на избрания графичен обект. За да промените свойство на графичен обект, изберете го и въведете съответната стойност в едно от полетата на редактора на свойства.</para>
+                
+                
+         </sect2> 
+  </sect1>
+  
+<sect1 id="about"> 
+    <title>Относно Glade</title> 
+    <para>Glade се поддържа от разработчиците на Glade и доброволци от общността на GNOME. За повече информация относно Glade, посетете <ulink url="http://glade.gnome.org" type="http">уеб-страницата на Glade</ulink>.</para>
+    <para>За да докладвате грешка или да направите предложение относно тази програма или това ръководство, може да ги подадете като използвате <ulink url="http://bugzilla.gnome.org/enter_bug.cgi?product=glade3" type="http">bugzilla</ulink>.</para>
+
+    <para>Друг отличен източник на информация са пощенските списъци за <ulink url="http://lists.ximian.com/mailman/listinfo/glade-users" type="http">потребители</ulink> и <ulink url="http://lists.ximian.com/mailman/listinfo/glade-devel" type="http">разработчици</ulink> на Glade. Може да се абонирате или да разгледате архивите на списъците, достъпни чрез същите хипервръзки.</para>
+
+    <para>Тази програма се разпространява под условията на Общия публичен лиценз на GNU (GNU General Public License), както е публикуван от Фондацията за свободен софтуер; версия 2 на лиценза или (по избор) всяка по-нова версия. Копие от този лиценз може да бъде намерено на <ulink url="ghelp:gpl" type="help">връзка</ulink>, или във файла COPYING, включен в изходния код на тази програма.</para>
+  </sect1> 
+
+</article>
