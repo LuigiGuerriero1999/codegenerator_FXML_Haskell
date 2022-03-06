@@ -1,0 +1,12 @@
+1. flakpak support installeren:
+    sudo apt install flatpak
+    sudo apt install gnome-software-plugin-flatpak
+    flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+2. computer opniew opstarten 
+3. https://flathub.org/apps/details/io.github.shiftey.Desktop downloaden
+4. installeren 
+
+OF
+ 
+deze stap volgen:
+https://linuxhint.com/install-and-use-github-desktop-on-ubuntu/

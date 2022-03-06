@@ -1,0 +1,8 @@
+1. intelliJ installeren via Ubuntu Software
+2. Java JDK installeren + JavaFx: 
+    curl -s "https://get.sdkman.io" | bash
+    source "$HOME/.sdkman/bin/sdkman-init.sh"
+    sdk install java 17.0.2.fx-zulu
+3. in IntelliJ bij project maken -> 17.0.2.fx als JDK selecteren
+4. scenebuilder downloaden (.deb file): https://gluonhq.com/products/scene-builder/#download
+5. .deb file installeren: rechtermuisknop -> open met Software install 

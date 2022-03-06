@@ -1,0 +1,9 @@
+1. git clone http://github.com/deech/fltkhs-hello-world
+2. cd fltkhs-hello-world
+3. stack updaten: stack update
+4. stack install --flag fltkhs:bundled
+5. uitvoeren: stack exec fltkhs-hello-world
+
+bij verdere aanpassingen en als je opniew wilt runnen:
+stack install --flag fltkhs:bundled
+stack exec fltkhs-hello-world
