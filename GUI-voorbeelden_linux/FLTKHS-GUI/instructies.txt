@@ -7,3 +7,9 @@
 bij verdere aanpassingen en als je opniew wilt runnen:
 stack install --flag fltkhs:bundled
 stack exec fltkhs-hello-world
+
+
+voor demos te installeren: 
+> git clone http://github.com/deech/fltkhs-demos
+> stack install --flag fltkhs:bundled
+> stack exec fltkhs-arc

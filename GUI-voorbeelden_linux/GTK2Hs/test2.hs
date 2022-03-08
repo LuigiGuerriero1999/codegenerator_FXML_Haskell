@@ -7,8 +7,8 @@ import Graphics.UI.Gtk.Builder
 main = do
     initGUI
     builder <- builderNew
-    builderAddFromFile builder "testboy.glade"
-    mainWindow <- builderGetObject builder castToWindow "window1"
-    onDestroy mainWindow mainQuit
+    builderAddFromFile builder "gtk_gui.glade"
+    mainWindow <- builderGetObject builder castToWindow "window"
+   
     widgetShowAll mainWindow
     mainGUI

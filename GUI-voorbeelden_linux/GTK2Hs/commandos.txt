@@ -15,6 +15,20 @@
     sudo dpkg --install libgladeui-1-11_3.8.0-0ubuntu6.1_amd64.deb
     sudo dpkg --install glade-gtk2_3.8.0-0ubuntu6.1_amd64.deb
 
+6. UPGRADEN van GTK2 naar GTK3 bindings met gtk3+ package:
+6.1 eerst gtk2 bindings uninstallen: sudo ghc-pkg unregister --force gtk
+6.2 gtk3 binding installeren: cabal install gtk3
+
 6. Voor gtk te compileren en te runnen:
  ghc --make test2.hs -o test2
  ./test2
+
+
+
+ --verglijkbaarheden:
+ JavaFx                   gtk 
+ Anchorpane (top window)  GtkWindow
+ Anchorpane               GtkFixed
+ Button                   GtkButton
+ TextField                GtkEntry
+ Text                     GtkLabel
