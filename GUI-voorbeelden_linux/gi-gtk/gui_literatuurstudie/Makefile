@@ -8,4 +8,4 @@ $(PROG) : $(SOURCES)
 clean:
 	rm -f $(SOURCES:.hs=.hi) $(SOURCES:.hs=.o) $(PROG)
 
-HC=ghc
+HC=ghci
