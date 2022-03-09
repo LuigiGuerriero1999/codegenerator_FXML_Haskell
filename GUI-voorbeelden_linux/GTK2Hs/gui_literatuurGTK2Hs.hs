@@ -1,5 +1,6 @@
 import Graphics.UI.Gtk
 
+
 --hulp functie voor tekst te updaten in de label
 updateText label text = set label [labelText  := text]
 
