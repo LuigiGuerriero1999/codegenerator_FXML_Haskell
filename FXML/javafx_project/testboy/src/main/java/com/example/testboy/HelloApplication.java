@@ -22,9 +22,6 @@ public class HelloApplication extends Application {
             System.out.println(node.getClass());
         }
 
-
-
-
         Scene scene = new Scene(root);
         stage.setTitle("Hello!");
         stage.setScene(scene);
