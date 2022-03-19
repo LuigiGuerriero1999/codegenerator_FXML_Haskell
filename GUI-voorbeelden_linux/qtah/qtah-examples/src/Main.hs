@@ -4,8 +4,6 @@ module Main where
 
 import Foreign.Hoppy.Runtime (withScopedPtr)
 import qualified Graphics.UI.Qtah.Core.QCoreApplication as QCoreApplication
-import Graphics.UI.Qtah.Event (onEvent)
-import qualified Graphics.UI.Qtah.Gui.QCloseEvent as QCloseEvent
 import qualified Graphics.UI.Qtah.Widgets.QAbstractButton as QAbstractButton
 import qualified Graphics.UI.Qtah.Widgets.QApplication as QApplication
 import qualified Graphics.UI.Qtah.Widgets.QBoxLayout as QBoxLayout
@@ -34,7 +32,7 @@ main = withScopedPtr (getArgs >>= QApplication.new) $ \_ -> do
 newWindow = do 
   window <- QWidget.new
   QWidget.setWindowTitle window "Qtah Demo App"
-  QWidget.setFixedSizeRaw window 550 300
+  QWidget.setFixedSizeRaw window 600 400
 
   -- linkerkant aanmaken
   label1 <- QLabel.newWithText "Typ hier uw tekst:"   -- eerste label (bovenaan) aanmaken
