@@ -1,0 +1,68 @@
+# This file is part of Qtah.
+#
+# Copyright 2015-2021 The Qtah Authors.
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Lesser General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Lesser General Public License for more details.
+#
+# You should have received a copy of the GNU Lesser General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+*~
+.qmake.stash
+.stack-work
+dist-newstyle*
+
+/qtah-examples/dist
+/qtah-generator/dist
+
+/qtah-cpp/cpp/Makefile
+/qtah-cpp/cpp/b_*
+/qtah-cpp/cpp/moc_*
+/qtah-cpp/cpp/listener.cpp
+/qtah-cpp/cpp/listener.hpp
+/qtah-cpp/cpp/*.o
+/qtah-cpp/cpp/libqtah.*dylib
+/qtah-cpp/cpp/libqtah.so*
+/qtah-cpp/dist
+
+/qtah-cpp-qt?/cpp/Makefile
+/qtah-cpp-qt?/cpp/b_*
+/qtah-cpp-qt?/cpp/moc_*
+/qtah-cpp-qt?/cpp/listener.cpp
+/qtah-cpp-qt?/cpp/listener.hpp
+/qtah-cpp-qt?/cpp/*.o
+/qtah-cpp-qt?/cpp/libqtah.so*
+/qtah-cpp-qt?/dist
+
+/qtah/dist
+/qtah/src/Graphics/UI/Qtah/Core/Q*
+/qtah/src/Graphics/UI/Qtah/Core/Types.hs
+/qtah/src/Graphics/UI/Qtah/Generated
+/qtah/src/Graphics/UI/Qtah/Gui/Q*
+/qtah/src/Graphics/UI/Qtah/Internal/Callback.hs
+/qtah/src/Graphics/UI/Qtah/Internal/Callback.hs-boot
+/qtah/src/Graphics/UI/Qtah/Internal/EventListener.hs
+/qtah/src/Graphics/UI/Qtah/Internal/Listener.hs
+/qtah/src/Graphics/UI/Qtah/Internal/SceneEventListener.hs
+/qtah/src/Graphics/UI/Qtah/Std.hs
+/qtah/src/Graphics/UI/Qtah/Widgets/Q*
+
+/qtah-qt?/dist
+/qtah-qt?/src/Graphics/UI/Qtah/Core/Q*
+/qtah-qt?/src/Graphics/UI/Qtah/Core/Types.hs
+/qtah-qt?/src/Graphics/UI/Qtah/Generated
+/qtah-qt?/src/Graphics/UI/Qtah/Gui/Q*
+/qtah-qt?/src/Graphics/UI/Qtah/Internal/Callback.hs
+/qtah-qt?/src/Graphics/UI/Qtah/Internal/EventListener.hs
+/qtah-qt?/src/Graphics/UI/Qtah/Internal/SceneEventListener.hs
+/qtah-qt?/src/Graphics/UI/Qtah/Internal/Listener.hs
+/qtah-qt?/src/Graphics/UI/Qtah/Std.hs
+/qtah-qt?/src/Graphics/UI/Qtah/Widgets/Q*
