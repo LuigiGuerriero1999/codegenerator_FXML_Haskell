@@ -48,4 +48,12 @@ public class Layout {
     public void setHeight(double height) {
         this.height = height;
     }
+
+    public String gtkHsCode(){
+        String layoutConstructor = name + "Container <- Gtk.layoutNew (Nothing::Maybe Adjustment) (Nothing::Maybe Adjustment)\n  ";
+        String GtkHsCode = layoutConstructor;
+
+        return GtkHsCode;
+
+    }
 }

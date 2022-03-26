@@ -66,4 +66,17 @@ public class Button {
     public void setHeight(double height) {
         this.height = height;
     }
+
+    public String gtkHsCode(){
+        String buttonConstructor = name + " <- Gtk.buttonNew\n  ";
+        String setButtonProperties = "Gtk.set buttonShowText [Gtk.buttonLabel :="+"\""+label+"\""+"]\n  ";
+        String buttonContainerBoxName = name + "ContainerBox";
+        String createButtonContainer = buttonContainerBoxName + " <- Gtk.boxNew OrientationHorizontal 1\n  ";
+        String setButtonContainerProperties = "Gtk.set "+buttonContainerBoxName+" [Gtk.widgetWidthRequest := "+(int)width+", Gtk.widgetHeightRequest := "+(int)height+"]\n  ";
+        String addButtonToContainer = "Gtk.boxPackStart "+buttonContainerBoxName+" "+name+" True True 0\n   ";
+        String buttonGtkHsCode = buttonConstructor + setButtonProperties + createButtonContainer + setButtonContainerProperties + addButtonToContainer;
+
+        return buttonGtkHsCode;
+
+    }
 }
