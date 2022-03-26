@@ -3,11 +3,22 @@ package com.example.testboy.structures;
 public class Label {
     private String name;
 
-    private int x;
-    private int y;
+    private String text;
 
-    private int width;
-    private int height;
+    private double x;
+    private double y;
+
+    private double width;
+    private double height;
+
+    public Label(String name, String text, double x, double y, double width, double height) {
+        this.name = name;
+        this.text = text;
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+    }
 
     public String getName() {
         return name;
@@ -17,35 +28,50 @@ public class Label {
         this.name = name;
     }
 
-    public int getX() {
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public double getX() {
         return x;
     }
 
-    public void setX(int x) {
+    public void setX(double x) {
         this.x = x;
     }
 
-    public int getY() {
+    public double getY() {
         return y;
     }
 
-    public void setY(int y) {
+    public void setY(double y) {
         this.y = y;
     }
 
-    public int getWidth() {
+    public double getWidth() {
         return width;
     }
 
-    public void setWidth(int width) {
+    public void setWidth(double width) {
         this.width = width;
     }
 
-    public int getHeight() {
+    public double getHeight() {
         return height;
     }
 
-    public void setHeight(int height) {
+    public void setHeight(double height) {
         this.height = height;
+    }
+
+    public String gtkHsCode(){
+
+        String labelGtkHsCode = name + " <- Gtk.labelNew (Just " + "\"" + text + "\"" + ") \n";
+
+        return labelGtkHsCode;
     }
 }

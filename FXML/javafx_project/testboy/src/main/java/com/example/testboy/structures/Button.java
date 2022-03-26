@@ -4,6 +4,12 @@ public class Button {
     private String name;
     private String label;
 
+    private double layoutX;
+    private double layoutY;
+
+    private double width;
+    private double height;
+
     public Button(String name, String label, double layoutX, double layoutY, double width, double height) {
         this.name = name;
         this.label = label;
@@ -20,12 +26,6 @@ public class Button {
     public void setLabel(String label) {
         this.label = label;
     }
-
-    private double layoutX;
-    private double layoutY;
-
-    private double width;
-    private double height;
 
     public double getLayoutX() {
         return layoutX;
@@ -77,6 +77,5 @@ public class Button {
         String buttonGtkHsCode = buttonConstructor + setButtonProperties + createButtonContainer + setButtonContainerProperties + addButtonToContainer;
 
         return buttonGtkHsCode;
-
     }
 }

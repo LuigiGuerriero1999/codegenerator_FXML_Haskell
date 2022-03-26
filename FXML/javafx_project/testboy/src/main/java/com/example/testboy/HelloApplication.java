@@ -1,6 +1,7 @@
 package com.example.testboy;
 
 import com.example.testboy.structures.Button;
+import com.example.testboy.structures.Label;
 import com.example.testboy.structures.Layout;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -17,18 +18,38 @@ import java.util.List;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
-        stage = FXMLLoader.load(getClass().getResource("simpeleAP_met_button_goed.fxml"));
+        //stage = FXMLLoader.load(getClass().getResource("simpeleAP_met_button_goed.fxml"));
+        stage = FXMLLoader.load(getClass().getResource("simpeleAP_met_label.fxml"));
         stage.show();
 
 
         dump(stage.getScene().getRoot());
 
-        generateCode();
+        //generateButtonCode();
+        generateLabelCode();
     }
 
     private Button testButton;
+    private Label testLabel;
     private Stage stage;
     private Layout layout;
+
+    public String createImports(){
+        String gtkHsCode =  "{-# LANGUAGE OverloadedStrings #-}\n" +
+                            "{-# LANGUAGE OverloadedLabels  #-}\n" +
+                            "{-# LANGUAGE ExtendedDefaultRules #-}\n"+
+                            "\n"+
+                            "module Main (Main.main) where\n" +
+                            "import qualified GI.Gtk as Gtk\n" +
+                            "import GI.Gtk.Enums (WindowType(..), Orientation(..))\n" +
+                            "import GI.Gtk (Adjustment(Adjustment))\n" +
+                            "import Data.GI.Base ( AttrOp((:=)) )\n" +
+                            "\n"+
+                            "main :: IO ()\n" +
+                            "main = do\n" +
+                            "  Gtk.init Nothing\n  " ;
+        return gtkHsCode;
+    }
 
     public String createTopLevelWindow(){
         String stageResizableBool = String.valueOf(stage.isResizable()).substring(0, 1).toUpperCase() + String.valueOf(stage.isResizable()).substring(1);
@@ -46,13 +67,9 @@ public class HelloApplication extends Application {
         return gtkHsCode;
     }
 
-
-
     public static void main(String[] args) {
         launch();
     }
-
-
 
     /** Debugging routine to dump the scene graph. */
     public void dump(Node n) {
@@ -89,6 +106,14 @@ public class HelloApplication extends Application {
             var layoutY = n.getLayoutY();
             layout = new Layout("layout", layoutX, layoutY,width ,height);
             System.out.println("ANCHORPANEBOYKE"+layoutX);
+        } else if (n instanceof javafx.scene.control.Label){
+            var width = n.getLayoutBounds().getWidth();
+            var height = n.getLayoutBounds().getHeight();
+            var layoutX = n.getLayoutX();
+            var layoutY = n.getLayoutY();
+            var text = ((javafx.scene.control.Label) n).getText();
+            var label = new Label("labelTest", text, layoutX, layoutY, width, height);
+            this.testLabel = label;
         }
 
         if (n instanceof Parent) {
@@ -98,38 +123,44 @@ public class HelloApplication extends Application {
         }
     }
 
-    private void generateCode(){
+    private void generateButtonCode(){
         try (Writer writer = new BufferedWriter(new OutputStreamWriter(
-                new FileOutputStream("/home/luigi/Documents/Masterproef/FXML/javafx_project/testboy/src/main/java/com/example/testboy/gi-gtk-generated.hs"), "utf-8"))) {
+                new FileOutputStream("/home/kai/Documents/Masterproef/FXML/javafx_project/testboy/src/main/java/com/example/testboy/gi-gtk-generated.hs"), "utf-8"))) {
             writer.write(
-                    "{-# LANGUAGE OverloadedStrings #-}\n" +
-                            "{-# LANGUAGE OverloadedLabels  #-}\n" +
-                            "{-# LANGUAGE ExtendedDefaultRules #-}\n"+
-                            "\n"+
-                            "\n"+
-                            "\n"+
-                            "module Main (Main.main) where\n" +
-                            "import qualified GI.Gtk as Gtk\n" +
-                            "import GI.Gtk.Enums (WindowType(..), Orientation(..))\n" +
-                            "import GI.Gtk (Adjustment(Adjustment))\n" +
-                            "import Data.GI.Base ( AttrOp((:=)) )\n" +
-                            "\n"+
-                            "\n"+
-                            "\n"+
-                            "main :: IO ()\n" +
-                            "main = do\n" +
-                            "  Gtk.init Nothing\n  " +
+                        createImports() +
                             createTopLevelWindow()+
                             "\n  "+
                             testButton.gtkHsCode() +
                             "\n  " +
                             layout.gtkHsCode() +
                             "Gtk.layoutPut layoutContainer buttonShowTextContainerBox 103 109\n" +
-                            "\n"+
-                            "  \n" +
-                            "  Gtk.setContainerChild window layoutContainer \n" +
-                            "  \n  " +
-                            endMainProgram());
+                            "\n  "+
+                            "\n  " +
+                            "Gtk.setContainerChild window layoutContainer \n" +
+                            "\n  " +
+                            endMainProgram()
+                        );
+        }catch(IOException e){
+            System.out.println(e.toString());
+        }
+    }
+
+    private void generateLabelCode(){
+        try (Writer writer = new BufferedWriter(new OutputStreamWriter(
+                new FileOutputStream("/home/kai/Documents/Masterproef/FXML/javafx_project/testboy/src/main/java/com/example/testboy/gi-gtk-generated.hs"), "utf-8"))) {
+            writer.write(
+                    createImports() +
+                            createTopLevelWindow()+
+                            "\n  "+
+                            testLabel.gtkHsCode() +
+                            "\n  " +
+                            layout.gtkHsCode() +
+                            "Gtk.layoutPut layoutContainer labelTest 103 109\n" +
+                            "\n  "+
+                            "Gtk.setContainerChild window layoutContainer \n" +
+                            "\n  " +
+                            endMainProgram()
+            );
         }catch(IOException e){
             System.out.println(e.toString());
         }

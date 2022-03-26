@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Scene?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.stage.Stage?>
+
+<Stage height="400.0" title="JavaFX demo app" width="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+    <scene>
+        <Scene>
+            <AnchorPane prefHeight="350.0" prefWidth="613.0">
+            <children>
+               <Label layoutX="289.0" layoutY="167.0" text="Test" />
+            </children></AnchorPane>
+        </Scene>
+    </scene>
+</Stage>
