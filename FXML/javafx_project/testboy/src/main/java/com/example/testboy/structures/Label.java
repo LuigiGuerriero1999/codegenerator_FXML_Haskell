@@ -1,6 +1,6 @@
 package com.example.testboy.structures;
 
-public class Label {
+public class Label extends GTKWidget{
     private String name;
 
     private String text;
@@ -12,6 +12,16 @@ public class Label {
     private double height;
 
     public Label(String name, String text, double x, double y, double width, double height) {
+        this.name = name;
+        this.text = text;
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+    }
+
+    public Label(String id, Integer id_hash, String name, String text, double x, double y, double width, double height) {
+        super(id, id_hash);
         this.name = name;
         this.text = text;
         this.x = x;

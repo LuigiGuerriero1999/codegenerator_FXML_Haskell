@@ -1,6 +1,6 @@
 package com.example.testboy.structures;
 
-public class Layout {
+public class Layout extends GTKWidget{
     private double layoutX;
     private double layoutY;
 
@@ -15,6 +15,15 @@ public class Layout {
         this.layoutY = layoutY;
         this.width = width;
         this.height = height;
+    }
+
+    public Layout(String id, Integer id_hash, String name, double layoutX, double layoutY, double width, double height) {
+        super(id, id_hash);
+        this.layoutX = layoutX;
+        this.layoutY = layoutY;
+        this.width = width;
+        this.height = height;
+        this.name = name;
     }
 
     public double getLayoutX() {

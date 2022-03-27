@@ -4,11 +4,13 @@ import com.example.testboy.structures.Button;
 import com.example.testboy.structures.Label;
 import com.example.testboy.structures.Layout;
 import javafx.application.Application;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.io.*;
@@ -18,14 +20,15 @@ import java.util.List;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
-        //stage = FXMLLoader.load(getClass().getResource("simpeleAP_met_button_goed.fxml"));
+        relations = new ArrayList<Relation>();
+        stage = FXMLLoader.load(getClass().getResource("simpeleAP_met_button_goed.fxml"));
         //stage = FXMLLoader.load(getClass().getResource("simpeleAP_met_label.fxml"));
-        stage = FXMLLoader.load(getClass().getResource("gui_literatuur_metstage.fxml"));
+        //stage = FXMLLoader.load(getClass().getResource("gui_literatuur_metstage.fxml"));
         stage.show();
 
 
         dump(stage.getScene().getRoot());
-
+        System.out.println("test");
         //generateButtonCode();
         //generateLabelCode();
     }
@@ -35,6 +38,8 @@ public class HelloApplication extends Application {
     private Stage stage;
     private Layout layout;
     private String username = System.getProperty("user.name"); //voor gebruikersnaam voor padnaam waar .hs file opgeslagen moet worden
+
+    private ArrayList<Relation> relations ;
 
     public String createImports(){
         String gtkHsCode =  "{-# LANGUAGE OverloadedStrings #-}\n" +
@@ -91,7 +96,9 @@ public class HelloApplication extends Application {
         System.out.print(" LayoutX:"+n.getLayoutX());
         System.out.print(" LayoutY:"+n.getLayoutY());
         System.out.println();*/
-        System.out.println(n);
+
+
+        //System.out.println(n.hashCode());
         if(n instanceof javafx.scene.control.Button){
             //System.out.println(n);
             var width = n.getLayoutBounds().getWidth();
@@ -99,17 +106,17 @@ public class HelloApplication extends Application {
             var layoutX = n.getLayoutX();
             var layoutY = n.getLayoutY();
             var label = ((javafx.scene.control.Button) n).getText();
-            var button = new Button("buttonShowText", label, layoutX, layoutY, width, height);
+            var button = new Button(n.getId(), n.hashCode(),"buttonShowText", label, layoutX, layoutY, width, height);
             this.testButton =  button;
             if(n.getParent() != null){
-                System.out.println("Parent is: "+n.getParent());
+                //System.out.println("Parent is: "+n.getParent());
             }
         }else if (n instanceof AnchorPane){
             var width = n.getLayoutBounds().getWidth();
             var height = n.getLayoutBounds().getHeight();
             var layoutX = n.getLayoutX();
             var layoutY = n.getLayoutY();
-            layout = new Layout("layout", layoutX, layoutY,width ,height);
+            layout = new Layout(n.getId(), n.hashCode(),"layout", layoutX, layoutY,width ,height);
             //System.out.println("ANCHORPANEBOYKE"+layoutX);
         } else if (n instanceof javafx.scene.control.Label){
             var width = n.getLayoutBounds().getWidth();
@@ -117,8 +124,19 @@ public class HelloApplication extends Application {
             var layoutX = n.getLayoutX();
             var layoutY = n.getLayoutY();
             var text = ((javafx.scene.control.Label) n).getText();
-            var label = new Label("labelTest", text, layoutX, layoutY, width, height);
+            var label = new Label(n.getId(), n.hashCode(),"labelTest", text, layoutX, layoutY, width, height);
             this.testLabel = label;
+        } else if (n instanceof GridPane){
+
+
+            for(Node elementInGrid : ((GridPane) n).getChildren()) {
+                Integer row = GridPane.getRowIndex(elementInGrid);
+                Integer column = GridPane.getColumnIndex(elementInGrid);
+                if (row == null) row= 0;
+                if (column == null) column= 0;
+                GridRelation relation = new GridRelation(n.hashCode(), elementInGrid.hashCode(), row, column);
+                relations.add(relation);
+            }
         }
 
         if (n instanceof Parent) {

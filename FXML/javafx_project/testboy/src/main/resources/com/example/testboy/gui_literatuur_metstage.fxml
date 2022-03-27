@@ -29,7 +29,7 @@
                      <Text layoutX="95.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hier komt uw tekst" />
                   </children>
                </AnchorPane>
-               <Button mnemonicParsing="false" prefHeight="477.0" prefWidth="343.0" text="ShowText" GridPane.columnIndex="1" />
+               <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="477.0" prefWidth="343.0" text="ShowText" GridPane.columnIndex="1" />
             </children>
          </GridPane>
         </Scene>
