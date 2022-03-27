@@ -19,20 +19,22 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         //stage = FXMLLoader.load(getClass().getResource("simpeleAP_met_button_goed.fxml"));
-        stage = FXMLLoader.load(getClass().getResource("simpeleAP_met_label.fxml"));
+        //stage = FXMLLoader.load(getClass().getResource("simpeleAP_met_label.fxml"));
+        stage = FXMLLoader.load(getClass().getResource("gui_literatuur_metstage.fxml"));
         stage.show();
 
 
         dump(stage.getScene().getRoot());
 
         //generateButtonCode();
-        generateLabelCode();
+        //generateLabelCode();
     }
 
     private Button testButton;
     private Label testLabel;
     private Stage stage;
     private Layout layout;
+    private String username = System.getProperty("user.name"); //voor gebruikersnaam voor padnaam waar .hs file opgeslagen moet worden
 
     public String createImports(){
         String gtkHsCode =  "{-# LANGUAGE OverloadedStrings #-}\n" +
@@ -89,9 +91,9 @@ public class HelloApplication extends Application {
         System.out.print(" LayoutX:"+n.getLayoutX());
         System.out.print(" LayoutY:"+n.getLayoutY());
         System.out.println();*/
-
+        System.out.println(n);
         if(n instanceof javafx.scene.control.Button){
-            System.out.println(n);
+            //System.out.println(n);
             var width = n.getLayoutBounds().getWidth();
             var height = n.getLayoutBounds().getHeight();
             var layoutX = n.getLayoutX();
@@ -99,13 +101,16 @@ public class HelloApplication extends Application {
             var label = ((javafx.scene.control.Button) n).getText();
             var button = new Button("buttonShowText", label, layoutX, layoutY, width, height);
             this.testButton =  button;
+            if(n.getParent() != null){
+                System.out.println("Parent is: "+n.getParent());
+            }
         }else if (n instanceof AnchorPane){
             var width = n.getLayoutBounds().getWidth();
             var height = n.getLayoutBounds().getHeight();
             var layoutX = n.getLayoutX();
             var layoutY = n.getLayoutY();
             layout = new Layout("layout", layoutX, layoutY,width ,height);
-            System.out.println("ANCHORPANEBOYKE"+layoutX);
+            //System.out.println("ANCHORPANEBOYKE"+layoutX);
         } else if (n instanceof javafx.scene.control.Label){
             var width = n.getLayoutBounds().getWidth();
             var height = n.getLayoutBounds().getHeight();
@@ -125,7 +130,7 @@ public class HelloApplication extends Application {
 
     private void generateButtonCode(){
         try (Writer writer = new BufferedWriter(new OutputStreamWriter(
-                new FileOutputStream("/home/kai/Documents/Masterproef/FXML/javafx_project/testboy/src/main/java/com/example/testboy/gi-gtk-generated.hs"), "utf-8"))) {
+                new FileOutputStream("/home/"+username+"/Documents/Masterproef/FXML/javafx_project/testboy/src/main/java/com/example/testboy/gi-gtk-generated.hs"), "utf-8"))) {
             writer.write(
                         createImports() +
                             createTopLevelWindow()+
@@ -136,7 +141,7 @@ public class HelloApplication extends Application {
                             "Gtk.layoutPut layoutContainer buttonShowTextContainerBox 103 109\n" +
                             "\n  "+
                             "\n  " +
-                            "Gtk.setContainerChild window layoutContainer \n" +
+                            "Gtk.setContainerChild window layoutContainer\n" +
                             "\n  " +
                             endMainProgram()
                         );
@@ -147,7 +152,7 @@ public class HelloApplication extends Application {
 
     private void generateLabelCode(){
         try (Writer writer = new BufferedWriter(new OutputStreamWriter(
-                new FileOutputStream("/home/kai/Documents/Masterproef/FXML/javafx_project/testboy/src/main/java/com/example/testboy/gi-gtk-generated.hs"), "utf-8"))) {
+                new FileOutputStream("/home/"+username+"/Documents/Masterproef/FXML/javafx_project/testboy/src/main/java/com/example/testboy/gi-gtk-generated.hs"), "utf-8"))) {
             writer.write(
                     createImports() +
                             createTopLevelWindow()+
