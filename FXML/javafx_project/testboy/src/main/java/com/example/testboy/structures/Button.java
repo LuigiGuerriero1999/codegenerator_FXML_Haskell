@@ -1,8 +1,11 @@
 package com.example.testboy.structures;
 
+import com.example.testboy.HelloApplication;
+
 public class Button extends GTKWidget {
-    private String name;
+
     private String label;
+    private String buttonName;
 
     private double layoutX;
     private double layoutY;
@@ -10,8 +13,7 @@ public class Button extends GTKWidget {
     private double width;
     private double height;
 
-    public Button(String name, String label, double layoutX, double layoutY, double width, double height) {
-        this.name = name;
+    public Button(String label, double layoutX, double layoutY, double width, double height) {
         this.label = label;
         this.layoutX = layoutX;
         this.layoutY = layoutY;
@@ -20,14 +22,16 @@ public class Button extends GTKWidget {
     }
 
     public Button(String id, Integer id_hash, String name, String label, double layoutX, double layoutY, double width, double height) {
-        super(id, id_hash);
-        this.name = name;
+        super(id, id_hash, HelloApplication.makeName(id,id_hash,name)+"Container");
         this.label = label;
         this.layoutX = layoutX;
         this.layoutY = layoutY;
         this.width = width;
         this.height = height;
+        this.buttonName = HelloApplication.makeName(id,id_hash,name);
     }
+
+
 
     public String getLabel() {
         return label;
@@ -53,13 +57,7 @@ public class Button extends GTKWidget {
         this.layoutY = layoutY;
     }
 
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public double getWidth() {
         return width;
@@ -78,12 +76,12 @@ public class Button extends GTKWidget {
     }
 
     public String gtkHsCode(){
-        String buttonConstructor = name + " <- Gtk.buttonNew\n  ";
-        String setButtonProperties = "Gtk.set buttonShowText [Gtk.buttonLabel :="+"\""+label+"\""+"]\n  ";
-        String buttonContainerBoxName = name + "ContainerBox";
+        String buttonConstructor = buttonName + " <- Gtk.buttonNew\n  ";
+        String setButtonProperties = "Gtk.set "+buttonName+" [Gtk.buttonLabel :="+"\""+label+"\""+"]\n  ";
+        String buttonContainerBoxName = super.getName();
         String createButtonContainer = buttonContainerBoxName + " <- Gtk.boxNew OrientationHorizontal 1\n  ";
         String setButtonContainerProperties = "Gtk.set "+buttonContainerBoxName+" [Gtk.widgetWidthRequest := "+(int)width+", Gtk.widgetHeightRequest := "+(int)height+"]\n  ";
-        String addButtonToContainer = "Gtk.boxPackStart "+buttonContainerBoxName+" "+name+" True True 0\n   ";
+        String addButtonToContainer = "Gtk.boxPackStart "+buttonContainerBoxName+" "+buttonName+" True True 0\n   ";
         String buttonGtkHsCode = buttonConstructor + setButtonProperties + createButtonContainer + setButtonContainerProperties + addButtonToContainer;
 
         return buttonGtkHsCode;

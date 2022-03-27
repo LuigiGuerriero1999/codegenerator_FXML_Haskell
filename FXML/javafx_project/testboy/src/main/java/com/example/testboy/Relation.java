@@ -1,5 +1,8 @@
 package com.example.testboy;
 
+import com.example.testboy.structures.Button;
+import com.example.testboy.structures.GTKWidget;
+
 import java.util.ArrayList;
 
 public class Relation {
@@ -29,6 +32,10 @@ public class Relation {
 
     public void setChildID(Integer childID) {
         this.childID = childID;
+    }
+
+    public String generateGtkHsCode(ArrayList<GTKWidget> allwidgets){
+        return "";
     }
 
 }

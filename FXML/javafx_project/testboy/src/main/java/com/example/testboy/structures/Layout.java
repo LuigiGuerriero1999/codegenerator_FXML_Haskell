@@ -1,5 +1,7 @@
 package com.example.testboy.structures;
 
+import com.example.testboy.HelloApplication;
+
 public class Layout extends GTKWidget{
     private double layoutX;
     private double layoutY;
@@ -7,10 +9,9 @@ public class Layout extends GTKWidget{
     private double width;
     private double height;
 
-    private String name;
 
-    public Layout(String name, double layoutX, double layoutY, double width, double height) {
-        this.name = name;
+
+    public Layout(double layoutX, double layoutY, double width, double height) {
         this.layoutX = layoutX;
         this.layoutY = layoutY;
         this.width = width;
@@ -18,12 +19,11 @@ public class Layout extends GTKWidget{
     }
 
     public Layout(String id, Integer id_hash, String name, double layoutX, double layoutY, double width, double height) {
-        super(id, id_hash);
+        super(id, id_hash, HelloApplication.makeName(id,id_hash,name)+"Container");
         this.layoutX = layoutX;
         this.layoutY = layoutY;
         this.width = width;
         this.height = height;
-        this.name = name;
     }
 
     public double getLayoutX() {
@@ -59,7 +59,7 @@ public class Layout extends GTKWidget{
     }
 
     public String gtkHsCode(){
-        String layoutConstructor = name + "Container <- Gtk.layoutNew (Nothing::Maybe Adjustment) (Nothing::Maybe Adjustment)\n  ";
+        String layoutConstructor = super.getName() + " <- Gtk.layoutNew (Nothing::Maybe Adjustment) (Nothing::Maybe Adjustment)\n  ";
         String GtkHsCode = layoutConstructor;
 
         return GtkHsCode;

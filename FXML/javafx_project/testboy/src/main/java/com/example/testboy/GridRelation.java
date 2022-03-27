@@ -17,7 +17,5 @@ public class GridRelation extends Relation{
         this.column = column;
     }
 
-    public String generateGtkHsCode(ArrayList<Object> allwidgets){
-        return "";
-    }
+
 }

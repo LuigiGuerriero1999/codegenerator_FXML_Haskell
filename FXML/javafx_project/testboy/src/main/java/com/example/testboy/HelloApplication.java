@@ -1,6 +1,7 @@
 package com.example.testboy;
 
 import com.example.testboy.structures.Button;
+import com.example.testboy.structures.GTKWidget;
 import com.example.testboy.structures.Label;
 import com.example.testboy.structures.Layout;
 import javafx.application.Application;
@@ -21,6 +22,7 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         relations = new ArrayList<Relation>();
+        GUIelements = new ArrayList<GTKWidget>();
         stage = FXMLLoader.load(getClass().getResource("simpeleAP_met_button_goed.fxml"));
         //stage = FXMLLoader.load(getClass().getResource("simpeleAP_met_label.fxml"));
         //stage = FXMLLoader.load(getClass().getResource("gui_literatuur_metstage.fxml"));
@@ -28,8 +30,9 @@ public class HelloApplication extends Application {
 
 
         dump(stage.getScene().getRoot());
-        System.out.println("test");
-        //generateButtonCode();
+
+        generateButtonCode();
+
         //generateLabelCode();
     }
 
@@ -40,6 +43,7 @@ public class HelloApplication extends Application {
     private String username = System.getProperty("user.name"); //voor gebruikersnaam voor padnaam waar .hs file opgeslagen moet worden
 
     private ArrayList<Relation> relations ;
+    private ArrayList<GTKWidget> GUIelements;
 
     public String createImports(){
         String gtkHsCode =  "{-# LANGUAGE OverloadedStrings #-}\n" +
@@ -74,6 +78,26 @@ public class HelloApplication extends Application {
         return gtkHsCode;
     }
 
+    public String generateRelations(){
+        String relationsGtkCode = "";
+        for(Relation r : this.relations){
+            relationsGtkCode = r.generateGtkHsCode(GUIelements);
+        }
+        return relationsGtkCode;
+    }
+
+    public String bindTopLevelElementToWindow(){
+        var topLevelElement = stage.getScene().getRoot();
+        var hashIdTopElement = topLevelElement.hashCode();
+        String topLevelBinding = "";
+        for(GTKWidget q : GUIelements){
+            if(q.getId_hash().equals(hashIdTopElement)){
+                topLevelBinding = "Gtk.setContainerChild window "+q.getName()+"\n  ";
+            }
+        }
+        return topLevelBinding;
+    }
+
     public static void main(String[] args) {
         launch();
     }
@@ -98,7 +122,7 @@ public class HelloApplication extends Application {
         System.out.println();*/
 
 
-        //System.out.println(n.hashCode());
+        System.out.println(n);
         if(n instanceof javafx.scene.control.Button){
             //System.out.println(n);
             var width = n.getLayoutBounds().getWidth();
@@ -108,6 +132,8 @@ public class HelloApplication extends Application {
             var label = ((javafx.scene.control.Button) n).getText();
             var button = new Button(n.getId(), n.hashCode(),"buttonShowText", label, layoutX, layoutY, width, height);
             this.testButton =  button;
+            GUIelements.add(button);
+
             if(n.getParent() != null){
                 //System.out.println("Parent is: "+n.getParent());
             }
@@ -117,7 +143,12 @@ public class HelloApplication extends Application {
             var layoutX = n.getLayoutX();
             var layoutY = n.getLayoutY();
             layout = new Layout(n.getId(), n.hashCode(),"layout", layoutX, layoutY,width ,height);
-            //System.out.println("ANCHORPANEBOYKE"+layoutX);
+            GUIelements.add(layout);
+
+            for(Node elementInLayout : ((AnchorPane) n).getChildren()) {
+                LayoutRelation relation = new LayoutRelation(n.hashCode(), elementInLayout.hashCode());
+                relations.add(relation);
+            }
         } else if (n instanceof javafx.scene.control.Label){
             var width = n.getLayoutBounds().getWidth();
             var height = n.getLayoutBounds().getHeight();
@@ -156,10 +187,10 @@ public class HelloApplication extends Application {
                             testButton.gtkHsCode() +
                             "\n  " +
                             layout.gtkHsCode() +
-                            "Gtk.layoutPut layoutContainer buttonShowTextContainerBox 103 109\n" +
+                            generateRelations() +
                             "\n  "+
                             "\n  " +
-                            "Gtk.setContainerChild window layoutContainer\n" +
+                            bindTopLevelElementToWindow() +
                             "\n  " +
                             endMainProgram()
                         );
@@ -186,6 +217,14 @@ public class HelloApplication extends Application {
             );
         }catch(IOException e){
             System.out.println(e.toString());
+        }
+    }
+
+    public static String makeName(String id, Integer id_hash, String name){
+        if(id == null){
+            return name+"_"+id_hash;
+        }else{
+            return name+id+"_"+id_hash;
         }
     }
 }
