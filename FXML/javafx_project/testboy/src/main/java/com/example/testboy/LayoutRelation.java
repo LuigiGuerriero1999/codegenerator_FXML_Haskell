@@ -2,8 +2,6 @@ package com.example.testboy;
 
 import com.example.testboy.structures.Button;
 import com.example.testboy.structures.GTKWidget;
-import javafx.scene.Node;
-import javafx.scene.layout.GridPane;
 
 import java.util.ArrayList;
 

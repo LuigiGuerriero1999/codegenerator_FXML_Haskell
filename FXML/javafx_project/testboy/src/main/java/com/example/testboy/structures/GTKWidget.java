@@ -1,10 +1,11 @@
 package com.example.testboy.structures;
 
-public class GTKWidget {
+public abstract class GTKWidget {
     private String id; //indien in fxml expliciet met :id wordt gewerkt
     private Integer id_hash;  //interne hash value van widget
     private String name;
 
+    abstract String gtkHsCode();
 
     public GTKWidget(String id, Integer id_hash, String name) {
         this.id = id;

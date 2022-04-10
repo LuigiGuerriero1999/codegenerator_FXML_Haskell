@@ -31,8 +31,6 @@ public class Button extends GTKWidget {
         this.buttonName = HelloApplication.makeName(id,id_hash,name);
     }
 
-
-
     public String getLabel() {
         return label;
     }
@@ -56,8 +54,6 @@ public class Button extends GTKWidget {
     public void setLayoutY(double layoutY) {
         this.layoutY = layoutY;
     }
-
-
 
     public double getWidth() {
         return width;

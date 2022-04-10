@@ -1,8 +1,6 @@
 package com.example.testboy.structures;
 
 public class Label extends GTKWidget{
-
-
     private String text;
 
     private double x;
@@ -27,8 +25,6 @@ public class Label extends GTKWidget{
         this.width = width;
         this.height = height;
     }
-
-
 
     public String getText() {
         return text;

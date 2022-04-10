@@ -7,4 +7,8 @@ public class GridPane extends GTKWidget {
 
     public GridPane() {
     }
+
+    public String gtkHsCode(){
+        return "";
+    }
 }
