@@ -1,7 +1,9 @@
 package com.example.testboy;
 
 import com.example.testboy.structures.Button;
+import com.example.testboy.structures.Entry;
 import com.example.testboy.structures.GTKWidget;
+import com.example.testboy.structures.Label;
 
 import java.util.ArrayList;
 
@@ -26,6 +28,12 @@ public class LayoutRelation extends Relation{
                 if(element instanceof Button){
                     x = (int)((Button) element).getLayoutX();
                     y = (int)((Button) element).getLayoutY();
+                } else if (element instanceof Label){
+                    x = (int)((Label) element).getLayoutX();
+                    y = (int)((Label) element).getLayoutY();
+                } else if (element instanceof Entry){
+                    x = (int)((Entry) element).getLayoutX();
+                    y = (int)((Entry) element).getLayoutY();
                 }
             }
             if(parentID.equals(elementIDHash)){

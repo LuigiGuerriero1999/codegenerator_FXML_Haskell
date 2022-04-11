@@ -1,13 +1,11 @@
 package com.example.testboy;
 
-import com.example.testboy.structures.Button;
-import com.example.testboy.structures.GTKWidget;
-import com.example.testboy.structures.Label;
-import com.example.testboy.structures.Layout;
+import com.example.testboy.structures.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -20,24 +18,27 @@ public class HelloApplication extends Application {
     public void start(Stage primaryStage) throws IOException {
         relations = new ArrayList<Relation>();
         GUIelements = new ArrayList<GTKWidget>();
-        stage = FXMLLoader.load(getClass().getResource("simpeleAP_met_button_goed.fxml"));
-        //stage = FXMLLoader.load(getClass().getResource("simpeleAP_met_label.fxml"));
+        //stage = FXMLLoader.load(getClass().getResource("simpeleAP_met_button_goed.fxml"));    // Button voorbeeld
+        //stage = FXMLLoader.load(getClass().getResource("simpeleAP_met_label.fxml"));              // Label voorbeeld
+        stage = FXMLLoader.load(getClass().getResource("simpeleAP_met_entry.fxml"));              // Entry voorbeeld
         //stage = FXMLLoader.load(getClass().getResource("gui_literatuur_metstage.fxml"));
         stage.show();
 
 
         dump(stage.getScene().getRoot());
 
-        generateButtonCode();
-
+        //generateButtonCode();
         //generateLabelCode();
+        generateEntryCode();
     }
 
     private Button testButton;
     private Label testLabel;
+    private Entry testEntry;
     private Stage stage;
     private Layout layout;
     private String username = System.getProperty("user.name"); //voor gebruikersnaam voor padnaam waar .hs file opgeslagen moet worden
+    private String path = "/home/"+username+"/Documents/Masterproef/FXML/javafx_project/testboy/src/main/java/com/example/testboy/gi-gtk-generated.hs";
 
     private ArrayList<Relation> relations ;
     private ArrayList<GTKWidget> GUIelements;
@@ -154,9 +155,17 @@ public class HelloApplication extends Application {
             var text = ((javafx.scene.control.Label) n).getText();
             var label = new Label(n.getId(), n.hashCode(),"labelTest", text, layoutX, layoutY, width, height);
             this.testLabel = label;
+            GUIelements.add(label);
+        } else if (n instanceof TextField){
+            var width = n.getLayoutBounds().getWidth();
+            var height = n.getLayoutBounds().getHeight();
+            var layoutX = n.getLayoutX();
+            var layoutY = n.getLayoutY();
+            var text = ((javafx.scene.control.TextField) n).getText();
+            var entry = new Entry(n.getId(), n.hashCode(),"entryTest", text, layoutX, layoutY, width, height);
+            this.testEntry = entry;
+            GUIelements.add(entry);
         } else if (n instanceof GridPane){
-
-
             for(Node elementInGrid : ((GridPane) n).getChildren()) {
                 Integer row = GridPane.getRowIndex(elementInGrid);
                 Integer column = GridPane.getColumnIndex(elementInGrid);
@@ -176,7 +185,7 @@ public class HelloApplication extends Application {
 
     private void generateButtonCode(){
         try (Writer writer = new BufferedWriter(new OutputStreamWriter(
-                new FileOutputStream("/home/"+username+"/Documents/Masterproef/FXML/javafx_project/testboy/src/main/java/com/example/testboy/gi-gtk-generated.hs"), "utf-8"))) {
+                new FileOutputStream(path), "utf-8"))) {
             writer.write(
                         createImports() +
                             createTopLevelWindow()+
@@ -186,7 +195,6 @@ public class HelloApplication extends Application {
                             layout.gtkHsCode() +
                             generateRelations() +
                             "\n  "+
-                            "\n  " +
                             bindTopLevelElementToWindow() +
                             "\n  " +
                             endMainProgram()
@@ -198,7 +206,7 @@ public class HelloApplication extends Application {
 
     private void generateLabelCode(){
         try (Writer writer = new BufferedWriter(new OutputStreamWriter(
-                new FileOutputStream("/home/"+username+"/Documents/Masterproef/FXML/javafx_project/testboy/src/main/java/com/example/testboy/gi-gtk-generated.hs"), "utf-8"))) {
+                new FileOutputStream(path), "utf-8"))) {
             writer.write(
                     createImports() +
                             createTopLevelWindow()+
@@ -206,9 +214,30 @@ public class HelloApplication extends Application {
                             testLabel.gtkHsCode() +
                             "\n  " +
                             layout.gtkHsCode() +
-                            "Gtk.layoutPut layoutContainer labelTest 103 109\n" +
+                            generateRelations() +
                             "\n  "+
-                            "Gtk.setContainerChild window layoutContainer \n" +
+                            bindTopLevelElementToWindow() +
+                            "\n  " +
+                            endMainProgram()
+            );
+        }catch(IOException e){
+            System.out.println(e.toString());
+        }
+    }
+
+    private void generateEntryCode(){
+        try (Writer writer = new BufferedWriter(new OutputStreamWriter(
+                new FileOutputStream(path), "utf-8"))) {
+            writer.write(
+                    createImports() +
+                            createTopLevelWindow()+
+                            "\n  "+
+                            testEntry.gtkHsCode() +
+                            "\n  " +
+                            layout.gtkHsCode() +
+                            generateRelations() +
+                            "\n  "+
+                            bindTopLevelElementToWindow() +
                             "\n  " +
                             endMainProgram()
             );

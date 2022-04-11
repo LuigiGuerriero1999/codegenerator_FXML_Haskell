@@ -3,7 +3,6 @@ package com.example.testboy.structures;
 import com.example.testboy.HelloApplication;
 
 public class Button extends GTKWidget {
-
     private String label;
     private String buttonName;
 
