@@ -21,14 +21,15 @@ public class HelloApplication extends Application {
     public void start(Stage primaryStage) throws IOException {
         relations = new ArrayList<Relation>();
         GUIelements = new ArrayList<GTKWidget>();
-        stage = FXMLLoader.load(getClass().getResource("simpeleAP_met_button_goed.fxml"));    // Button voorbeeld
+        //stage = FXMLLoader.load(getClass().getResource("simpeleAP_met_button_goed.fxml"));    // Button voorbeeld
         //stage = FXMLLoader.load(getClass().getResource("simpeleAP_met_label.fxml"));              // Label voorbeeld
-        //stage = FXMLLoader.load(getClass().getResource("simpeleAP_met_entry.fxml"));              // Entry voorbeeld
+        stage = FXMLLoader.load(getClass().getResource("simpeleAP_met_entry.fxml"));              // Entry voorbeeld
         //stage = FXMLLoader.load(getClass().getResource("gui_literatuur_metstage.fxml"));
         stage.show();
 
         generateHaskellCode();
         dump(stage.getScene().getRoot());
+        endOfFile();
 
         //generateButtonCode();
         //generateLabelCode();
@@ -96,7 +97,7 @@ public class HelloApplication extends Application {
                 topLevelBinding = "Gtk.setContainerChild window "+q.getName()+"\n  ";
             }
         }
-        return topLevelBinding;
+        return topLevelBinding + "\n  ";
     }
 
     public static void main(String[] args) {
@@ -135,16 +136,7 @@ public class HelloApplication extends Application {
             this.testButton =  button;
             GUIelements.add(button);
 
-            appendTextToFile(
-                    testButton.gtkHsCode() +
-                    "\n  " +
-                    layout.gtkHsCode() +
-                    generateRelations() +
-                    "\n  "+
-                    bindTopLevelElementToWindow() +
-                    "\n  " +
-                    endMainProgram()
-            );
+            appendTextToFile(testButton.gtkHsCode());
 
             if(n.getParent() != null){
                 //System.out.println("Parent is: "+n.getParent());
@@ -161,6 +153,8 @@ public class HelloApplication extends Application {
                 LayoutRelation relation = new LayoutRelation(n.hashCode(), elementInLayout.hashCode());
                 relations.add(relation);
             }
+
+            appendTextToFile(layout.gtkHsCode());
         } else if (n instanceof javafx.scene.control.Label){
             var width = n.getLayoutBounds().getWidth();
             var height = n.getLayoutBounds().getHeight();
@@ -171,16 +165,7 @@ public class HelloApplication extends Application {
             this.testLabel = label;
             GUIelements.add(label);
 
-            appendTextToFile(
-                    testLabel.gtkHsCode() +
-                    "\n  " +
-                    layout.gtkHsCode() +
-                    generateRelations() +
-                    "\n  "+
-                    bindTopLevelElementToWindow() +
-                    "\n  " +
-                    endMainProgram()
-            );
+            appendTextToFile(testLabel.gtkHsCode());
         } else if (n instanceof TextField){
             var width = n.getLayoutBounds().getWidth();
             var height = n.getLayoutBounds().getHeight();
@@ -191,16 +176,7 @@ public class HelloApplication extends Application {
             this.testEntry = entry;
             GUIelements.add(entry);
 
-            appendTextToFile(
-                    testEntry.gtkHsCode() +
-                    "\n  " +
-                    layout.gtkHsCode() +
-                    generateRelations() +
-                    "\n  "+
-                    bindTopLevelElementToWindow() +
-                    "\n  " +
-                    endMainProgram()
-            );
+            appendTextToFile(testEntry.gtkHsCode());
         } else if (n instanceof GridPane){
             for(Node elementInGrid : ((GridPane) n).getChildren()) {
                 Integer row = GridPane.getRowIndex(elementInGrid);
@@ -228,6 +204,14 @@ public class HelloApplication extends Application {
         }catch(IOException e){
             System.out.println(e.toString());
         }
+    }
+
+    private void endOfFile(){
+        appendTextToFile(
+                generateRelations() +
+                bindTopLevelElementToWindow() +
+                endMainProgram()
+        );
     }
 
     public void appendTextToFile(String text){

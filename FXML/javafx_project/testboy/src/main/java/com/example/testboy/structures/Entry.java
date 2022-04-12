@@ -76,7 +76,7 @@ public class Entry extends GTKWidget{
         String createEntryContainer = entryContainerBoxName + " <- Gtk.boxNew OrientationHorizontal 1\n  ";
         String setEntryContainerProperties = "Gtk.set "+ entryContainerBoxName +" [Gtk.widgetWidthRequest := "+(int)width+", Gtk.widgetHeightRequest := "+(int)height+"]\n  ";
         String addEntryToContainer = "Gtk.boxPackStart "+ entryContainerBoxName +" "+ entryName +" True True 0\n   ";
-        String entryGtkHsCode = entryConstructor + createEntryContainer + setEntryContainerProperties + addEntryToContainer;
+        String entryGtkHsCode = entryConstructor + createEntryContainer + setEntryContainerProperties + addEntryToContainer + "\n  ";
 
         return entryGtkHsCode;
     }

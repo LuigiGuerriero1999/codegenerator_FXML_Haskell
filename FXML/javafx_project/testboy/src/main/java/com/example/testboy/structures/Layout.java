@@ -60,7 +60,7 @@ public class Layout extends GTKWidget{
 
     public String gtkHsCode(){
         String layoutConstructor = super.getName() + " <- Gtk.layoutNew (Nothing::Maybe Adjustment) (Nothing::Maybe Adjustment)\n  ";
-        String GtkHsCode = layoutConstructor;
+        String GtkHsCode = layoutConstructor + "\n  ";
 
         return GtkHsCode;
 

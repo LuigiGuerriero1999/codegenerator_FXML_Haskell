@@ -40,7 +40,8 @@ public class LayoutRelation extends Relation{
                 layoutName = element.getName();
             }
         }
-        String gtkHscode = "Gtk.layoutPut "+layoutName+" "+childWidgetName+" "+x+" "+y+"\n  ";
+        String haskellCode = "Gtk.layoutPut "+layoutName+" "+childWidgetName+" "+x+" "+y+"\n  ";
+        String gtkHscode = haskellCode + "\n  ";
         return gtkHscode;
     }
 }
