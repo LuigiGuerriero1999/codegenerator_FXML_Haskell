@@ -68,7 +68,7 @@ public class Label extends GTKWidget{
     }
 
     public String gtkHsCode(){
-        String labelGtkHsCode = labelName + " <- Gtk.labelNew (Just " + "\"" + text + "\"" + ")\n  ";
+        String labelGtkHsCode = super.getName() + " <- Gtk.labelNew (Just " + "\"" + text + "\"" + ")\n  ";
         return labelGtkHsCode;
     }
 }

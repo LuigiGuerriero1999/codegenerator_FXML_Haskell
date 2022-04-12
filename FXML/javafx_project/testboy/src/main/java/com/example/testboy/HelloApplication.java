@@ -11,6 +11,9 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 
 public class HelloApplication extends Application {
@@ -18,16 +21,17 @@ public class HelloApplication extends Application {
     public void start(Stage primaryStage) throws IOException {
         relations = new ArrayList<Relation>();
         GUIelements = new ArrayList<GTKWidget>();
-        //stage = FXMLLoader.load(getClass().getResource("simpeleAP_met_button_goed.fxml"));    // Button voorbeeld
-        stage = FXMLLoader.load(getClass().getResource("simpeleAP_met_label.fxml"));              // Label voorbeeld
+        stage = FXMLLoader.load(getClass().getResource("simpeleAP_met_button_goed.fxml"));    // Button voorbeeld
+        //stage = FXMLLoader.load(getClass().getResource("simpeleAP_met_label.fxml"));              // Label voorbeeld
         //stage = FXMLLoader.load(getClass().getResource("simpeleAP_met_entry.fxml"));              // Entry voorbeeld
         //stage = FXMLLoader.load(getClass().getResource("gui_literatuur_metstage.fxml"));
         stage.show();
 
+        generateHaskellCode();
         dump(stage.getScene().getRoot());
 
         //generateButtonCode();
-        generateLabelCode();
+        //generateLabelCode();
         //generateEntryCode();
     }
 
@@ -131,6 +135,17 @@ public class HelloApplication extends Application {
             this.testButton =  button;
             GUIelements.add(button);
 
+            appendTextToFile(
+                    testButton.gtkHsCode() +
+                    "\n  " +
+                    layout.gtkHsCode() +
+                    generateRelations() +
+                    "\n  "+
+                    bindTopLevelElementToWindow() +
+                    "\n  " +
+                    endMainProgram()
+            );
+
             if(n.getParent() != null){
                 //System.out.println("Parent is: "+n.getParent());
             }
@@ -155,6 +170,17 @@ public class HelloApplication extends Application {
             var label = new Label(n.getId(), n.hashCode(),"labelTest", text, layoutX, layoutY, width, height);
             this.testLabel = label;
             GUIelements.add(label);
+
+            appendTextToFile(
+                    testLabel.gtkHsCode() +
+                    "\n  " +
+                    layout.gtkHsCode() +
+                    generateRelations() +
+                    "\n  "+
+                    bindTopLevelElementToWindow() +
+                    "\n  " +
+                    endMainProgram()
+            );
         } else if (n instanceof TextField){
             var width = n.getLayoutBounds().getWidth();
             var height = n.getLayoutBounds().getHeight();
@@ -164,6 +190,17 @@ public class HelloApplication extends Application {
             var entry = new Entry(n.getId(), n.hashCode(),"entryTest", text, layoutX, layoutY, width, height);
             this.testEntry = entry;
             GUIelements.add(entry);
+
+            appendTextToFile(
+                    testEntry.gtkHsCode() +
+                    "\n  " +
+                    layout.gtkHsCode() +
+                    generateRelations() +
+                    "\n  "+
+                    bindTopLevelElementToWindow() +
+                    "\n  " +
+                    endMainProgram()
+            );
         } else if (n instanceof GridPane){
             for(Node elementInGrid : ((GridPane) n).getChildren()) {
                 Integer row = GridPane.getRowIndex(elementInGrid);
@@ -179,6 +216,25 @@ public class HelloApplication extends Application {
             for (Node c : ((Parent) n).getChildrenUnmodifiable()) {
                 dump(c, depth + 1);
             }
+        }
+    }
+
+    private void generateHaskellCode(){
+        try (Writer writer = new BufferedWriter(new OutputStreamWriter(
+                new FileOutputStream(path), "utf-8"))) {
+            writer.write(
+                    createImports() + createTopLevelWindow()+ "\n  "
+            );
+        }catch(IOException e){
+            System.out.println(e.toString());
+        }
+    }
+
+    public void appendTextToFile(String text){
+        try {
+            Files.write(Paths.get(path), text.getBytes(), StandardOpenOption.APPEND);
+        }catch(IOException e){
+            System.out.println(e.toString());
         }
     }
 
