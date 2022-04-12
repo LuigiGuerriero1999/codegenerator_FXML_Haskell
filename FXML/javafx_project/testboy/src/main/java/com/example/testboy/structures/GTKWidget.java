@@ -16,6 +16,14 @@ public abstract class GTKWidget {
     public GTKWidget() {
     }
 
+    public static String makeName(String id, Integer id_hash, String name){
+        if(id == null){
+            return name+"_"+id_hash;
+        }else{
+            return name+id+"_"+id_hash;
+        }
+    }
+
     public String getName() {
         return name;
     }

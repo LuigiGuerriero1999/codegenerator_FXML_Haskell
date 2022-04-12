@@ -1,7 +1,10 @@
 package com.example.testboy.structures;
 
+import com.example.testboy.HelloApplication;
+
 public class Entry extends GTKWidget{
     private String text;
+    private String entryName;
 
     private double layoutX;
     private double layoutY;
@@ -18,12 +21,13 @@ public class Entry extends GTKWidget{
     }
 
     public Entry(String id, Integer id_hash, String name, String text, double layoutX, double layoutY, double width, double height) {
-        super(id, id_hash, name);
+        super(id, id_hash, makeName(id,id_hash,name)+"Container");
         this.text = text;
         this.layoutX = layoutX;
         this.layoutY = layoutY;
         this.width = width;
         this.height = height;
+        this.entryName = makeName(id,id_hash,name);
     }
 
     public String getText() {
@@ -67,7 +71,13 @@ public class Entry extends GTKWidget{
     }
 
     public String gtkHsCode() {
-        String entryGtkHsCode = super.getName() + " <- Gtk.entryNew ";
+        String entryConstructor = entryName + " <- Gtk.entryNew\n  ";
+        String entryContainerBoxName = super.getName();
+        String createEntryContainer = entryContainerBoxName + " <- Gtk.boxNew OrientationHorizontal 1\n  ";
+        String setEntryContainerProperties = "Gtk.set "+ entryContainerBoxName +" [Gtk.widgetWidthRequest := "+(int)width+", Gtk.widgetHeightRequest := "+(int)height+"]\n  ";
+        String addEntryToContainer = "Gtk.boxPackStart "+ entryContainerBoxName +" "+ entryName +" True True 0\n   ";
+        String entryGtkHsCode = entryConstructor + createEntryContainer + setEntryContainerProperties + addEntryToContainer;
+
         return entryGtkHsCode;
     }
 }

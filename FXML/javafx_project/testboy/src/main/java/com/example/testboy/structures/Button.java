@@ -21,13 +21,13 @@ public class Button extends GTKWidget {
     }
 
     public Button(String id, Integer id_hash, String name, String label, double layoutX, double layoutY, double width, double height) {
-        super(id, id_hash, HelloApplication.makeName(id,id_hash,name)+"Container");
+        super(id, id_hash, makeName(id,id_hash,name)+"Container");
         this.label = label;
         this.layoutX = layoutX;
         this.layoutY = layoutY;
         this.width = width;
         this.height = height;
-        this.buttonName = HelloApplication.makeName(id,id_hash,name);
+        this.buttonName = makeName(id,id_hash,name);
     }
 
     public String getLabel() {

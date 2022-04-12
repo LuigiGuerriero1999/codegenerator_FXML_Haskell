@@ -2,7 +2,7 @@ package com.example.testboy.structures;
 
 public class Label extends GTKWidget{
     private String text;
-
+    private String labelName;
     private double layoutX;
     private double layoutY;
 
@@ -18,12 +18,13 @@ public class Label extends GTKWidget{
     }
 
     public Label(String id, Integer id_hash, String name, String text, double layoutX, double layoutY, double width, double height) {
-        super(id, id_hash, name);
+        super(id, id_hash, makeName(id,id_hash,name)+"Container");
         this.text = text;
         this.layoutX = layoutX;
         this.layoutY = layoutY;
         this.width = width;
         this.height = height;
+        this.labelName = makeName(id,id_hash,name);
     }
 
     public String getText() {
@@ -67,7 +68,7 @@ public class Label extends GTKWidget{
     }
 
     public String gtkHsCode(){
-        String labelGtkHsCode = super.getName() + " <- Gtk.labelNew (Just " + "\"" + text + "\"" + ") \n";
+        String labelGtkHsCode = labelName + " <- Gtk.labelNew (Just " + "\"" + text + "\"" + ")\n  ";
         return labelGtkHsCode;
     }
 }

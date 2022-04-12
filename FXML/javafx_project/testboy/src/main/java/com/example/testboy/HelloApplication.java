@@ -19,17 +19,16 @@ public class HelloApplication extends Application {
         relations = new ArrayList<Relation>();
         GUIelements = new ArrayList<GTKWidget>();
         //stage = FXMLLoader.load(getClass().getResource("simpeleAP_met_button_goed.fxml"));    // Button voorbeeld
-        //stage = FXMLLoader.load(getClass().getResource("simpeleAP_met_label.fxml"));              // Label voorbeeld
-        stage = FXMLLoader.load(getClass().getResource("simpeleAP_met_entry.fxml"));              // Entry voorbeeld
+        stage = FXMLLoader.load(getClass().getResource("simpeleAP_met_label.fxml"));              // Label voorbeeld
+        //stage = FXMLLoader.load(getClass().getResource("simpeleAP_met_entry.fxml"));              // Entry voorbeeld
         //stage = FXMLLoader.load(getClass().getResource("gui_literatuur_metstage.fxml"));
         stage.show();
-
 
         dump(stage.getScene().getRoot());
 
         //generateButtonCode();
-        //generateLabelCode();
-        generateEntryCode();
+        generateLabelCode();
+        //generateEntryCode();
     }
 
     private Button testButton;
@@ -243,14 +242,6 @@ public class HelloApplication extends Application {
             );
         }catch(IOException e){
             System.out.println(e.toString());
-        }
-    }
-
-    public static String makeName(String id, Integer id_hash, String name){
-        if(id == null){
-            return name+"_"+id_hash;
-        }else{
-            return name+id+"_"+id_hash;
         }
     }
 }
