@@ -11,7 +11,7 @@
         <Scene>
             <AnchorPane prefHeight="350.0" prefWidth="613.0">
                 <children>
-                    <TextField layoutX="289.0" layoutY="167.0" text="Test" />
+                    <TextField layoutX="289.0" layoutY="167.0" text="Test" alignment="TOP_CENTER"/>
                 </children></AnchorPane>
         </Scene>
     </scene>

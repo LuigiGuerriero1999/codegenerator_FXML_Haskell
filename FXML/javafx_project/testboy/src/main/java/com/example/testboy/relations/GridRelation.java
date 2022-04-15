@@ -1,6 +1,4 @@
-package com.example.testboy;
-
-import java.util.ArrayList;
+package com.example.testboy.relations;
 
 public class GridRelation extends Relation{
     private int row;

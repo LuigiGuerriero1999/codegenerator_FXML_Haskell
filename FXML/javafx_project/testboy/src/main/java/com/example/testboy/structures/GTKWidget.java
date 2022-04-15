@@ -1,6 +1,6 @@
 package com.example.testboy.structures;
 
-import java.util.ArrayList;
+import java.util.Objects;
 
 public abstract class GTKWidget {
     private String id; //indien in fxml expliciet met :id wordt gewerkt
@@ -10,7 +10,11 @@ public abstract class GTKWidget {
     private double layoutX;
     private double layoutY;
 
-    abstract String gtkHsCode();
+    public String gtkHsCode(){ return "" ; }
+
+    public GTKWidget(){
+
+    }
 
     public GTKWidget(String id, Integer id_hash, String name) {
         this.id = id;
@@ -24,6 +28,10 @@ public abstract class GTKWidget {
         this.name = name;
         this.layoutX = layoutX;
         this.layoutY = layoutY;
+    }
+
+    public static String makeName(String id, Integer id_hash, String name){
+        return Objects.requireNonNullElseGet(id, () -> name + "_" + id_hash);
     }
 
     public double getLayoutX() {
@@ -40,17 +48,6 @@ public abstract class GTKWidget {
 
     public void setLayoutY(double layoutY) {
         this.layoutY = layoutY;
-    }
-
-    public GTKWidget() {
-    }
-
-    public static String makeName(String id, Integer id_hash, String name){
-        if(id == null){
-            return name+"_"+id_hash;
-        }else{
-            return name+id+"_"+id_hash;
-        }
     }
 
     public String getName() {

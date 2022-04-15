@@ -2,9 +2,7 @@ package com.example.testboy.structures;
 
 public class Grid extends GTKWidget {
     public Grid(String id, Integer id_hash, String name, double layoutX, double layoutY) {
-        super(id, id_hash, makeName(id,id_hash,name));
-        setLayoutX(layoutX);
-        setLayoutY(layoutY);
+        super(id, id_hash, makeName(id,id_hash,name), layoutX, layoutY);
     }
 
     public Grid() {

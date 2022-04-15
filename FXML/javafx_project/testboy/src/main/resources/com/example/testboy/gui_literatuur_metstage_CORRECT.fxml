@@ -24,12 +24,12 @@
             <children>
                   <AnchorPane prefHeight="400.0" prefWidth="600.0">
                   <children>
-                     <TextField layoutX="75.0" layoutY="223.0" />
+                     <TextField layoutX="75.0" layoutY="223.0" alignment="TOP_CENTER" promptText="Vul hier iets in"  />
                      <Label layoutX="90.0" layoutY="94.0" text="Typ hier uw tekst" />
                      <Label layoutX="88.0" layoutY="341.0" text="Hier komt de tekst " />
                   </children>
                </AnchorPane>
-               <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="477.0" prefWidth="343.0" text="Toon Tekst" GridPane.columnIndex="1" />
+               <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="477.0" prefWidth="343.0" text="Toon tekst" GridPane.columnIndex="1" />
             </children>
          </GridPane>
         </Scene>

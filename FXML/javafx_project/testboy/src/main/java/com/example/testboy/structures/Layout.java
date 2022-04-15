@@ -17,9 +17,7 @@ public class Layout extends GTKWidget{
         this.height = height;
     }
     public Layout(String id, Integer id_hash, String name, double layoutX, double layoutY, double width, double height) {
-        super(id, id_hash, makeName(id,id_hash,name)+"Container");
-        setLayoutX(layoutX);
-        setLayoutY(layoutY);
+        super(id, id_hash, makeName(id,id_hash,name)+"Container", layoutX, layoutY);
         this.width = width;
         this.height = height;
     }

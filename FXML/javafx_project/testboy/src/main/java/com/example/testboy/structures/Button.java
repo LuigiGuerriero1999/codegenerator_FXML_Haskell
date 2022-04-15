@@ -2,11 +2,11 @@ package com.example.testboy.structures;
 
 import com.example.testboy.HelloApplication;
 
+import java.util.Objects;
+
 public class Button extends GTKWidget {
     private String label;
     private String buttonName;
-
-
 
     private double width;
     private double height;
@@ -20,10 +20,8 @@ public class Button extends GTKWidget {
     }
 
     public Button(String id, Integer id_hash, String name, String label, double layoutX, double layoutY, double width, double height) {
-        super(id, id_hash, makeName(id,id_hash,name)+"Container");
+        super(id, id_hash, makeName(id,id_hash,name)+"Container", layoutX, layoutY);
         this.label = label;
-        setLayoutX(layoutX);
-        setLayoutY(layoutY);
         this.width = width;
         this.height = height;
         this.buttonName = makeName(id,id_hash,name);
@@ -54,14 +52,16 @@ public class Button extends GTKWidget {
         this.height = height;
     }
 
+    @Override
     public String gtkHsCode(){
-        String buttonConstructor = buttonName + " <- Gtk.buttonNew\n  ";
-        String setButtonProperties = "Gtk.set "+buttonName+" [Gtk.buttonLabel :="+"\""+label+"\""+"]\n  ";
+        String buttonConstructor = buttonName + " <- Gtk.buttonNew \n  " ;
+        if (!Objects.equals(label, "")) buttonConstructor = buttonName + " <- Gtk.buttonNewWithLabel "+"\""+label+"\""+"\n  ";
+
         String buttonContainerBoxName = super.getName();
         String createButtonContainer = buttonContainerBoxName + " <- Gtk.boxNew OrientationHorizontal 1\n  ";
         String setButtonContainerProperties = "Gtk.set "+buttonContainerBoxName+" [Gtk.widgetWidthRequest := "+(int)width+", Gtk.widgetHeightRequest := "+(int)height+"]\n  ";
         String addButtonToContainer = "Gtk.boxPackStart "+buttonContainerBoxName+" "+buttonName+" True True 0\n   ";
-        String buttonGtkHsCode = buttonConstructor + setButtonProperties + createButtonContainer + setButtonContainerProperties + addButtonToContainer + "\n  " ;
+        String buttonGtkHsCode = buttonConstructor + createButtonContainer + setButtonContainerProperties + addButtonToContainer + "\n  " ;
 
         return buttonGtkHsCode;
     }

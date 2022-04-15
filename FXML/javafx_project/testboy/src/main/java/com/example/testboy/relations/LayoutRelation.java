@@ -1,11 +1,4 @@
-package com.example.testboy;
-
-import com.example.testboy.structures.Button;
-import com.example.testboy.structures.Entry;
-import com.example.testboy.structures.GTKWidget;
-import com.example.testboy.structures.Label;
-
-import java.util.ArrayList;
+package com.example.testboy.relations;
 
 public class LayoutRelation extends Relation{
     private Integer x;

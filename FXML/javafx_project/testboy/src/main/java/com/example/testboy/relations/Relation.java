@@ -1,4 +1,4 @@
-package com.example.testboy;
+package com.example.testboy.relations;
 
 import com.example.testboy.structures.GTKWidget;
 
