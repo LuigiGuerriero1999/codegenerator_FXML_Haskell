@@ -35,13 +35,13 @@ main = do
         updateText labelTextUpdate x
        
     --grid initialiseren en children aan parents toevoegen
-    grid <- gridNew                           -- grid (2x1) maken 
-    gridSetRowHomogeneous grid True           -- horizontaal even groot
-    gridSetColumnHomogeneous grid True        -- verticaal even groot
-    let attach x y w h item = gridAttach grid item x y w h -- hulpfunctie gridplaatsing
-    attach 0 0 1 1 layoutContainer            -- x y w h -> layoutContainer links
-    attach 1 0 1 1 buttonShowText             -- x y w h -> button rechts
-    containerAdd window grid                  -- grid als child aan topwindow
+    grid <- gridNew                                         -- grid (2x1) maken 
+    gridSetRowHomogeneous grid True                         -- horizontaal even groot
+    gridSetColumnHomogeneous grid True                      -- verticaal even groot
+    let attach x y w h item = gridAttach grid item x y w h  -- hulpfunctie voor iets in een grid te plaatsen
+    attach 0 0 1 1 layoutContainer                          -- x y w h -> layoutContainer links
+    attach 1 0 1 1 buttonShowText                           -- x y w h -> button rechts
+    containerAdd window grid                                -- grid als child aan topwindow
    
     widgetShowAll window
     mainGUI

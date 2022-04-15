@@ -10,8 +10,10 @@ main :: IO ()
 main = do
   Gtk.init Nothing
   window <- Gtk.windowNew WindowTypeToplevel 
-  Gtk.set window [Gtk.windowTitle := "gi-gtk demo-app", Gtk.windowResizable := True,
-				  Gtk.windowDefaultWidth := 600, Gtk.windowDefaultHeight := 400]
+  Gtk.setWindowResizable window True
+  Gtk.setWindowDefaultWidth window 600
+  Gtk.setWindowDefaultHeight window 400
+  Gtk.setWindowTitle window "gi-gtk demo-app"
   
   --initialiseer elementen voor GTKLayout: 1) textLabel, textInput, textLabel
   labelTextType <- Gtk.labelNew (Just "Typ hier uw tekst:")
