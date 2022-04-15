@@ -8,40 +8,20 @@ import com.example.testboy.structures.Label;
 import java.util.ArrayList;
 
 public class LayoutRelation extends Relation{
+    private Integer x;
+    private Integer y;
     public LayoutRelation() {
     }
 
-    public LayoutRelation(Integer parentID, Integer childID) {
-        super(parentID, childID);
+    public LayoutRelation(String parentName, String childName, Integer x, Integer y) {
+        super(parentName, childName);
+        this.x = x;
+        this.y = y;
     }
 
     @Override
-    public String generateGtkHsCode(ArrayList<GTKWidget> allwidgets){
-        String childWidgetName = "", layoutName = "";
-        Integer x = 0, y = 0;
-        for(GTKWidget element : allwidgets) {
-            Integer childID = super.getChildID();
-            Integer parentID = super.getParentID();
-            Integer elementIDHash = element.getId_hash();
-            if(childID.equals(elementIDHash)) {
-                childWidgetName = element.getName();
-                if(element instanceof Button){
-                    x = (int)((Button) element).getLayoutX();
-                    y = (int)((Button) element).getLayoutY();
-                } else if (element instanceof Label){
-                    x = (int)((Label) element).getLayoutX();
-                    y = (int)((Label) element).getLayoutY();
-                } else if (element instanceof Entry){
-                    x = (int)((Entry) element).getLayoutX();
-                    y = (int)((Entry) element).getLayoutY();
-                }
-            }
-            if(parentID.equals(elementIDHash)){
-                layoutName = element.getName();
-            }
-        }
-        String haskellCode = "Gtk.layoutPut "+layoutName+" "+childWidgetName+" "+x+" "+y+"\n  ";
-        String gtkHscode = haskellCode + "\n  ";
-        return gtkHscode;
+    public String generateGtkHsCode(){
+        String haskellCode = "Gtk.layoutPut "+getParentName()+" "+getChildName()+" "+x+" "+y+"\n  ";
+        return haskellCode;
     }
 }

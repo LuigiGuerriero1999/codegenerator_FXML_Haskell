@@ -6,16 +6,15 @@ public class Button extends GTKWidget {
     private String label;
     private String buttonName;
 
-    private double layoutX;
-    private double layoutY;
+
 
     private double width;
     private double height;
 
     public Button(String label, double layoutX, double layoutY, double width, double height) {
         this.label = label;
-        this.layoutX = layoutX;
-        this.layoutY = layoutY;
+        setLayoutX(layoutX);
+        setLayoutY(layoutY);
         this.width = width;
         this.height = height;
     }
@@ -23,8 +22,8 @@ public class Button extends GTKWidget {
     public Button(String id, Integer id_hash, String name, String label, double layoutX, double layoutY, double width, double height) {
         super(id, id_hash, makeName(id,id_hash,name)+"Container");
         this.label = label;
-        this.layoutX = layoutX;
-        this.layoutY = layoutY;
+        setLayoutX(layoutX);
+        setLayoutY(layoutY);
         this.width = width;
         this.height = height;
         this.buttonName = makeName(id,id_hash,name);
@@ -38,21 +37,6 @@ public class Button extends GTKWidget {
         this.label = label;
     }
 
-    public double getLayoutX() {
-        return layoutX;
-    }
-
-    public void setLayoutX(double layoutX) {
-        this.layoutX = layoutX;
-    }
-
-    public double getLayoutY() {
-        return layoutY;
-    }
-
-    public void setLayoutY(double layoutY) {
-        this.layoutY = layoutY;
-    }
 
     public double getWidth() {
         return width;

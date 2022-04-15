@@ -11,10 +11,16 @@ public class GridRelation extends Relation{
         this.column = column;
     }
 
-    public GridRelation(Integer parentID, Integer childID, int row, int column) {
-        super(parentID, childID);
+    public GridRelation(String parentName, String childName, int row, int column) {
+        super(parentName, childName);
         this.row = row;
         this.column = column;
+    }
+
+    @Override
+    public String generateGtkHsCode(){
+        String haskellCode = "Gtk.gridAttach "+getParentName()+" "+getChildName()+" "+column+" "+row+" 1 1 \n  ";
+        return haskellCode;
     }
 
 

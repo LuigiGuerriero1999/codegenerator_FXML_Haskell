@@ -20,11 +20,12 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         relations = new ArrayList<Relation>();
-        GUIelements = new ArrayList<GTKWidget>();
+        GUIWidgets = new ArrayList<GTKWidget>();
+        GUIContainers = new ArrayList<GTKWidget>();
         //stage = FXMLLoader.load(getClass().getResource("simpeleAP_met_button_goed.fxml"));    // Button voorbeeld
         //stage = FXMLLoader.load(getClass().getResource("simpeleAP_met_label.fxml"));              // Label voorbeeld
-        stage = FXMLLoader.load(getClass().getResource("simpeleAP_met_entry.fxml"));              // Entry voorbeeld
-        //stage = FXMLLoader.load(getClass().getResource("gui_literatuur_metstage.fxml"));
+        //stage = FXMLLoader.load(getClass().getResource("simpeleAP_met_entry.fxml"));              // Entry voorbeeld
+        stage = FXMLLoader.load(getClass().getResource("gui_literatuur_metstage_CORRECT.fxml"));
         stage.show();
 
         generateHaskellCode();
@@ -45,7 +46,10 @@ public class HelloApplication extends Application {
     private String path = "/home/"+username+"/Documents/Masterproef/FXML/javafx_project/testboy/src/main/java/com/example/testboy/gi-gtk-generated.hs";
 
     private ArrayList<Relation> relations ;
-    private ArrayList<GTKWidget> GUIelements;
+    private ArrayList<GTKWidget> GUIWidgets;
+    private ArrayList<GTKWidget> GUIContainers;
+
+    private GTKWidget currentNode; //voorlopige node tijdens het doorlopen van FXML
 
     public String createImports(){
         String gtkHsCode =  "{-# LANGUAGE OverloadedStrings #-}\n" +
@@ -83,7 +87,7 @@ public class HelloApplication extends Application {
     public String generateRelations(){
         String relationsGtkCode = "";
         for(Relation r : this.relations){
-            relationsGtkCode = r.generateGtkHsCode(GUIelements);
+            relationsGtkCode += r.generateGtkHsCode();
         }
         return relationsGtkCode;
     }
@@ -92,7 +96,7 @@ public class HelloApplication extends Application {
         var topLevelElement = stage.getScene().getRoot();
         var hashIdTopElement = topLevelElement.hashCode();
         String topLevelBinding = "";
-        for(GTKWidget q : GUIelements){
+        for(GTKWidget q : GUIContainers){
             if(q.getId_hash().equals(hashIdTopElement)){
                 topLevelBinding = "Gtk.setContainerChild window "+q.getName()+"\n  ";
             }
@@ -134,26 +138,27 @@ public class HelloApplication extends Application {
             var label = ((javafx.scene.control.Button) n).getText();
             var button = new Button(n.getId(), n.hashCode(),"buttonShowText", label, layoutX, layoutY, width, height);
             this.testButton =  button;
-            GUIelements.add(button);
+            GUIWidgets.add(button);
 
             appendTextToFile(testButton.gtkHsCode());
 
             if(n.getParent() != null){
                 //System.out.println("Parent is: "+n.getParent());
             }
+            currentNode = button;
         }else if (n instanceof AnchorPane){
             var width = n.getLayoutBounds().getWidth();
             var height = n.getLayoutBounds().getHeight();
             var layoutX = n.getLayoutX();
             var layoutY = n.getLayoutY();
             layout = new Layout(n.getId(), n.hashCode(),"layout", layoutX, layoutY,width ,height);
-            GUIelements.add(layout);
+            GUIContainers.add(layout);
 
-            for(Node elementInLayout : ((AnchorPane) n).getChildren()) {
+            /*for(Node elementInLayout : ((AnchorPane) n).getChildren()) {
                 LayoutRelation relation = new LayoutRelation(n.hashCode(), elementInLayout.hashCode());
                 relations.add(relation);
-            }
-
+            }*/
+            currentNode = layout;
             appendTextToFile(layout.gtkHsCode());
         } else if (n instanceof javafx.scene.control.Label){
             var width = n.getLayoutBounds().getWidth();
@@ -163,8 +168,9 @@ public class HelloApplication extends Application {
             var text = ((javafx.scene.control.Label) n).getText();
             var label = new Label(n.getId(), n.hashCode(),"labelTest", text, layoutX, layoutY, width, height);
             this.testLabel = label;
-            GUIelements.add(label);
+            GUIWidgets.add(label);
 
+            currentNode = label;
             appendTextToFile(testLabel.gtkHsCode());
         } else if (n instanceof TextField){
             var width = n.getLayoutBounds().getWidth();
@@ -174,24 +180,74 @@ public class HelloApplication extends Application {
             var text = ((javafx.scene.control.TextField) n).getText();
             var entry = new Entry(n.getId(), n.hashCode(),"entryTest", text, layoutX, layoutY, width, height);
             this.testEntry = entry;
-            GUIelements.add(entry);
+            GUIWidgets.add(entry);
 
+            currentNode = entry;
             appendTextToFile(testEntry.gtkHsCode());
         } else if (n instanceof GridPane){
-            for(Node elementInGrid : ((GridPane) n).getChildren()) {
+            var layoutX = n.getLayoutX();
+            var layoutY = n.getLayoutY();
+            Grid gridP = new Grid(n.getId(), n.hashCode(),"grid", layoutX, layoutY);
+            GUIContainers.add(gridP);
+
+            currentNode = gridP;
+            appendTextToFile(gridP.gtkHsCode());
+            /*for(Node elementInGrid : ((GridPane) n).getChildren()) {
                 Integer row = GridPane.getRowIndex(elementInGrid);
                 Integer column = GridPane.getColumnIndex(elementInGrid);
                 if (row == null) row= 0;
                 if (column == null) column= 0;
-                GridRelation relation = new GridRelation(n.hashCode(), elementInGrid.hashCode(), row, column);
-                relations.add(relation);
-            }
+                //GridRelation relation = new GridRelation(n.hashCode(), elementInGrid.hashCode(), row, column);
+                //relations.add(relation);
+            }*/
+        }
+
+        //RELATIES AANMAKEN
+        if(n.getParent() instanceof AnchorPane){ //indien parent een container is zoals AnchorPane -> relatie aanmaken
+            String APParentName = getParentName(n.getParent().hashCode());
+            Integer x = 0;
+            Integer y = 0;
+
+            x  = (int)currentNode.getLayoutX();
+            y  = (int)currentNode.getLayoutY();
+
+            LayoutRelation layoutRel = new LayoutRelation(APParentName, currentNode.getName(), x, y);
+            relations.add(layoutRel);
+        }else if(n.getParent() instanceof GridPane){
+            String gridPaneParentName = getParentName(n.getParent().hashCode());
+            Integer row = GridPane.getRowIndex(n);
+            Integer column = GridPane.getColumnIndex(n);
+            if (row == null) row= 0;
+            if (column == null) column= 0;
+            GridRelation gridRel = new GridRelation(gridPaneParentName, currentNode.getName(), row, column);
+            relations.add(gridRel);
         }
 
         if (n instanceof Parent) {
             for (Node c : ((Parent) n).getChildrenUnmodifiable()) {
                 dump(c, depth + 1);
             }
+        }
+    }
+
+    public String getParentName(Integer parentID){
+        String parentName;
+        for (GTKWidget container: GUIContainers){
+            if(container.getId_hash().equals(parentID)){
+                parentName = container.getName();
+                return parentName;
+            }
+        }
+        return "";
+    }
+
+
+
+    private Boolean checkParentContainerType(Node n){
+        if(n.getParent() instanceof AnchorPane || n.getParent() instanceof GridPane){
+            return true;
+        }else{
+            return false;
         }
     }
 

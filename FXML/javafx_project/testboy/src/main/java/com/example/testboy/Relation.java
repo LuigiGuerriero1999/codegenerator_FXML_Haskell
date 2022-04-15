@@ -4,36 +4,36 @@ import com.example.testboy.structures.GTKWidget;
 
 import java.util.ArrayList;
 
-public class Relation {
-    private Integer parentID;
-    private Integer childID;
+public abstract class Relation {
+    private String parentName;
+    private String childName;
 
     public Relation(){
 
     }
 
-    public Relation(Integer parentID, Integer childID) {
-        this.parentID = parentID;
-        this.childID = childID;
+    public Relation(String parentName, String childName) {
+        this.parentName = parentName;
+        this.childName = childName;
     }
 
-    public Integer getParentID() {
-        return parentID;
+    public String getParentName() {
+        return parentName;
     }
 
-    public void setParentID(Integer parentID) {
-        this.parentID = parentID;
+    public void setParentName(String parentName) {
+        this.parentName = parentName;
     }
 
-    public Integer getChildID() {
-        return childID;
+    public String getChildName() {
+        return childName;
     }
 
-    public void setChildID(Integer childID) {
-        this.childID = childID;
+    public void setChildName(String childName) {
+        this.childName = childName;
     }
 
-    public String generateGtkHsCode(ArrayList<GTKWidget> allwidgets){
+    public String generateGtkHsCode(){
         return "";
     }
 
