@@ -169,8 +169,6 @@ public class GtkHaskellCode {
             var javafxAlignment = ((TextField) n).getAlignment();
             var haskellAlignment = Entry.getHaskellAlignment(javafxAlignment);
             var placeholder = ((TextField) n).getPromptText();
-            System.out.println("KOEKAAAAAA"+text);
-            System.out.println(placeholder);
             var entry = new Entry(n.getId(), n.hashCode(),"entry", text, layoutX, layoutY, width, height, haskellAlignment, placeholder);
             GUIWidgets.add(entry);
 

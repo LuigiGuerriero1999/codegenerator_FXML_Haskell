@@ -11,6 +11,7 @@ public class Label extends GTKWidget{
 
     public Label(String id, Integer id_hash, String name, String text, double layoutX, double layoutY) {
         super(id, id_hash, makeName(id,id_hash,name), layoutX, layoutY);
+        this.text = text;
     }
 
     public String getText() {
