@@ -15,5 +15,4 @@ public class Grid extends GTKWidget {
         String GtkHsCode = gridConstructor + columnHomogeneous + rowHomogeneous + "\n  ";
         return GtkHsCode;
     }
-
 }

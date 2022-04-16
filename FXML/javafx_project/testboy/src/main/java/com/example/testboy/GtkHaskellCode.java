@@ -130,7 +130,6 @@ public class GtkHaskellCode {
 
         System.out.println(n);
         if(n instanceof javafx.scene.control.Button){
-            //System.out.println(n);
             var width = n.getLayoutBounds().getWidth();
             var height = n.getLayoutBounds().getHeight();
             var layoutX = n.getLayoutX();
@@ -143,19 +142,15 @@ public class GtkHaskellCode {
 
             currentNode = button;
         }else if (n instanceof AnchorPane){
-            var width = n.getLayoutBounds().getWidth();
-            var height = n.getLayoutBounds().getHeight();
             var layoutX = n.getLayoutX();
             var layoutY = n.getLayoutY();
-            var layout = new Layout(n.getId(), n.hashCode(),"layout", layoutX, layoutY,width ,height);
+            var layout = new Layout(n.getId(), n.hashCode(),"layout", layoutX, layoutY);
             GUIContainers.add(layout);
 
             appendTextToFile("--Layout \n  " + layout.gtkHsCode());
 
             currentNode = layout;
         } else if (n instanceof javafx.scene.control.Label){
-            var width = n.getLayoutBounds().getWidth();
-            var height = n.getLayoutBounds().getHeight();
             var layoutX = n.getLayoutX();
             var layoutY = n.getLayoutY();
             var text = ((javafx.scene.control.Label) n).getText();
