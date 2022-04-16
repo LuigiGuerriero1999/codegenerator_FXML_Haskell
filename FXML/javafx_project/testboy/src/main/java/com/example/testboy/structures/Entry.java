@@ -44,6 +44,13 @@ public class Entry extends GTKWidget{
         this.text = text;
     }
 
+    public String getEntryName() {
+        return entryName;
+    }
+
+    public void setEntryName(String entryName) {
+        this.entryName = entryName;
+    }
 
     public double getWidth() {
         return width;
@@ -67,6 +74,14 @@ public class Entry extends GTKWidget{
 
     public void setAlignment(double alignment) {
         this.alignment = alignment;
+    }
+
+    public String getPlaceholder() {
+        return placeholder;
+    }
+
+    public void setPlaceholder(String placeholder) {
+        this.placeholder = placeholder;
     }
 
     public static double getHaskellAlignment(Pos javafxAlignment){

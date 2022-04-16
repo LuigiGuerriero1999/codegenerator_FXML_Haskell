@@ -159,7 +159,7 @@ public class GtkHaskellCode {
             var layoutX = n.getLayoutX();
             var layoutY = n.getLayoutY();
             var text = ((javafx.scene.control.Label) n).getText();
-            var label = new Label(n.getId(), n.hashCode(),"label", text, layoutX, layoutY, width, height);
+            var label = new Label(n.getId(), n.hashCode(),"label", text, layoutX, layoutY);
             GUIWidgets.add(label);
 
             appendTextToFile("--Label \n  " + label.gtkHsCode());

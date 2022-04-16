@@ -35,6 +35,13 @@ public class Button extends GTKWidget {
         this.label = label;
     }
 
+    public String getButtonName() {
+        return buttonName;
+    }
+
+    public void setButtonName(String buttonName) {
+        this.buttonName = buttonName;
+    }
 
     public double getWidth() {
         return width;
