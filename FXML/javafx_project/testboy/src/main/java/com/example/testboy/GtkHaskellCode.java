@@ -178,7 +178,9 @@ public class GtkHaskellCode {
         } else if (n instanceof GridPane){
             var layoutX = n.getLayoutX();
             var layoutY = n.getLayoutY();
-            Grid gridP = new Grid(n.getId(), n.hashCode(),"grid", layoutX, layoutY);
+            var columnSpacing = ((GridPane) n).getHgap();
+            var rowSpacing = ((GridPane) n).getVgap();
+            Grid gridP = new Grid(n.getId(), n.hashCode(),"grid", layoutX, layoutY, columnSpacing, rowSpacing);
             GUIContainers.add(gridP);
 
             appendTextToFile("--Grid \n  " + gridP.gtkHsCode());
