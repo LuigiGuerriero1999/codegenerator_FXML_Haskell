@@ -12,6 +12,22 @@ public class LayoutRelation extends Relation{
         this.y = y;
     }
 
+    public Integer getX() {
+        return x;
+    }
+
+    public void setX(Integer x) {
+        this.x = x;
+    }
+
+    public Integer getY() {
+        return y;
+    }
+
+    public void setY(Integer y) {
+        this.y = y;
+    }
+
     @Override
     public String generateGtkHsCode(){
         String haskellCode = "Gtk.layoutPut "+getParentName()+" "+getChildName()+" "+x+" "+y+"\n  ";

@@ -15,6 +15,22 @@ public class GridRelation extends Relation{
         this.column = column;
     }
 
+    public int getRow() {
+        return row;
+    }
+
+    public void setRow(int row) {
+        this.row = row;
+    }
+
+    public int getColumn() {
+        return column;
+    }
+
+    public void setColumn(int column) {
+        this.column = column;
+    }
+
     @Override
     public String generateGtkHsCode(){
         String haskellCode = "Gtk.gridAttach "+getParentName()+" "+getChildName()+" "+column+" "+row+" 1 1 \n  ";
