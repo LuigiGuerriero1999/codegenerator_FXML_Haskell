@@ -13,6 +13,7 @@ public class Layout extends GTKWidget{
         super(id, id_hash, makeName(id,id_hash,name)+"Container", layoutX, layoutY);
     }
 
+    @Override
     public String gtkHsCode(){
         String layoutConstructor = super.getName() + " <- Gtk.layoutNew (Nothing::Maybe Adjustment) (Nothing::Maybe Adjustment)\n  ";
         String GtkHsCode = layoutConstructor + "\n  ";
