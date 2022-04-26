@@ -6,6 +6,7 @@ import com.example.testboy.relations.Relation;
 import com.example.testboy.structures.*;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -175,12 +176,35 @@ public class GtkHaskellCode {
             appendTextToFile("--Entry \n  " + entry.gtkHsCode());
 
             currentNode = entry;
+        } else if(n instanceof CheckBox) {
+            var text = ((CheckBox) n).getText();
+            var layoutX = n.getLayoutX();
+            var layoutY = n.getLayoutY();
+            var checkButton = new CheckButton(n.getId(), n.hashCode(), "checkButton", layoutX, layoutY, text);
+            GUIWidgets.add(checkButton);
+
+            appendTextToFile("--CheckButton \n  " + checkButton.gtkHsCode());
+
+            currentNode = checkButton;
+        } else if (n instanceof javafx.scene.control.RadioButton){
+            var text = ((javafx.scene.control.RadioButton) n).getText();
+            var layoutX = n.getLayoutX();
+            var layoutY = n.getLayoutY();
+            if (((javafx.scene.control.RadioButton) n).getToggleGroup() != null) {
+                var group = ((javafx.scene.control.RadioButton) n).getToggleGroup().hashCode();
+            }
+            var radioButton = new RadioButton(n.getId(), n.hashCode(), "radioButton", layoutX, layoutY, text);
+            GUIWidgets.add(radioButton);
+
+            appendTextToFile("--RadioButton \n  " + radioButton.gtkHsCode());
+
+            currentNode = radioButton;
         } else if (n instanceof GridPane){
             var layoutX = n.getLayoutX();
             var layoutY = n.getLayoutY();
             var columnSpacing = ((GridPane) n).getHgap();
             var rowSpacing = ((GridPane) n).getVgap();
-            Grid gridP = new Grid(n.getId(), n.hashCode(),"grid", layoutX, layoutY, columnSpacing, rowSpacing);
+            var gridP = new Grid(n.getId(), n.hashCode(),"grid", layoutX, layoutY, columnSpacing, rowSpacing);
             GUIContainers.add(gridP);
 
             appendTextToFile("--Grid \n  " + gridP.gtkHsCode());
