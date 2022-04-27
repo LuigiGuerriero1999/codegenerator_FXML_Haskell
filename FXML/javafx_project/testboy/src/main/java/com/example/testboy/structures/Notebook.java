@@ -1,5 +1,6 @@
 package com.example.testboy.structures;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Notebook extends GTKWidget{
@@ -7,11 +8,22 @@ public class Notebook extends GTKWidget{
     private int height;
 
     private String notebookName;
-    public Notebook(String id, Integer id_hash, String name, double layoutX, double layoutY, int width, int height) {
+
+    private ArrayList<Label> notebookLabels;
+    public Notebook(String id, Integer id_hash, String name, double layoutX, double layoutY, int width, int height, ArrayList<Label> notebookLabels) {
         super(id, id_hash, makeName(id,id_hash,name)+"Container", layoutX, layoutY);
         this.width = width;
         this.height = height;
         this.notebookName = makeName(id,id_hash,name);
+        this.notebookLabels = notebookLabels;
+    }
+
+    public ArrayList<Label> getNotebookLabels() {
+        return notebookLabels;
+    }
+
+    public void setNotebookLabels(ArrayList<Label> notebookLabels) {
+        this.notebookLabels = notebookLabels;
     }
 
     public int getWidth() {

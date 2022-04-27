@@ -33,6 +33,8 @@ public class GtkHaskellCode {
     private static ArrayList<GTKWidget> GUIWidgets;
     private static ArrayList<GTKWidget> GUIContainers;
     private static ArrayList<ToggleGroup> toggleGroups;
+    private static ArrayList<NotebookRelation> notebookRelations;
+
 
     private static GTKWidget currentNode; //voorlopige node tijdens het doorlopen van FXML
 
@@ -42,6 +44,7 @@ public class GtkHaskellCode {
         GUIWidgets = new ArrayList<>();
         GUIContainers = new ArrayList<>();
         toggleGroups = new ArrayList<>();
+        notebookRelations = new ArrayList<>();
     }
 
     public static void generateHaskellCode(){
@@ -94,6 +97,7 @@ public class GtkHaskellCode {
         appendTextToFile(
                 generateToggleGroups() +
                 generateRelations() +
+                generateNotebookRelations() +
                 bindTopLevelElementToWindow() +
                 endMainProgram()
         );
@@ -127,7 +131,17 @@ public class GtkHaskellCode {
         } else {
             return "";
         }
+    }
 
+    public static String generateNotebookRelations(){
+        String relationComment = "--Notebook relations \n  ";
+        StringBuilder relationsGtkCode = new StringBuilder();
+        for(NotebookRelation r : notebookRelations){
+            r.setContainerList(GUIContainers);
+            r.correctChildName();
+            relationsGtkCode.append(r.generateGtkHsCode());
+        }
+        return relationComment + relationsGtkCode;
     }
 
     public static String bindTopLevelElementToWindow(){
@@ -173,15 +187,17 @@ public class GtkHaskellCode {
 
             currentNode = layout;
         } else if (n instanceof javafx.scene.control.Label){
-            var layoutX = n.getLayoutX();
-            var layoutY = n.getLayoutY();
-            var text = ((javafx.scene.control.Label) n).getText();
-            var label = new Label(n.getId(), n.hashCode(),"label", text, layoutX, layoutY);
-            GUIWidgets.add(label);
+            if(!checkLabelInTab(n)){  //indien Label niet onder deel is van een Tab -> uitzondering, niet hier aanmaken, maar met de tabPane samen
+                var layoutX = n.getLayoutX();
+                var layoutY = n.getLayoutY();
+                var text = ((javafx.scene.control.Label) n).getText();
+                var label = new Label(n.getId(), n.hashCode(),"label", text, layoutX, layoutY);
+                GUIWidgets.add(label);
 
-            appendTextToFile("-- Label \n  " + label.gtkHsCode());
+                appendTextToFile("--Label \n  " + label.gtkHsCode());
 
-            currentNode = label;
+                currentNode = label;
+            }
         } else if (n instanceof TextField){
             var width = n.getLayoutBounds().getWidth();
             var height = n.getLayoutBounds().getHeight();
@@ -265,21 +281,30 @@ public class GtkHaskellCode {
             var width = (int)((TabPane) n).getWidth();
             var height = (int)((TabPane) n).getHeight();
 
-            var children = ((TabPane) n).getTabs();
-            var child = children.get(0);
-            //var tabLabel = child.getText();
-            var childchild = child.getContent();
-            var APName = GTKWidget.makeName(childchild.getId(),childchild.hashCode(),"layout")+"Container";
+            //Notebook tabs extracten en in file zetten
+            var tabs = ((TabPane) n).getTabs();
+            ArrayList<Label> notebookTabs = new ArrayList<>();
+            for(Tab tab: tabs){
+                var labelText = tab.getText(); //label text
+                Label tabLabel = new Label(null ,labelText.hashCode(), "tabLabel", labelText, 0 ,0);
+                notebookTabs.add(tabLabel);
+                appendTextToFile("--Label \n  " + tabLabel.gtkHsCode());
+                GUIWidgets.add(tabLabel); //toevoegen aan globale lijst
+            }
 
-            Notebook tabPane = new Notebook(n.getId(), n.hashCode(),"noteBook", layoutX, layoutY, width, height);
+            //Notebook aanmaken
+            Notebook tabPane = new Notebook(n.getId(), n.hashCode(),"noteBook", layoutX, layoutY, width, height, notebookTabs);
             GUIContainers.add(tabPane);
-
-            appendTextToFile("-- Notebook \n  " + tabPane.gtkHsCode());
-
+            appendTextToFile("--Notebook \n  " + tabPane.gtkHsCode());
             currentNode = tabPane;
 
-            NotebookRelation noteRel = new NotebookRelation(tabPane.getNotebookName(), APName, "label_1703511813");
-            relations.add(noteRel);
+            //Notebook relaties aanmaken
+            for(int i = 0; i < tabs.size(); i++){
+                var tabTopLevelContainer = tabs.get(i).getContent(); //top level elementen in een tab -> meestal AnchorPane
+                var topLevelContainerHash = String.valueOf(tabTopLevelContainer.hashCode()); //we gaan eerst de hash van de child als childName setten in de relatie
+                var notebookRel = new NotebookRelation(tabPane.getNotebookName(), topLevelContainerHash, notebookTabs.get(i).getName());
+                notebookRelations.add(notebookRel);
+            }
         } else if (n instanceof Hyperlink){
             var layoutX = n.getLayoutX();
             var layoutY = n.getLayoutY();
@@ -349,4 +374,16 @@ public class GtkHaskellCode {
         return "";
     }
 
+    public static boolean checkLabelInTab(Node n){
+        var parent = n.getParent();  //kijken of de label in kwestie uberhaupt een parent heeft
+        if(parent == null){
+            return false;
+        }
+
+        if(n.getParent().getClass().toString().contains("TabPaneSkin")){  //indien de label tot een tabPane behoort -> werkelijke parent in de Tree = TabPaneSkin inner class
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
