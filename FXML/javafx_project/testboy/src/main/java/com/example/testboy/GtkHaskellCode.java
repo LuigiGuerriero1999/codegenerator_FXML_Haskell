@@ -1,15 +1,13 @@
 package com.example.testboy;
 
 import com.example.testboy.orientation.Orientation;
-import com.example.testboy.relations.BoxRelation;
-import com.example.testboy.relations.GridRelation;
-import com.example.testboy.relations.LayoutRelation;
-import com.example.testboy.relations.Relation;
+import com.example.testboy.relations.*;
 import com.example.testboy.structures.*;
 import com.example.testboy.togglegroup.ToggleGroup;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -260,6 +258,32 @@ public class GtkHaskellCode {
             appendTextToFile("--hBox \n  " + hBox.gtkHsCode());
 
             currentNode = hBox;
+        } else if (n instanceof TabPane){
+            var layoutX = n.getLayoutX();
+            var layoutY = n.getLayoutY();
+            var width = (int)((TabPane) n).getWidth();
+            var height = (int)((TabPane) n).getHeight();
+
+
+
+            var children = ((TabPane) n).getTabs();
+            var child = children.get(0);
+            //var tabLabel = child.getText();
+            var childchild = child.getContent();
+            var APName = GTKWidget.makeName(childchild.getId(),childchild.hashCode(),"layout")+"Container";
+
+
+
+
+            Notebook tabPane = new Notebook(n.getId(), n.hashCode(),"noteBook", layoutX, layoutY, width, height);
+            GUIContainers.add(tabPane);
+
+            appendTextToFile("--Notebook \n  " + tabPane.gtkHsCode());
+
+            currentNode = tabPane;
+
+            NotebookRelation noteRel = new NotebookRelation(tabPane.getNotebookName(), APName, "label_1703511813");
+            relations.add(noteRel);
         }
 
         //RELATIES AANMAKEN
