@@ -30,9 +30,11 @@ public class ToggleGroup {
     }
 
     public ToggleGroup getToggleGroup(ArrayList<ToggleGroup> toggleGroups){
-        for (ToggleGroup tg : toggleGroups) {
-            if (tg.hashcode == this.hashcode) {
-                return tg;
+        if (!toggleGroups.isEmpty()){
+            for (ToggleGroup tg : toggleGroups) {
+                if (tg.hashcode == this.hashcode) {
+                    return tg;
+                }
             }
         }
         return this;
@@ -54,11 +56,16 @@ public class ToggleGroup {
             GtkHsCode.append("Gtk.radioButtonSetGroup ").append(firstButton).append(" ").append("[");
             for (GTKWidget widget : newList){
                 String widgetName = widget.getName();
-                GtkHsCode.append(widgetName).append(", ");
+                if (newList.get(newList.size()-1) == widget){
+                    GtkHsCode.append(widgetName);
+                } else {
+                    GtkHsCode.append(widgetName).append(", ");
+                }
+
             }
             GtkHsCode.append("]\n  ");
         }
 
-        return GtkHsCode + "\n  ";
+        return GtkHsCode.toString();
     }
 }

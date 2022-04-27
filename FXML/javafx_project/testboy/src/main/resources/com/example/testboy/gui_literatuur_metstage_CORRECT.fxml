@@ -36,7 +36,7 @@
                            <ToggleGroup fx:id="testGroup" />
                         </toggleGroup>
                      </RadioButton>
-                     <RadioButton layoutX="85.0" layoutY="232.0" mnemonicParsing="false" text="Radiobutton test 2" />
+                     <RadioButton layoutX="85.0" layoutY="232.0" mnemonicParsing="false" text="Radiobutton test 2" toggleGroup="$testGroup" />
                   </children>
                </AnchorPane>
                <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="477.0" prefWidth="343.0" text="Toon tekst" GridPane.columnIndex="1" />

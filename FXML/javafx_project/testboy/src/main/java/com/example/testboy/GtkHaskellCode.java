@@ -4,6 +4,7 @@ import com.example.testboy.relations.GridRelation;
 import com.example.testboy.relations.LayoutRelation;
 import com.example.testboy.relations.Relation;
 import com.example.testboy.structures.*;
+import com.example.testboy.togglegroup.ToggleGroup;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.CheckBox;
@@ -28,6 +29,7 @@ public class GtkHaskellCode {
     private static ArrayList<Relation> relations ;
     private static ArrayList<GTKWidget> GUIWidgets;
     private static ArrayList<GTKWidget> GUIContainers;
+    private static ArrayList<ToggleGroup> toggleGroups;
 
     private static GTKWidget currentNode; //voorlopige node tijdens het doorlopen van FXML
 
@@ -36,6 +38,7 @@ public class GtkHaskellCode {
         relations = new ArrayList<>();
         GUIWidgets = new ArrayList<>();
         GUIContainers = new ArrayList<>();
+        toggleGroups = new ArrayList<>();
     }
 
     public static void generateHaskellCode(){
@@ -86,6 +89,7 @@ public class GtkHaskellCode {
 
     public static void endOfFile(){
         appendTextToFile(
+                generateToggleGroups() +
                 generateRelations() +
                 bindTopLevelElementToWindow() +
                 endMainProgram()
@@ -107,6 +111,20 @@ public class GtkHaskellCode {
             relationsGtkCode.append(r.generateGtkHsCode());
         }
         return relationComment + relationsGtkCode;
+    }
+
+    public static String generateToggleGroups(){
+        if (!toggleGroups.isEmpty()){
+            String toggleGroupComment = "--Toggle Groups\n  ";
+            StringBuilder toggleGroupGtkCode = new StringBuilder();
+            for (ToggleGroup tg : toggleGroups){
+                toggleGroupGtkCode.append(tg.gtkHsCode());
+            }
+            return toggleGroupComment + toggleGroupGtkCode + "\n  ";
+        } else {
+            return "";
+        }
+
     }
 
     public static String bindTopLevelElementToWindow(){
@@ -187,13 +205,21 @@ public class GtkHaskellCode {
 
             currentNode = checkButton;
         } else if (n instanceof javafx.scene.control.RadioButton){
-            var text = ((javafx.scene.control.RadioButton) n).getText();
             var layoutX = n.getLayoutX();
             var layoutY = n.getLayoutY();
-            if (((javafx.scene.control.RadioButton) n).getToggleGroup() != null) {
-                var group = ((javafx.scene.control.RadioButton) n).getToggleGroup().hashCode();
-            }
+            var text = ((javafx.scene.control.RadioButton) n).getText();
+
             var radioButton = new RadioButton(n.getId(), n.hashCode(), "radioButton", layoutX, layoutY, text);
+
+            if (((javafx.scene.control.RadioButton) n).getToggleGroup() != null) {
+                var toggleHash = ((javafx.scene.control.RadioButton) n).getToggleGroup().hashCode();
+                var buttons = new ArrayList<GTKWidget>();
+                var toggleGroup = new ToggleGroup(toggleHash, buttons);
+                var rightToggleGroup = toggleGroup.getToggleGroup(toggleGroups);
+                rightToggleGroup.addButtonToToggleGroup(radioButton);
+                toggleGroups.add(rightToggleGroup);
+            }
+
             GUIWidgets.add(radioButton);
 
             appendTextToFile("--RadioButton \n  " + radioButton.gtkHsCode());
