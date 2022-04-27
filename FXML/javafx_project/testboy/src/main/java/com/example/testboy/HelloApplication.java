@@ -13,6 +13,9 @@ public class HelloApplication extends Application {
         //stage = FXMLLoader.load(getClass().getResource("simpeleAP_met_button_goed.fxml"));    // Button voorbeeld
         //stage = FXMLLoader.load(getClass().getResource("simpeleAP_met_label.fxml"));              // Label voorbeeld
         //stage = FXMLLoader.load(getClass().getResource("simpeleAP_met_entry.fxml"));              // Entry voorbeeld
+        //Stage stage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("vbox_met_elementen.fxml")));
+        //Stage stage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("hbox_met_elementen.fxml")));
+        //Stage stage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("gui_literatuur_metstage_checkButton_radioButton.fxml")));
         Stage stage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("gui_literatuur_metstage_CORRECT.fxml")));
         stage.show();
 

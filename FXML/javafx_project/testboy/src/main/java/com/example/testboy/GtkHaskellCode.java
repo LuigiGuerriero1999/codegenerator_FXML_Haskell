@@ -1,5 +1,7 @@
 package com.example.testboy;
 
+import com.example.testboy.orientation.Orientation;
+import com.example.testboy.relations.BoxRelation;
 import com.example.testboy.relations.GridRelation;
 import com.example.testboy.relations.LayoutRelation;
 import com.example.testboy.relations.Relation;
@@ -11,6 +13,8 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.*;
@@ -236,6 +240,26 @@ public class GtkHaskellCode {
             appendTextToFile("--Grid \n  " + gridP.gtkHsCode());
 
             currentNode = gridP;
+        } else if (n instanceof VBox){
+            var layoutX = n.getLayoutX();
+            var layoutY = n.getLayoutY();
+            var vSpacing = (int)((VBox) n).getSpacing();
+            Box vBox = new Box(n.getId(), n.hashCode(),"vBox", layoutX, layoutY, vSpacing, Orientation.OrientationVertical);
+            GUIContainers.add(vBox);
+
+            appendTextToFile("--vBox \n  " + vBox.gtkHsCode());
+
+            currentNode = vBox;
+        }else if (n instanceof HBox){
+            var layoutX = n.getLayoutX();
+            var layoutY = n.getLayoutY();
+            var hSpacing = (int)((HBox) n).getSpacing();
+            Box hBox = new Box(n.getId(), n.hashCode(),"hBox", layoutX, layoutY, hSpacing, Orientation.OrientationHorizontal);
+            GUIContainers.add(hBox);
+
+            appendTextToFile("--hBox \n  " + hBox.gtkHsCode());
+
+            currentNode = hBox;
         }
 
         //RELATIES AANMAKEN
@@ -249,7 +273,7 @@ public class GtkHaskellCode {
 
             LayoutRelation layoutRel = new LayoutRelation(APParentName, currentNode.getName(), x, y);
             relations.add(layoutRel);
-        }else if(n.getParent() instanceof GridPane){
+        } else if(n.getParent() instanceof GridPane){
             String gridPaneParentName = getParentName(n.getParent().hashCode());
             Integer row = GridPane.getRowIndex(n);
             Integer column = GridPane.getColumnIndex(n);
@@ -257,6 +281,10 @@ public class GtkHaskellCode {
             if (column == null) column= 0;
             GridRelation gridRel = new GridRelation(gridPaneParentName, currentNode.getName(), row, column);
             relations.add(gridRel);
+        } else if(n.getParent() instanceof HBox || n.getParent() instanceof VBox){
+            String boxParentName = getParentName(n.getParent().hashCode());
+            BoxRelation boxRel = new BoxRelation(boxParentName, currentNode.getName(), 0);
+            relations.add(boxRel);
         }
 
         if (n instanceof Parent) {
