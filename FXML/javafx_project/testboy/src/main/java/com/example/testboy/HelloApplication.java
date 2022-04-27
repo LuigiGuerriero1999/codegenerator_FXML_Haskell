@@ -16,8 +16,10 @@ public class HelloApplication extends Application {
         //Stage stage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("vbox_met_elementen.fxml")));
         //Stage stage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("hbox_met_elementen.fxml")));
         //Stage stage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("tabpane.fxml")));
-        Stage stage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("simpleTabPane.fxml")));
+        //Stage stage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("simpleTabPane.fxml")));
         //Stage stage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("gui_literatuur_metstage_checkButton_radioButton.fxml")));
+        Stage stage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("combobox_choicebox.fxml")));
+        //Stage stage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("hyperlinkje.fxml")));
         //Stage stage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("gui_literatuur_metstage_CORRECT.fxml")));
         stage.show();
 

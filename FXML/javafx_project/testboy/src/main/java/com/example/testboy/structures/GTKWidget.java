@@ -73,8 +73,4 @@ public abstract class GTKWidget {
     public void setId_hash(Integer id_hash) {
         this.id_hash = id_hash;
     }
-
-
-
-
 }

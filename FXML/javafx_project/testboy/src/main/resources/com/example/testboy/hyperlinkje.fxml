@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Scene?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.stage.Stage?>
+
+<Stage xmlns="http://javafx.com/javafx/17" title="JavaFX demo-app" xmlns:fx="http://javafx.com/fxml/1">
+    <scene>
+        <Scene>
+            <AnchorPane prefHeight="393.0" prefWidth="727.0">
+            <children>
+               <Hyperlink layoutX="165.0" layoutY="152.0" visited="true" text="UHasselt beginpagina" />
+               <Label layoutX="78.0" layoutY="122.0" text="Deze link brengt je naar de UHasselt beginpagina" />
+            </children></AnchorPane>
+        </Scene>
+    </scene>
+</Stage>

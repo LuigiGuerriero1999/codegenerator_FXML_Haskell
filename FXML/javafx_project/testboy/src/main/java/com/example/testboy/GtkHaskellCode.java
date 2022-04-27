@@ -3,12 +3,13 @@ package com.example.testboy;
 import com.example.testboy.orientation.Orientation;
 import com.example.testboy.relations.*;
 import com.example.testboy.structures.*;
+import com.example.testboy.structures.Button;
+import com.example.testboy.structures.Label;
+import com.example.testboy.structures.RadioButton;
 import com.example.testboy.togglegroup.ToggleGroup;
 import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.TabPane;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -159,7 +160,7 @@ public class GtkHaskellCode {
             var button = new Button(n.getId(), n.hashCode(),"button", label, layoutX, layoutY, width, height);
             GUIWidgets.add(button);
 
-            appendTextToFile("--Button \n  " + button.gtkHsCode());
+            appendTextToFile("-- Button \n  " + button.gtkHsCode());
 
             currentNode = button;
         }else if (n instanceof AnchorPane){
@@ -168,7 +169,7 @@ public class GtkHaskellCode {
             var layout = new Layout(n.getId(), n.hashCode(),"layout", layoutX, layoutY);
             GUIContainers.add(layout);
 
-            appendTextToFile("--Layout \n  " + layout.gtkHsCode());
+            appendTextToFile("-- Layout \n  " + layout.gtkHsCode());
 
             currentNode = layout;
         } else if (n instanceof javafx.scene.control.Label){
@@ -178,7 +179,7 @@ public class GtkHaskellCode {
             var label = new Label(n.getId(), n.hashCode(),"label", text, layoutX, layoutY);
             GUIWidgets.add(label);
 
-            appendTextToFile("--Label \n  " + label.gtkHsCode());
+            appendTextToFile("-- Label \n  " + label.gtkHsCode());
 
             currentNode = label;
         } else if (n instanceof TextField){
@@ -193,7 +194,7 @@ public class GtkHaskellCode {
             var entry = new Entry(n.getId(), n.hashCode(),"entry", text, layoutX, layoutY, width, height, haskellAlignment, placeholder);
             GUIWidgets.add(entry);
 
-            appendTextToFile("--Entry \n  " + entry.gtkHsCode());
+            appendTextToFile("-- Entry \n  " + entry.gtkHsCode());
 
             currentNode = entry;
         } else if(n instanceof CheckBox) {
@@ -203,7 +204,7 @@ public class GtkHaskellCode {
             var checkButton = new CheckButton(n.getId(), n.hashCode(), "checkButton", layoutX, layoutY, text);
             GUIWidgets.add(checkButton);
 
-            appendTextToFile("--CheckButton \n  " + checkButton.gtkHsCode());
+            appendTextToFile("-- CheckButton \n  " + checkButton.gtkHsCode());
 
             currentNode = checkButton;
         } else if (n instanceof javafx.scene.control.RadioButton){
@@ -224,7 +225,7 @@ public class GtkHaskellCode {
 
             GUIWidgets.add(radioButton);
 
-            appendTextToFile("--RadioButton \n  " + radioButton.gtkHsCode());
+            appendTextToFile("-- RadioButton \n  " + radioButton.gtkHsCode());
 
             currentNode = radioButton;
         } else if (n instanceof GridPane){
@@ -235,7 +236,7 @@ public class GtkHaskellCode {
             var gridP = new Grid(n.getId(), n.hashCode(),"grid", layoutX, layoutY, columnSpacing, rowSpacing);
             GUIContainers.add(gridP);
 
-            appendTextToFile("--Grid \n  " + gridP.gtkHsCode());
+            appendTextToFile("-- Grid \n  " + gridP.gtkHsCode());
 
             currentNode = gridP;
         } else if (n instanceof VBox){
@@ -245,17 +246,17 @@ public class GtkHaskellCode {
             Box vBox = new Box(n.getId(), n.hashCode(),"vBox", layoutX, layoutY, vSpacing, Orientation.OrientationVertical);
             GUIContainers.add(vBox);
 
-            appendTextToFile("--vBox \n  " + vBox.gtkHsCode());
+            appendTextToFile("-- vBox \n  " + vBox.gtkHsCode());
 
             currentNode = vBox;
-        }else if (n instanceof HBox){
+        } else if (n instanceof HBox){
             var layoutX = n.getLayoutX();
             var layoutY = n.getLayoutY();
             var hSpacing = (int)((HBox) n).getSpacing();
             Box hBox = new Box(n.getId(), n.hashCode(),"hBox", layoutX, layoutY, hSpacing, Orientation.OrientationHorizontal);
             GUIContainers.add(hBox);
 
-            appendTextToFile("--hBox \n  " + hBox.gtkHsCode());
+            appendTextToFile("-- hBox \n  " + hBox.gtkHsCode());
 
             currentNode = hBox;
         } else if (n instanceof TabPane){
@@ -264,26 +265,45 @@ public class GtkHaskellCode {
             var width = (int)((TabPane) n).getWidth();
             var height = (int)((TabPane) n).getHeight();
 
-
-
             var children = ((TabPane) n).getTabs();
             var child = children.get(0);
             //var tabLabel = child.getText();
             var childchild = child.getContent();
             var APName = GTKWidget.makeName(childchild.getId(),childchild.hashCode(),"layout")+"Container";
 
-
-
-
             Notebook tabPane = new Notebook(n.getId(), n.hashCode(),"noteBook", layoutX, layoutY, width, height);
             GUIContainers.add(tabPane);
 
-            appendTextToFile("--Notebook \n  " + tabPane.gtkHsCode());
+            appendTextToFile("-- Notebook \n  " + tabPane.gtkHsCode());
 
             currentNode = tabPane;
 
             NotebookRelation noteRel = new NotebookRelation(tabPane.getNotebookName(), APName, "label_1703511813");
             relations.add(noteRel);
+        } else if (n instanceof Hyperlink){
+            var layoutX = n.getLayoutX();
+            var layoutY = n.getLayoutY();
+            var text = ((Hyperlink) n).getText();
+            var visited = ((Hyperlink) n).isVisited();
+            var linkButton = new LinkButton(n.getId(), n.hashCode(), "linkButton", layoutX, layoutY, text, visited);
+            GUIWidgets.add(linkButton);
+
+            appendTextToFile("-- LinkButton \n  " + linkButton.gtkHsCode());
+
+            currentNode = linkButton;
+        } else if (n instanceof ComboBox<?>){
+            var layoutX = n.getLayoutX();
+            var layoutY = n.getLayoutY();
+            var entry = ((ComboBox<?>) n).isEditable();
+            var items = ((ComboBox<?>) n).getItems();
+            var width = ((ComboBox<?>) n).getWidth();
+            var height = ((ComboBox<?>) n).getHeight();
+            var comboBoxText = new ComboBoxText(n.getId(), n.hashCode(), "comboBoxText", layoutX, layoutY, entry, items, width, height);
+            GUIWidgets.add(comboBoxText);
+
+            appendTextToFile("-- ComboBoxText \n  " + comboBoxText.gtkHsCode());
+
+            currentNode = comboBoxText;
         }
 
         //RELATIES AANMAKEN
