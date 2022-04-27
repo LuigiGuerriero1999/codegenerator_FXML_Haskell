@@ -40,6 +40,15 @@ public class ToggleGroup {
         return this;
     }
 
+    public static Boolean checkIfToggleExists(ToggleGroup toggleGroup, ArrayList<ToggleGroup> toggleGroupsWithoutDoubles){
+        for (ToggleGroup tg : toggleGroupsWithoutDoubles){
+            if (tg.getHashcode() == toggleGroup.getHashcode()){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void addButtonToToggleGroup(GTKWidget button){
         buttons.add(button);
     }

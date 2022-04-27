@@ -121,10 +121,18 @@ public class GtkHaskellCode {
     }
 
     public static String generateToggleGroups(){
-        if (!toggleGroups.isEmpty()){
+        ArrayList<ToggleGroup> toggleGroupsWithoutDoubles = new ArrayList<>();
+        for (int i = toggleGroups.size() - 1; i >=0; i--){
+            var tg = toggleGroups.get(i);
+            if (!ToggleGroup.checkIfToggleExists(tg, toggleGroupsWithoutDoubles)){
+                toggleGroupsWithoutDoubles.add(tg);
+            }
+        }
+
+        if (!toggleGroupsWithoutDoubles.isEmpty()){
             String toggleGroupComment = "--Toggle Groups\n  ";
             StringBuilder toggleGroupGtkCode = new StringBuilder();
-            for (ToggleGroup tg : toggleGroups){
+            for (ToggleGroup tg : toggleGroupsWithoutDoubles){
                 toggleGroupGtkCode.append(tg.gtkHsCode());
             }
             return toggleGroupComment + toggleGroupGtkCode + "\n  ";
