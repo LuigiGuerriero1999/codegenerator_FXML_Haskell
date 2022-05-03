@@ -13,7 +13,7 @@
         <Scene>
             <AnchorPane prefHeight="419.0" prefWidth="752.0">
             <children>
-               <ComboBox layoutX="301.0" layoutY="198.0" prefWidth="222" prefHeight="70">
+               <ComboBox layoutX="301.0" layoutY="198.0" prefWidth="222" prefHeight="35">
                    <items>
                        <FXCollections fx:factory="observableArrayList">
                            <String fx:value="Een"/>

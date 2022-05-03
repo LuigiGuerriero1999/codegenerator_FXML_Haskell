@@ -10,9 +10,9 @@ import java.util.Objects;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
-        //stage = FXMLLoader.load(getClass().getResource("simpeleAP_met_button_goed.fxml"));    // Button voorbeeld
-        //stage = FXMLLoader.load(getClass().getResource("simpeleAP_met_label.fxml"));              // Label voorbeeld
-        //stage = FXMLLoader.load(getClass().getResource("simpeleAP_met_entry.fxml"));              // Entry voorbeeld
+        //Stage stage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("simpeleAP_met_button_goed.fxml")));    // Button voorbeeld
+        //Stage stage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("simpeleAP_met_label.fxml")));              // Label voorbeeld
+        //Stage stage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("simpeleAP_met_entry.fxml")));              // Entry voorbeeld
         //Stage stage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("vbox_met_elementen.fxml")));
         //Stage stage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("hbox_met_elementen.fxml")));
         //Stage stage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("tabpane.fxml")));

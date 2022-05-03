@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.Scene?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.stage.Stage?>
 
-<?import javafx.scene.control.TextField?>
 <Stage height="400.0" title="JavaFX demo app" width="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
     <scene>
         <Scene>
             <AnchorPane prefHeight="350.0" prefWidth="613.0">
                 <children>
-                    <TextField layoutX="289.0" layoutY="167.0" text="Test" alignment="TOP_CENTER"/>
+                    <TextField alignment="TOP_CENTER" layoutX="289.0" layoutY="167.0" promptText="Test" />
+               <Button layoutX="50.0" layoutY="155.0" mnemonicParsing="false" text="Button" />
                 </children></AnchorPane>
         </Scene>
     </scene>
