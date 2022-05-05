@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.Scene?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
@@ -14,12 +17,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.stage.Stage?>
 
-<?import javafx.collections.FXCollections?>
-<?import java.lang.String?>
-<Stage title="ultieme test" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<Stage title="Alle widgets demo" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
     <scene>
         <Scene>
             <AnchorPane prefHeight="444.0" prefWidth="757.0">
@@ -30,16 +32,18 @@
                      <content>
                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="169.0" prefWidth="492.0">
                               <children>
-                                 <CheckBox layoutX="60.0" layoutY="57.0" mnemonicParsing="false" text="Poep" />
-                                 <RadioButton layoutX="317.0" layoutY="57.0" mnemonicParsing="false" text="RS6">
+                                 <CheckBox layoutX="46.0" layoutY="94.0" mnemonicParsing="false" text="Java" />
+                                 <RadioButton layoutX="370.0" layoutY="93.0" mnemonicParsing="false" text="Nederlands">
                                     <toggleGroup>
                                        <ToggleGroup fx:id="test" />
                                     </toggleGroup>
                                  </RadioButton>
-                                 <RadioButton layoutX="317.0" layoutY="84.0" mnemonicParsing="false" text="C63" toggleGroup="$test" />
-                                 <RadioButton layoutX="317.0" layoutY="109.0" mnemonicParsing="false" text="M140i" toggleGroup="$test" />
-                                 <CheckBox layoutX="60.0" layoutY="84.0" mnemonicParsing="false" text="Pis" />
-                                 <CheckBox layoutX="60.0" layoutY="109.0" mnemonicParsing="false" text="Schijt" />
+                                 <RadioButton layoutX="370.0" layoutY="120.0" mnemonicParsing="false" text="Frans" toggleGroup="$test" />
+                                 <RadioButton layoutX="370.0" layoutY="145.0" mnemonicParsing="false" text="Engels" toggleGroup="$test" />
+                                 <CheckBox layoutX="46.0" layoutY="121.0" mnemonicParsing="false" text="Python" />
+                                 <CheckBox layoutX="46.0" layoutY="146.0" mnemonicParsing="false" text="Haskell" />
+                                 <Label layoutX="46.0" layoutY="58.0" text="Wat zijn uw favoriete programeertalen?" />
+                                 <Label layoutX="370.0" layoutY="58.0" text="Wat is uw moedertaal?" />
                               </children>
                            </AnchorPane>
                      </content>
@@ -58,24 +62,39 @@
                               <children>
                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                     <children>
-                                       <ComboBox layoutX="84.0" layoutY="37.0" prefWidth="150.0" >
+                                       <ComboBox layoutX="84.0" layoutY="37.0" prefWidth="150.0">
                                                <items>
                                                    <FXCollections fx:factory="observableArrayList">
-                                                       <String fx:value="Een"/>
-                                                       <String fx:value="Twee"/>
-                                                       <String fx:value="Drie"/>
+                                                       <String fx:value="Een" />
+                                                       <String fx:value="Twee" />
+                                                       <String fx:value="Drie" />
                                                    </FXCollections>
                                                </items>
                                        </ComboBox>
                                     </children>
                                  </AnchorPane>
-                                 <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="317.0" text="KoekaButton" GridPane.columnIndex="1" />
-                                 <Label prefHeight="33.0" prefWidth="317.0" text="PoepLabeltje" GridPane.rowIndex="1" />
+                                 <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="317.0" text="Button" GridPane.columnIndex="1" />
+                                 <Label prefHeight="33.0" prefWidth="317.0" text="Label" GridPane.rowIndex="1" />
                                  <TextField prefHeight="24.0" prefWidth="262.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                               </children>
                            </GridPane>
                      </content>
                    </Tab>
+                     <Tab text="Tabje 3">
+                       <content>
+                           <HBox spacing="20.0">
+                              <children>
+                                 <TextField prefHeight="110.0" prefWidth="249.0" promptText="Entry" />
+                                 <Button mnemonicParsing="false" prefHeight="143.0" prefWidth="90.0" text="Button">
+                                    <HBox.margin>
+                                       <Insets />
+                                    </HBox.margin>
+                                 </Button>
+                                 <CheckBox mnemonicParsing="false" prefHeight="109.0" prefWidth="206.0" text="CheckBox" />
+                              </children>
+                           </HBox>
+                       </content>
+                     </Tab>
                  </tabs>
                </TabPane>
                <Hyperlink layoutX="294.0" layoutY="79.0" text="Hieronder is de Tabpane" />

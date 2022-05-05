@@ -48,7 +48,7 @@
                            </GridPane>
                        </content>
                      </Tab>
-                     <Tab text="TESTTAB3NIFFOO">
+                     <Tab text="Tab3">
                        <content>
                            <HBox>
                               <children>
