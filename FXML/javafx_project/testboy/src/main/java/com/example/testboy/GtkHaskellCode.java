@@ -117,7 +117,7 @@ public class GtkHaskellCode {
         for(Relation r : relations){
             relationsGtkCode.append(r.generateGtkHsCode());
         }
-        return relationComment + relationsGtkCode;
+        return relationComment + relationsGtkCode + "\n  ";
     }
 
     public static String generateToggleGroups(){
@@ -142,14 +142,19 @@ public class GtkHaskellCode {
     }
 
     public static String generateNotebookRelations(){
-        String relationComment = "--Notebook relations \n  ";
-        StringBuilder relationsGtkCode = new StringBuilder();
-        for(NotebookRelation r : notebookRelations){
-            r.setContainerList(GUIContainers);
-            r.correctChildName();
-            relationsGtkCode.append(r.generateGtkHsCode());
+        if (!notebookRelations.isEmpty()){
+            String relationComment = "--Notebook relations \n  ";
+            StringBuilder relationsGtkCode = new StringBuilder();
+            for(NotebookRelation r : notebookRelations){
+                r.setContainerList(GUIContainers);
+                r.correctChildName();
+                relationsGtkCode.append(r.generateGtkHsCode());
+            }
+            return relationComment + relationsGtkCode + "\n  ";
+        } else {
+            return "";
         }
-        return relationComment + relationsGtkCode;
+
     }
 
     public static String bindTopLevelElementToWindow(){
