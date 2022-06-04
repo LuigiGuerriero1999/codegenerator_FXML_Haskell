@@ -64,8 +64,8 @@ public class Button extends GTKWidget {
 
     @Override
     public String gtkHsCode(){
-        String buttonConstructor = buttonName + " <- Gtk.buttonNew \n  " ;
-        if (!Objects.equals(label, "")) buttonConstructor = buttonName + " <- Gtk.buttonNewWithLabel "+"\""+label+"\""+"\n  ";
+        String buttonConstructor = "${BUTTONNAME} <- Gtk.buttonNew \n  ";
+        if (!Objects.equals(label, "")) buttonConstructor = "${BUTTONNAME} <- Gtk.buttonNewWithLabel \"${LABEL}\"\n  ";
 
         StringBuilder template = new StringBuilder();
         template.append(buttonConstructor);
@@ -79,6 +79,7 @@ public class Button extends GTKWidget {
         toInsert.put("WIDTH", (int)width);
         toInsert.put("HEIGHT", (int)height);
         toInsert.put("BUTTONNAME", buttonName);
+        toInsert.put("LABEL", label);
 
         return StringFormat.format(template.toString(),toInsert);
     }

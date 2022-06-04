@@ -1,8 +1,11 @@
 package com.example.testboy.structures;
 
 import com.example.testboy.HelloApplication;
+import com.example.testboy.StringFormat;
 import javafx.geometry.Pos;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class Entry extends GTKWidget{
@@ -102,23 +105,34 @@ public class Entry extends GTKWidget{
 
     @Override
     public String gtkHsCode() {
-        String entryConstructor = entryName + " <- Gtk.entryNew\n  ";
+        String templateEntryConstructor = "${ENTRYNAME} <- Gtk.entryNew\n  ";
 
-        String entrySetText = "";
-        if (!Objects.equals(text, "")) entrySetText = "Gtk.entrySetText " + entryName + " " + "\"" + text + "\"" + "\n  " ;
+        String entrySetTextTemplate = "";
+        if (!Objects.equals(text, "")) entrySetTextTemplate = "Gtk.entrySetText ${ENTRYNAME} \"${TEXT}\" \n  ";
 
-        String entrySetPlaceholder = "";
-        if (!Objects.equals(placeholder, "")) entrySetPlaceholder = "Gtk.entrySetPlaceholderText " + entryName + " " + "(Just " + "\"" + placeholder + "\"" + ")\n  ";
+        String entrySetPlaceholderTemplate = "";
+        if (!Objects.equals(placeholder, "")) entrySetPlaceholderTemplate = "Gtk.entrySetPlaceholderText ${ENTRYNAME} (Just \"${PLACEHOLDER}\")\n  ";
 
-        String entryAlignment = "";
-        if (!Objects.equals(alignment, 0)) entryAlignment = "Gtk.entrySetAlignment " + entryName + " " + alignment + "\n  ";
+        String entryAlignmentTemplate = "";
+        if (!Objects.equals(alignment, 0)) entryAlignmentTemplate = "Gtk.entrySetAlignment ${ENTRYNAME} ${ALLIGNMENT} \n  ";
 
-        String entryContainerBoxName = super.getName();
-        String createEntryContainer = entryContainerBoxName + " <- Gtk.boxNew OrientationHorizontal 1\n  ";
-        String setEntryContainerProperties = "Gtk.set "+ entryContainerBoxName +" [Gtk.widgetWidthRequest := "+(int)width+", Gtk.widgetHeightRequest := "+(int)height+"]\n  ";
-        String addEntryToContainer = "Gtk.boxPackStart "+ entryContainerBoxName +" "+ entryName +" True True 0\n   ";
-        String entryGtkHsCode = entryConstructor + entrySetText + entrySetPlaceholder + entryAlignment + createEntryContainer + setEntryContainerProperties + addEntryToContainer + "\n  ";
+        StringBuilder template = new StringBuilder();
+        template.append(templateEntryConstructor);
+        template.append(entrySetTextTemplate).append(entrySetPlaceholderTemplate).append(entryAlignmentTemplate);
+        template.append("${ENTRYCONTAINERBOXNAME} <- Gtk.boxNew OrientationHorizontal 1\n  ");
+        template.append("Gtk.set ${ENTRYCONTAINERBOXNAME} [Gtk.widgetWidthRequest :=${WIDTH},  Gtk.widgetHeightRequest :=${HEIGHT}]\n  ");
+        template.append("Gtk.boxPackStart ${ENTRYCONTAINERBOXNAME} ${ENTRYNAME} True True 0\n   \n  ");
 
-        return entryGtkHsCode;
+        Map<String, Object> toInsert = new HashMap<String, Object>();
+        toInsert.put("ENTRYCONTAINERBOXNAME", super.getName());
+        toInsert.put("ENTRYNAME", entryName);
+        toInsert.put("WIDTH", (int)width);
+        toInsert.put("HEIGHT", (int)height);
+        toInsert.put("ALLIGNMENT", alignment);
+        toInsert.put("PLACEHOLDER", placeholder);
+        toInsert.put("TEXT", text);
+
+
+        return StringFormat.format(template.toString(), toInsert);
     }
 }
