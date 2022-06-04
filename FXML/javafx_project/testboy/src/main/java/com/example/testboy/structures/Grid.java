@@ -38,18 +38,13 @@ public class Grid extends GTKWidget {
 
     @Override
     public String gtkHsCode(){
-        String setColumnSpacingTemplate = "" ;
-        if ((int)columnSpacing != 0) setColumnSpacingTemplate = "Gtk.gridSetColumnSpacing ${GRIDNAME} ${COLUMNSPACING}\n  ";
-
-        String setRowSpacingTemplate = "" ;
-        if ((int)rowSpacing != 0) setRowSpacingTemplate = "Gtk.gridSetRowSpacing ${GRIDNAME} ${ROWSPACING}\n  ";
-
         StringBuilder template = new StringBuilder();
         template.append("${GRIDNAME} <- Gtk.gridNew\n  ");
         template.append("Gtk.gridSetColumnHomogeneous ${GRIDNAME} True\n  ");
         template.append("Gtk.gridSetRowHomogeneous ${GRIDNAME} True\n  ");
-        template.append(setColumnSpacingTemplate);
-        template.append(setRowSpacingTemplate).append("\n  ");
+        if ((int)columnSpacing != 0) template.append("Gtk.gridSetColumnSpacing ${GRIDNAME} ${COLUMNSPACING}\n  ");
+        if ((int)rowSpacing != 0) template.append("Gtk.gridSetRowSpacing ${GRIDNAME} ${ROWSPACING}\n  ");
+        template.append("\n  ");
 
         Map<String, Object> toInsert = new HashMap<String, Object>();
         toInsert.put("GRIDNAME", super.getName());

@@ -64,15 +64,12 @@ public class Button extends GTKWidget {
 
     @Override
     public String gtkHsCode(){
-        String buttonConstructor = "${BUTTONNAME} <- Gtk.buttonNew \n  ";
-        if (!Objects.equals(label, "")) buttonConstructor = "${BUTTONNAME} <- Gtk.buttonNewWithLabel \"${LABEL}\"\n  ";
-
         StringBuilder template = new StringBuilder();
-        template.append(buttonConstructor);
+        if (!Objects.equals(label, "")) template.append("${BUTTONNAME} <- Gtk.buttonNewWithLabel \"${LABEL}\"\n  ");
+        else template.append("${BUTTONNAME} <- Gtk.buttonNew \n  ");
         template.append("${BUTTONCONTAINERBOXNAME} <- Gtk.boxNew OrientationHorizontal 1\n  ");
         template.append("Gtk.set ${BUTTONCONTAINERBOXNAME} [Gtk.widgetWidthRequest :=${WIDTH},  Gtk.widgetHeightRequest :=${HEIGHT}]\n  ");
         template.append("Gtk.boxPackStart ${BUTTONCONTAINERBOXNAME} ${BUTTONNAME} True True 0\n   \n  ");
-
 
         Map<String, Object> toInsert = new HashMap<String, Object>();
         toInsert.put("BUTTONCONTAINERBOXNAME", super.getName());

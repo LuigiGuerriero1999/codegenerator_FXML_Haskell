@@ -105,20 +105,11 @@ public class Entry extends GTKWidget{
 
     @Override
     public String gtkHsCode() {
-        String templateEntryConstructor = "${ENTRYNAME} <- Gtk.entryNew\n  ";
-
-        String entrySetTextTemplate = "";
-        if (!Objects.equals(text, "")) entrySetTextTemplate = "Gtk.entrySetText ${ENTRYNAME} \"${TEXT}\" \n  ";
-
-        String entrySetPlaceholderTemplate = "";
-        if (!Objects.equals(placeholder, "")) entrySetPlaceholderTemplate = "Gtk.entrySetPlaceholderText ${ENTRYNAME} (Just \"${PLACEHOLDER}\")\n  ";
-
-        String entryAlignmentTemplate = "";
-        if (!Objects.equals(alignment, 0)) entryAlignmentTemplate = "Gtk.entrySetAlignment ${ENTRYNAME} ${ALLIGNMENT} \n  ";
-
         StringBuilder template = new StringBuilder();
-        template.append(templateEntryConstructor);
-        template.append(entrySetTextTemplate).append(entrySetPlaceholderTemplate).append(entryAlignmentTemplate);
+        template.append("${ENTRYNAME} <- Gtk.entryNew\n  ");
+        if (!Objects.equals(text, "")) template.append("Gtk.entrySetText ${ENTRYNAME} \"${TEXT}\" \n  ");
+        if (!Objects.equals(placeholder, "")) template.append("Gtk.entrySetPlaceholderText ${ENTRYNAME} (Just \"${PLACEHOLDER}\")\n  ");
+        if (!Objects.equals(alignment, 0)) template.append("Gtk.entrySetAlignment ${ENTRYNAME} ${ALLIGNMENT} \n  ");
         template.append("${ENTRYCONTAINERBOXNAME} <- Gtk.boxNew OrientationHorizontal 1\n  ");
         template.append("Gtk.set ${ENTRYCONTAINERBOXNAME} [Gtk.widgetWidthRequest :=${WIDTH},  Gtk.widgetHeightRequest :=${HEIGHT}]\n  ");
         template.append("Gtk.boxPackStart ${ENTRYCONTAINERBOXNAME} ${ENTRYNAME} True True 0\n   \n  ");
@@ -131,7 +122,6 @@ public class Entry extends GTKWidget{
         toInsert.put("ALLIGNMENT", alignment);
         toInsert.put("PLACEHOLDER", placeholder);
         toInsert.put("TEXT", text);
-
 
         return StringFormat.format(template.toString(), toInsert);
     }

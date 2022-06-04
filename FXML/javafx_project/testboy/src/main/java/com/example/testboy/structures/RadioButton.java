@@ -1,5 +1,9 @@
 package com.example.testboy.structures;
 
+import com.example.testboy.StringFormat;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class RadioButton extends GTKWidget{
@@ -24,8 +28,15 @@ public class RadioButton extends GTKWidget{
 
     @Override
     public String gtkHsCode(){
-        String radioButtonGtkHsCode = super.getName() + " <- Gtk.radioButtonNewFromWidget (Nothing::Maybe Gtk.RadioButton)\n  ";
-        if (!Objects.equals(text, "")) radioButtonGtkHsCode = super.getName() + " <- Gtk.radioButtonNewWithLabelFromWidget (Nothing::Maybe Gtk.RadioButton) "+"\""+text+"\""+"\n  ";
-        return radioButtonGtkHsCode + "\n  ";
+        StringBuilder template = new StringBuilder();
+        if (!Objects.equals(text, "")) template.append("${RADIOBUTTONNAME} <- Gtk.radioButtonNewWithLabelFromWidget (Nothing::Maybe Gtk.RadioButton) \"${TEXT}\"\n  ");
+        else template.append("${RADIOBUTTONNAME} <- Gtk.radioButtonNewFromWidget (Nothing::Maybe Gtk.RadioButton)\n  ");
+        template.append("\n  ");
+
+        Map<String, Object> toInsert = new HashMap<String, Object>();
+        toInsert.put("RADIOBUTTONNAME", super.getName());
+        toInsert.put("TEXT", text);
+
+        return StringFormat.format(template.toString(), toInsert);
     }
 }

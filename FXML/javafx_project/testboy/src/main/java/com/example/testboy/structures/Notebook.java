@@ -1,6 +1,10 @@
 package com.example.testboy.structures;
 
+import com.example.testboy.StringFormat;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class Notebook extends GTKWidget{
@@ -52,13 +56,18 @@ public class Notebook extends GTKWidget{
 
     @Override
     public String gtkHsCode(){
-        String notebookConstructor = notebookName + " <- Gtk.notebookNew \n  " ;
-        String notebookContainerBoxName = super.getName();
-        String createNotebookContainer = notebookContainerBoxName + " <- Gtk.boxNew OrientationHorizontal 1\n  ";
-        String setNotebookProperties = "Gtk.set "+notebookContainerBoxName+" [Gtk.widgetWidthRequest := "+(int)width+", Gtk.widgetHeightRequest := "+(int)height+"]\n  ";
-        String addNotebookToContainer = "Gtk.boxPackStart "+notebookContainerBoxName+" "+notebookName+" True True 0\n   ";
-        String noteBookGtkHsCode = notebookConstructor + createNotebookContainer + setNotebookProperties + addNotebookToContainer + "\n  " ;
+        StringBuilder template = new StringBuilder();
+        template.append("${NOTEBOOKNAME} <- Gtk.notebookNew \n  ");
+        template.append("${NOTEBOOKCONTAINERNAME}  <- Gtk.boxNew OrientationHorizontal 1\n  ");
+        template.append("Gtk.set ${NOTEBOOKCONTAINERNAME} [Gtk.widgetWidthRequest :=${WIDTH},  Gtk.widgetHeightRequest :=${HEIGHT}]\n  ");
+        template.append("Gtk.boxPackStart ${NOTEBOOKCONTAINERNAME} ${NOTEBOOKNAME} True True 0\n   \n  ");
 
-        return noteBookGtkHsCode;
+        Map<String, Object> toInsert = new HashMap<String, Object>();
+        toInsert.put("NOTEBOOKCONTAINERNAME", super.getName());
+        toInsert.put("WIDTH", (int)width);
+        toInsert.put("HEIGHT", (int)height);
+        toInsert.put("NOTEBOOKNAME", notebookName);
+
+        return StringFormat.format(template.toString(), toInsert);
     }
 }

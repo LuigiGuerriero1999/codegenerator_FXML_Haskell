@@ -68,10 +68,6 @@ public class ComboBoxText extends GTKWidget{
 
     @Override
     public String gtkHsCode(){
-        String comboBoxTextTemplate;
-        if(entry) comboBoxTextTemplate = "${COMBOBOXTEXTNAME} <- Gtk.comboBoxTextNew \n  ";
-        else comboBoxTextTemplate = "${COMBOBOXTEXTNAME} <- Gtk.comboBoxTextNewWithEntry \n  ";
-
         StringBuilder comboBoxTextItems = new StringBuilder("");
         for (Object obj : items){
             String item = obj.toString();
@@ -79,7 +75,8 @@ public class ComboBoxText extends GTKWidget{
         }
 
         StringBuilder template = new StringBuilder();
-        template.append(comboBoxTextTemplate);
+        if(entry) template.append("${COMBOBOXTEXTNAME} <- Gtk.comboBoxTextNew \n  ");
+        else template.append("${COMBOBOXTEXTNAME} <- Gtk.comboBoxTextNewWithEntry \n  ");
         template.append(comboBoxTextItems);
         template.append("${COMBOBOXCONTAINERNAME} <- Gtk.boxNew OrientationHorizontal 1\n  ");
         template.append("Gtk.set ${COMBOBOXCONTAINERNAME} [Gtk.widgetWidthRequest :=${WIDTH},  Gtk.widgetHeightRequest :=${HEIGHT}]\n  ");
