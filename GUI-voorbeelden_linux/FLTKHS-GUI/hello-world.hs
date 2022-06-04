@@ -6,6 +6,7 @@ import Graphics.UI.FLTK.LowLevel.FLTKHS
 import Graphics.UI.FLTK.LowLevel.Fl_Enumerations
 
 --functie voor het togglen als op de Button wordt gedrukt
+--test
 buttonCb :: Ref Button -> IO ()            
 buttonCb b' = do
   l' <- getLabel b'

@@ -1,8 +1,11 @@
 package com.example.testboy.structures;
 
+import com.example.testboy.StringFormat;
 import javafx.beans.Observable;
 import javafx.collections.ObservableList;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class ComboBoxText extends GTKWidget{
@@ -65,8 +68,9 @@ public class ComboBoxText extends GTKWidget{
 
     @Override
     public String gtkHsCode(){
-        String comboBoxTextConstructor = comboBoxTextName + " <- Gtk.comboBoxTextNew \n  " ;
-        if (entry) comboBoxTextConstructor = comboBoxTextName + " <- Gtk.comboBoxTextNewWithEntry \n  ";
+        String comboBoxTextTemplate;
+        if(entry) comboBoxTextTemplate = "${COMBOBOXTEXTNAME} <- Gtk.comboBoxTextNew \n  ";
+        else comboBoxTextTemplate = "${COMBOBOXTEXTNAME} <- Gtk.comboBoxTextNewWithEntry \n  ";
 
         StringBuilder comboBoxTextItems = new StringBuilder("");
         for (Object obj : items){
@@ -74,12 +78,19 @@ public class ComboBoxText extends GTKWidget{
             comboBoxTextItems.append("Gtk.comboBoxTextAppendText ").append(comboBoxTextName).append(" ").append("\"").append(item).append("\"").append("\n  ");
         }
 
-        String comboBoxTextContainerBoxName = super.getName();
-        String createComboBoxTextContainer = comboBoxTextContainerBoxName + " <- Gtk.boxNew OrientationHorizontal 1\n  ";
-        String setButtonContainerProperties = "Gtk.set "+comboBoxTextContainerBoxName+" [Gtk.widgetWidthRequest := "+(int)width+", Gtk.widgetHeightRequest := "+(int)height+"]\n  ";
-        String addButtonToContainer = "Gtk.boxPackStart "+comboBoxTextContainerBoxName+" "+comboBoxTextName+" True True 0\n   ";
-        String buttonGtkHsCode = comboBoxTextConstructor + comboBoxTextItems + createComboBoxTextContainer + setButtonContainerProperties + addButtonToContainer + "\n  " ;
+        StringBuilder template = new StringBuilder();
+        template.append(comboBoxTextTemplate);
+        template.append(comboBoxTextItems);
+        template.append("${COMBOBOXCONTAINERNAME} <- Gtk.boxNew OrientationHorizontal 1\n  ");
+        template.append("Gtk.set ${COMBOBOXCONTAINERNAME} [Gtk.widgetWidthRequest :=${WIDTH},  Gtk.widgetHeightRequest :=${HEIGHT}]\n  ");
+        template.append("Gtk.boxPackStart ${COMBOBOXCONTAINERNAME} ${COMBOBOXTEXTNAME} True True 0\n   ");
 
-        return buttonGtkHsCode;
+        Map<String, Object> toInsert = new HashMap<String, Object>();
+        toInsert.put("COMBOBOXCONTAINERNAME", super.getName());
+        toInsert.put("WIDTH", (int)width);
+        toInsert.put("HEIGHT", (int)height);
+        toInsert.put("COMBOBOXTEXTNAME", comboBoxTextName);
+
+        return StringFormat.format(template.toString(),toInsert);
     }
 }

@@ -1,5 +1,9 @@
 package com.example.testboy.structures;
 
+import com.example.testboy.StringFormat;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class CheckButton extends GTKWidget{
@@ -24,8 +28,17 @@ public class CheckButton extends GTKWidget{
 
     @Override
     public String gtkHsCode(){
-        String checkButtonGtkHsCode = super.getName() + " <- Gtk.checkButtonNew\n  ";
-        if (!Objects.equals(text, "")) checkButtonGtkHsCode = super.getName() + " <- Gtk.checkButtonNewWithLabel "+"\""+text+"\""+"\n  ";
-        return checkButtonGtkHsCode + "\n  ";
+        String template;
+        if (!Objects.equals(text, "")){
+            template = "${CHECKBUTTONNAME} <- Gtk.checkButtonNewWithLabel \"${TEXT}\"\n  \n  ";
+        }else{
+            template = "${CHECKBUTTONNAME} <- Gtk.checkButtonNew\n  \n  ";
+        }
+
+        Map<String, Object> toInsert = new HashMap<String, Object>();
+        toInsert.put("CHECKBUTTONNAME", super.getName());
+        toInsert.put("TEXT", text);
+
+        return StringFormat.format(template,toInsert);
     }
 }

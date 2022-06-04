@@ -1,7 +1,11 @@
 package com.example.testboy.structures;
 
 
+import com.example.testboy.StringFormat;
 import com.example.testboy.orientation.Orientation;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Box extends GTKWidget{
     private int spacing;
@@ -31,8 +35,13 @@ public class Box extends GTKWidget{
 
     @Override
     public String gtkHsCode(){
-        String boxConstructor = super.getName() + " <- Gtk.boxNew Gtk." + orientation + " " + spacing + "\n  ";
-        String GtkHsCode = boxConstructor + "\n  ";
-        return GtkHsCode;
+        String template = "${NAME} <- Gtk.boxNew Gtk.${ORIENTATION} ${SPACING} \n  \n";
+
+        Map<String, Object> toInsert = new HashMap<String, Object>();
+        toInsert.put("NAME", super.getName());
+        toInsert.put("ORIENTATION", orientation);
+        toInsert.put("SPACING", spacing);
+
+        return StringFormat.format(template,toInsert);
     }
 }

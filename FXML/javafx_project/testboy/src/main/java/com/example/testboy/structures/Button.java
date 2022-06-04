@@ -1,7 +1,10 @@
 package com.example.testboy.structures;
 
 import com.example.testboy.HelloApplication;
+import com.example.testboy.StringFormat;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class Button extends GTKWidget {
@@ -64,12 +67,19 @@ public class Button extends GTKWidget {
         String buttonConstructor = buttonName + " <- Gtk.buttonNew \n  " ;
         if (!Objects.equals(label, "")) buttonConstructor = buttonName + " <- Gtk.buttonNewWithLabel "+"\""+label+"\""+"\n  ";
 
-        String buttonContainerBoxName = super.getName();
-        String createButtonContainer = buttonContainerBoxName + " <- Gtk.boxNew OrientationHorizontal 1\n  ";
-        String setButtonContainerProperties = "Gtk.set "+buttonContainerBoxName+" [Gtk.widgetWidthRequest := "+(int)width+", Gtk.widgetHeightRequest := "+(int)height+"]\n  ";
-        String addButtonToContainer = "Gtk.boxPackStart "+buttonContainerBoxName+" "+buttonName+" True True 0\n   ";
-        String buttonGtkHsCode = buttonConstructor + createButtonContainer + setButtonContainerProperties + addButtonToContainer + "\n  " ;
+        StringBuilder template = new StringBuilder();
+        template.append(buttonConstructor);
+        template.append("${BUTTONCONTAINERBOXNAME} <- Gtk.boxNew OrientationHorizontal 1\n  ");
+        template.append("Gtk.set ${BUTTONCONTAINERBOXNAME} [Gtk.widgetWidthRequest :=${WIDTH},  Gtk.widgetHeightRequest :=${HEIGHT}]\n  ");
+        template.append("Gtk.boxPackStart ${BUTTONCONTAINERBOXNAME} ${BUTTONNAME} True True 0\n   \n  ");
 
-        return buttonGtkHsCode;
+
+        Map<String, Object> toInsert = new HashMap<String, Object>();
+        toInsert.put("BUTTONCONTAINERBOXNAME", super.getName());
+        toInsert.put("WIDTH", (int)width);
+        toInsert.put("HEIGHT", (int)height);
+        toInsert.put("BUTTONNAME", buttonName);
+
+        return StringFormat.format(template.toString(),toInsert);
     }
 }
