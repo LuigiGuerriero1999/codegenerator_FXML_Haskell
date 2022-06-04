@@ -1,9 +1,12 @@
 package com.example.testboy.relations;
 
+import com.example.testboy.StringFormat;
 import com.example.testboy.structures.GTKWidget;
 import javafx.scene.Node;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class NotebookRelation extends Relation{
     private String labelName; //labelNaam van de reeds aangemaakt widget
@@ -51,7 +54,12 @@ public class NotebookRelation extends Relation{
 
     @Override
     public String generateGtkHsCode(){
-        String haskellCode = "Gtk.notebookAppendPage "+getParentName()+" "+getChildName()+" (Just "+labelName+")\n  ";
-        return haskellCode;
+        String template = "Gtk.notebookAppendPage ${PARENTNAME} ${CHILDNAME} (Just ${LABELNAME})\n  ";
+        Map<String, Object> toInsert = new HashMap<String, Object>();
+        toInsert.put("PARENTNAME", getParentName());
+        toInsert.put("CHILDNAME", getChildName());
+        toInsert.put("LABELNAME", labelName);
+
+        return StringFormat.format(template,toInsert);
     }
 }

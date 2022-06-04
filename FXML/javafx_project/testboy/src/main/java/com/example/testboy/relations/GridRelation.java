@@ -1,5 +1,10 @@
 package com.example.testboy.relations;
 
+import com.example.testboy.StringFormat;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class GridRelation extends Relation{
     private int row;
     private int column;
@@ -33,8 +38,14 @@ public class GridRelation extends Relation{
 
     @Override
     public String generateGtkHsCode(){
-        String haskellCode = "Gtk.gridAttach "+getParentName()+" "+getChildName()+" "+column+" "+row+" 1 1 \n  ";
-        return haskellCode;
+        String template = "Gtk.gridAttach ${PARENTNAME} ${CHILDNAME} ${COLUMN} ${ROW} 1 1 \n  ";
+        Map<String, Object> toInsert = new HashMap<String, Object>();
+        toInsert.put("PARENTNAME", getParentName());
+        toInsert.put("CHILDNAME", getChildName());
+        toInsert.put("COLUMN", column);
+        toInsert.put("ROW", row);
+
+        return StringFormat.format(template,toInsert);
     }
 
 

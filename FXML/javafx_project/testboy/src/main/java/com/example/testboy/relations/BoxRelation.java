@@ -1,6 +1,10 @@
 package com.example.testboy.relations;
 
+import com.example.testboy.StringFormat;
 import com.example.testboy.relations.Relation;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class BoxRelation extends Relation {
     private int interSpacing;
@@ -20,7 +24,12 @@ public class BoxRelation extends Relation {
 
     @Override
     public String generateGtkHsCode(){
-        String haskellCode = "Gtk.boxPackStart "+getParentName()+" "+getChildName()+" True True "+interSpacing+"\n  ";
-        return haskellCode;
+        String template = "Gtk.boxPackStart ${PARENTNAME} ${CHILDNAME} True True ${INTERSPACING}\n  ";
+        Map<String, Object> toInsert = new HashMap<String, Object>();
+        toInsert.put("PARENTNAME", getParentName());
+        toInsert.put("CHILDNAME", getChildName());
+        toInsert.put("INTERSPACING", interSpacing);
+
+        return StringFormat.format(template,toInsert);
     }
 }

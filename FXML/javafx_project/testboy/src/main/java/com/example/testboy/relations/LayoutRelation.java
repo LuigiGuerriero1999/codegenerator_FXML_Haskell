@@ -1,5 +1,10 @@
 package com.example.testboy.relations;
 
+import com.example.testboy.StringFormat;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class LayoutRelation extends Relation{
     private Integer x;
     private Integer y;
@@ -30,7 +35,13 @@ public class LayoutRelation extends Relation{
 
     @Override
     public String generateGtkHsCode(){
-        String haskellCode = "Gtk.layoutPut "+getParentName()+" "+getChildName()+" "+x+" "+y+"\n  ";
-        return haskellCode;
+        String template = "Gtk.layoutPut ${PARENTNAME} ${CHILDNAME} ${X} ${Y}\n  ";
+        Map<String, Object> toInsert = new HashMap<String, Object>();
+        toInsert.put("PARENTNAME", getParentName());
+        toInsert.put("CHILDNAME", getChildName());
+        toInsert.put("X", x);
+        toInsert.put("Y", y);
+
+        return StringFormat.format(template,toInsert);
     }
 }
