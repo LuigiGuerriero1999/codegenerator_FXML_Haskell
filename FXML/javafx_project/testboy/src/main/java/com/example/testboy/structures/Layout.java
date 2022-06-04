@@ -1,8 +1,11 @@
 package com.example.testboy.structures;
 
 import com.example.testboy.HelloApplication;
+import com.example.testboy.StringFormat;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Layout extends GTKWidget{
     public Layout(double layoutX, double layoutY) {
@@ -15,8 +18,9 @@ public class Layout extends GTKWidget{
 
     @Override
     public String gtkHsCode(){
-        String layoutConstructor = super.getName() + " <- Gtk.layoutNew (Nothing::Maybe Adjustment) (Nothing::Maybe Adjustment)\n  ";
-        String GtkHsCode = layoutConstructor + "\n  ";
-        return GtkHsCode;
+        String template = "${LAYOUTNAME}  <- Gtk.layoutNew (Nothing::Maybe Adjustment) (Nothing::Maybe Adjustment)\n  \n  ";
+        Map<String, Object> toInsert = new HashMap<String, Object>();
+        toInsert.put("LAYOUTNAME", super.getName());
+        return StringFormat.format(template, toInsert);
     }
 }

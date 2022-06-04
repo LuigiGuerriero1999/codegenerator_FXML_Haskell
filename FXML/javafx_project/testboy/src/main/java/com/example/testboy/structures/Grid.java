@@ -1,5 +1,10 @@
 package com.example.testboy.structures;
 
+import com.example.testboy.StringFormat;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class Grid extends GTKWidget {
     private double columnSpacing;
     private double rowSpacing;
@@ -33,17 +38,24 @@ public class Grid extends GTKWidget {
 
     @Override
     public String gtkHsCode(){
-        String gridConstructor = super.getName() + " <- Gtk.gridNew\n  ";
-        String columnHomogeneous = "Gtk.gridSetColumnHomogeneous " + super.getName() + " True\n  ";
-        String rowHomogeneous = "Gtk.gridSetRowHomogeneous " + super.getName() + " True\n  ";
+        String setColumnSpacingTemplate = "" ;
+        if ((int)columnSpacing != 0) setColumnSpacingTemplate = "Gtk.gridSetColumnSpacing ${GRIDNAME} ${COLUMNSPACING}\n  ";
 
-        String setColumnSpacing = "" ;
-        if ((int)columnSpacing != 0) setColumnSpacing = "Gtk.gridSetColumnSpacing " + super.getName() + " " + (int)columnSpacing + "\n  ";
+        String setRowSpacingTemplate = "" ;
+        if ((int)rowSpacing != 0) setRowSpacingTemplate = "Gtk.gridSetRowSpacing ${GRIDNAME} ${ROWSPACING}\n  ";
 
-        String setRowSpacing = "" ;
-        if ((int)rowSpacing != 0) setRowSpacing = "Gtk.gridSetRowSpacing " + super.getName() + " " + (int)rowSpacing + "\n  ";
+        StringBuilder template = new StringBuilder();
+        template.append("${GRIDNAME} <- Gtk.gridNew\n  ");
+        template.append("Gtk.gridSetColumnHomogeneous ${GRIDNAME} True\n  ");
+        template.append("Gtk.gridSetRowHomogeneous ${GRIDNAME} True\n  ");
+        template.append(setColumnSpacingTemplate);
+        template.append(setRowSpacingTemplate).append("\n  ");
 
-        String GtkHsCode = gridConstructor + columnHomogeneous + rowHomogeneous + setColumnSpacing + setRowSpacing + "\n  ";
-        return GtkHsCode;
+        Map<String, Object> toInsert = new HashMap<String, Object>();
+        toInsert.put("GRIDNAME", super.getName());
+        toInsert.put("COLUMNSPACING", (int)columnSpacing);
+        toInsert.put("ROWSPACING", (int)rowSpacing);
+
+        return StringFormat.format(template.toString(), toInsert);
     }
 }

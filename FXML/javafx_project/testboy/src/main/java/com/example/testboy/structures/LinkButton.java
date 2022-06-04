@@ -1,5 +1,9 @@
 package com.example.testboy.structures;
 
+import com.example.testboy.StringFormat;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class LinkButton extends GTKWidget{
@@ -30,12 +34,16 @@ public class LinkButton extends GTKWidget{
 
     @Override
     public String gtkHsCode(){
-        String hyperlink = super.getName() + " <- Gtk.linkButtonNew "+ "\"" + "\"" + "\n  " ;
-        if (!Objects.equals(text, "")) hyperlink = super.getName() + " <- Gtk.linkButtonNewWithLabel " + "\"" + "\""+ " (Just "+ "\""+text+"\""+")\n  ";
+        StringBuilder template = new StringBuilder();
+        if(!Objects.equals(text, "")) template.append("${LINKBUTTONNAME} <- Gtk.linkButtonNewWithLabel \"\" (Just \"${TEXT}\")\n  ");
+        else template.append("${LINKBUTTONNAME} <- Gtk.linkButtonNew \"\"\n  ");
+        if (visited) template.append("Gtk.linkButtonSetVisited ${LINKBUTTONNAME} True\n  ");
+        template.append("\n  ");
 
-        String hyperVisited = "";
-        if (visited) hyperVisited = "Gtk.linkButtonSetVisited " + super.getName() + " True\n  ";
+        Map<String, Object> toInsert = new HashMap<String, Object>();
+        toInsert.put("LINKBUTTONNAME", super.getName());
+        toInsert.put("TEXT", text);
 
-        return hyperlink + hyperVisited + "\n  ";
+        return StringFormat.format(template.toString(),toInsert);
     }
 }

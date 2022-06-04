@@ -1,5 +1,10 @@
 package com.example.testboy.structures;
 
+import com.example.testboy.StringFormat;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class Label extends GTKWidget{
     private String text;
 
@@ -24,7 +29,10 @@ public class Label extends GTKWidget{
 
     @Override
     public String gtkHsCode(){
-        String labelGtkHsCode = super.getName() + " <- Gtk.labelNew (Just " + "\"" + text + "\"" + ")\n  " + "\n  ";
-        return labelGtkHsCode;
+        String template = "${LABELNAME} <- Gtk.labelNew (Just \"${TEXT}\")\n  \n  ";
+        Map<String, Object> toInsert = new HashMap<String, Object>();
+        toInsert.put("LABELNAME", super.getName());
+        toInsert.put("TEXT", text);
+        return StringFormat.format(template, toInsert);
     }
 }
