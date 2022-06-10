@@ -169,6 +169,96 @@ public class GtkHaskellCode {
         return topLevelBinding + "\n  ";
     }
 
+    public static void parseGTKButton(javafx.scene.control.Button n){
+        //extract corresponding attributes of JavaFX Button
+        var width = n.getLayoutBounds().getWidth();
+        var height = n.getLayoutBounds().getHeight();
+        var layoutX = n.getLayoutX();
+        var layoutY = n.getLayoutY();
+        var label = ((javafx.scene.control.Button) n).getText();
+        var button = new Button(n.getId(), n.hashCode(),"button", label, layoutX, layoutY, width, height);
+
+        GUIWidgets.add(button);  //add GTKButton to control (widget) list
+        appendTextToFile("-- Button \n  " + button.gtkHsCode());  //generate gi-gtk-Haskell-code for GTKButton
+        currentNode = button;                                     //keep track of current Node
+    }
+
+    public static void parseGTKLayout(AnchorPane n){
+        //extract corresponding attributes of JavaFX AnchorPane
+        var layoutX = n.getLayoutX();
+        var layoutY = n.getLayoutY();
+        var layout = new Layout(n.getId(), n.hashCode(),"layout", layoutX, layoutY);
+
+        GUIContainers.add(layout); //add GTKLayout to container list
+        appendTextToFile("-- Layout \n  " + layout.gtkHsCode()); //generate gi-gtk-Haskell-code for GTKLayout
+        currentNode = layout; //keep track of current Node
+    }
+
+    public static void parseGTKLabel(javafx.scene.control.Label n){
+        if(!checkLabelInTab(n)) {  //if label is not from a Tab -> don't create it here, but later with the tabPane
+            //extract corresponding attributes of JavaFX Label
+            var layoutX = n.getLayoutX();
+            var layoutY = n.getLayoutY();
+            var text = ((javafx.scene.control.Label) n).getText();
+            var label = new Label(n.getId(), n.hashCode(), "label", text, layoutX, layoutY);
+
+            GUIWidgets.add(label); //add GTKLabel to control (widget) list
+            appendTextToFile("--Label \n  " + label.gtkHsCode()); //generate gi-gtk-Haskell-code for GTKLabel
+            currentNode = label;  //keep track of current Node
+        }
+    }
+
+    public static void parseGTKEntry(TextField n){
+        //extract corresponding attributes of JavaFX TextField
+        var width = n.getLayoutBounds().getWidth();
+        var height = n.getLayoutBounds().getHeight();
+        var layoutX = n.getLayoutX();
+        var layoutY = n.getLayoutY();
+        var text = ((TextField) n).getText();
+        var javafxAlignment = ((TextField) n).getAlignment();
+        var haskellAlignment = Entry.getHaskellAlignment(javafxAlignment);
+        var placeholder = ((TextField) n).getPromptText();
+        var entry = new Entry(n.getId(), n.hashCode(),"entry", text, layoutX, layoutY, width, height, haskellAlignment, placeholder);
+
+        GUIWidgets.add(entry); //add GTKEntry to control (widget) list
+        appendTextToFile("-- Entry \n  " + entry.gtkHsCode()); //generate gi-gtk-Haskell-code for GTKEntry
+        currentNode = entry; //keep track of current Node
+    }
+
+    public static void parseGTKCheckButton(CheckBox n){
+        //extract corresponding attributes of JavaFX CheckBox
+        var text = ((CheckBox) n).getText();
+        var layoutX = n.getLayoutX();
+        var layoutY = n.getLayoutY();
+        var checkButton = new CheckButton(n.getId(), n.hashCode(), "checkButton", layoutX, layoutY, text);
+
+        GUIWidgets.add(checkButton); //add GTKCheckButton to control (widget) list
+        appendTextToFile("-- CheckButton \n  " + checkButton.gtkHsCode()); //generate gi-gtk-Haskell-code for GTKCheckButton
+        currentNode = checkButton; //keep track of current Node
+    }
+
+    public static void parseGTKRadioButton(javafx.scene.control.RadioButton n){
+        //extract corresponding attributes of JavaFX RadioButton
+        var layoutX = n.getLayoutX();
+        var layoutY = n.getLayoutY();
+        var text = ((javafx.scene.control.RadioButton) n).getText();
+
+        var radioButton = new RadioButton(n.getId(), n.hashCode(), "radioButton", layoutX, layoutY, text);
+
+        if (((javafx.scene.control.RadioButton) n).getToggleGroup() != null) {
+            var toggleHash = ((javafx.scene.control.RadioButton) n).getToggleGroup().hashCode();
+            var buttons = new ArrayList<GTKWidget>();
+            var toggleGroup = new ToggleGroup(toggleHash, buttons);
+            var rightToggleGroup = toggleGroup.getToggleGroup(toggleGroups);
+            rightToggleGroup.addButtonToToggleGroup(radioButton);
+            toggleGroups.add(rightToggleGroup);
+        }
+
+        GUIWidgets.add(radioButton); //add GTKRadioButton to control (widget) list
+        appendTextToFile("-- RadioButton \n  " + radioButton.gtkHsCode()); //generate gi-gtk-Haskell-code for GTKRadioButton
+        currentNode = radioButton; //keep track of current Node
+    }
+
     /** Debugging routine to dump the scene graph. */
     public static void dump(Node n) {
         dump(n, 0);
@@ -179,84 +269,17 @@ public class GtkHaskellCode {
 
         System.out.println(n);
         if(n instanceof javafx.scene.control.Button){
-            var width = n.getLayoutBounds().getWidth();
-            var height = n.getLayoutBounds().getHeight();
-            var layoutX = n.getLayoutX();
-            var layoutY = n.getLayoutY();
-            var label = ((javafx.scene.control.Button) n).getText();
-            var button = new Button(n.getId(), n.hashCode(),"button", label, layoutX, layoutY, width, height);
-            GUIWidgets.add(button);
-
-            appendTextToFile("-- Button \n  " + button.gtkHsCode());
-
-            currentNode = button;
+            parseGTKButton((javafx.scene.control.Button) n);
         }else if (n instanceof AnchorPane){
-            var layoutX = n.getLayoutX();
-            var layoutY = n.getLayoutY();
-            var layout = new Layout(n.getId(), n.hashCode(),"layout", layoutX, layoutY);
-            GUIContainers.add(layout);
-
-            appendTextToFile("-- Layout \n  " + layout.gtkHsCode());
-
-            currentNode = layout;
+            parseGTKLayout((AnchorPane) n);
         } else if (n instanceof javafx.scene.control.Label){
-            if(!checkLabelInTab(n)){  //indien Label niet onder deel is van een Tab -> uitzondering, niet hier aanmaken, maar met de tabPane samen
-                var layoutX = n.getLayoutX();
-                var layoutY = n.getLayoutY();
-                var text = ((javafx.scene.control.Label) n).getText();
-                var label = new Label(n.getId(), n.hashCode(),"label", text, layoutX, layoutY);
-                GUIWidgets.add(label);
-
-                appendTextToFile("--Label \n  " + label.gtkHsCode());
-
-                currentNode = label;
-            }
+            parseGTKLabel((javafx.scene.control.Label) n);
         } else if (n instanceof TextField){
-            var width = n.getLayoutBounds().getWidth();
-            var height = n.getLayoutBounds().getHeight();
-            var layoutX = n.getLayoutX();
-            var layoutY = n.getLayoutY();
-            var text = ((TextField) n).getText();
-            var javafxAlignment = ((TextField) n).getAlignment();
-            var haskellAlignment = Entry.getHaskellAlignment(javafxAlignment);
-            var placeholder = ((TextField) n).getPromptText();
-            var entry = new Entry(n.getId(), n.hashCode(),"entry", text, layoutX, layoutY, width, height, haskellAlignment, placeholder);
-            GUIWidgets.add(entry);
-
-            appendTextToFile("-- Entry \n  " + entry.gtkHsCode());
-
-            currentNode = entry;
+            parseGTKEntry((TextField) n);
         } else if(n instanceof CheckBox) {
-            var text = ((CheckBox) n).getText();
-            var layoutX = n.getLayoutX();
-            var layoutY = n.getLayoutY();
-            var checkButton = new CheckButton(n.getId(), n.hashCode(), "checkButton", layoutX, layoutY, text);
-            GUIWidgets.add(checkButton);
-
-            appendTextToFile("-- CheckButton \n  " + checkButton.gtkHsCode());
-
-            currentNode = checkButton;
+            parseGTKCheckButton((CheckBox) n);
         } else if (n instanceof javafx.scene.control.RadioButton){
-            var layoutX = n.getLayoutX();
-            var layoutY = n.getLayoutY();
-            var text = ((javafx.scene.control.RadioButton) n).getText();
-
-            var radioButton = new RadioButton(n.getId(), n.hashCode(), "radioButton", layoutX, layoutY, text);
-
-            if (((javafx.scene.control.RadioButton) n).getToggleGroup() != null) {
-                var toggleHash = ((javafx.scene.control.RadioButton) n).getToggleGroup().hashCode();
-                var buttons = new ArrayList<GTKWidget>();
-                var toggleGroup = new ToggleGroup(toggleHash, buttons);
-                var rightToggleGroup = toggleGroup.getToggleGroup(toggleGroups);
-                rightToggleGroup.addButtonToToggleGroup(radioButton);
-                toggleGroups.add(rightToggleGroup);
-            }
-
-            GUIWidgets.add(radioButton);
-
-            appendTextToFile("-- RadioButton \n  " + radioButton.gtkHsCode());
-
-            currentNode = radioButton;
+            parseGTKRadioButton((javafx.scene.control.RadioButton) n);
         } else if (n instanceof GridPane){
             var layoutX = n.getLayoutX();
             var layoutY = n.getLayoutY();
