@@ -25,8 +25,7 @@ import java.util.ArrayList;
 
 public class GtkHaskellCode {
     private static Stage stage;
-
-    private static final String username = System.getProperty("user.name"); //voor gebruikersnaam voor padnaam waar .hs file opgeslagen moet worden
+    private static final String username = System.getProperty("user.name"); //username of host-system-user to store .hs file
     private static final String path = "/home/"+username+"/Documents/Masterproef/FXML/javafx_project/testboy/src/main/java/com/example/testboy/gi-gtk-generated.hs";
 
     private static ArrayList<Relation> relations ;
@@ -36,7 +35,7 @@ public class GtkHaskellCode {
     private static ArrayList<NotebookRelation> notebookRelations;
 
 
-    private static GTKWidget currentNode; //voorlopige node tijdens het doorlopen van FXML
+    private static GTKWidget currentNode; //current Node when walking trough FXML-tree
 
     public GtkHaskellCode(Stage stage){
         GtkHaskellCode.stage = stage;
@@ -259,6 +258,107 @@ public class GtkHaskellCode {
         currentNode = radioButton; //keep track of current Node
     }
 
+
+    public static void parseGTKGrid(GridPane n){
+        //extract corresponding attributes of JavaFX GridPane
+        var layoutX = n.getLayoutX();
+        var layoutY = n.getLayoutY();
+        var columnSpacing = ((GridPane) n).getHgap();
+        var rowSpacing = ((GridPane) n).getVgap();
+        var gridP = new Grid(n.getId(), n.hashCode(),"grid", layoutX, layoutY, columnSpacing, rowSpacing);
+
+        GUIContainers.add(gridP); //add GTKGrid to container list
+        appendTextToFile("-- Grid \n  " + gridP.gtkHsCode()); //generate gi-gtk-Haskell-code for GTKGridpane
+        currentNode = gridP; //keep track of current Node
+    }
+
+
+    public static void parseGTKVBox(VBox n){
+        //extract corresponding attributes of JavaFX VBox
+        var layoutX = n.getLayoutX();
+        var layoutY = n.getLayoutY();
+        var vSpacing = (int)((VBox) n).getSpacing();
+        Box vBox = new Box(n.getId(), n.hashCode(),"vBox", layoutX, layoutY, vSpacing, Orientation.OrientationVertical);
+
+        GUIContainers.add(vBox); //add GTKBox to container list
+        appendTextToFile("-- vBox \n  " + vBox.gtkHsCode()); //generate gi-gtk-Haskell-code for GTKBox
+        currentNode = vBox; //keep track of current Node
+    }
+
+    public static void parseGTKHBox(HBox n){
+        //extract corresponding attributes of JavaFX HBox
+        var layoutX = n.getLayoutX();
+        var layoutY = n.getLayoutY();
+        var hSpacing = (int)((HBox) n).getSpacing();
+        Box hBox = new Box(n.getId(), n.hashCode(),"hBox", layoutX, layoutY, hSpacing, Orientation.OrientationHorizontal);
+
+        GUIContainers.add(hBox);  //add GTKBox to container list
+        appendTextToFile("-- hBox \n  " + hBox.gtkHsCode()); //generate gi-gtk-Haskell-code for GTKBox
+        currentNode = hBox; //keep track of current Node
+    }
+
+    public static void parseGTKNotebook(TabPane n){
+        //extract corresponding attributes of JavaFX TabPane
+        var layoutX = n.getLayoutX();
+        var layoutY = n.getLayoutY();
+        var width = (int)((TabPane) n).getWidth();
+        var height = (int)((TabPane) n).getHeight();
+
+        //Extract Notebook tabs (Labels) and directly insert to haskell file
+        var tabs = ((TabPane) n).getTabs();
+        ArrayList<Label> notebookTabs = new ArrayList<>();
+        for(Tab tab: tabs){
+            var labelText = tab.getText(); //label text
+            Label tabLabel = new Label(null ,labelText.hashCode(), "tabLabel", labelText, 0 ,0);
+            notebookTabs.add(tabLabel);
+            appendTextToFile("--Label \n  " + tabLabel.gtkHsCode());
+            GUIWidgets.add(tabLabel); //toevoegen aan globale lijst
+        }
+
+        //Create Notebook
+        Notebook tabPane = new Notebook(n.getId(), n.hashCode(),"noteBook", layoutX, layoutY, width, height, notebookTabs);
+        GUIContainers.add(tabPane);
+        appendTextToFile("--Notebook \n  " + tabPane.gtkHsCode());
+        currentNode = tabPane;
+
+        //Create Notebook Relation -> exception where relations are already made in the parsing step
+        for(int i = 0; i < tabs.size(); i++){
+            var tabTopLevelContainer = tabs.get(i).getContent(); //top level elements in a tab -> mostly AnchorPane
+            var topLevelContainerHash = String.valueOf(tabTopLevelContainer.hashCode()); //first set hash of child as childName for relation
+            var notebookRel = new NotebookRelation(tabPane.getNotebookName(), topLevelContainerHash, notebookTabs.get(i).getName()); //create relation
+            notebookRelations.add(notebookRel); //add relation
+        }
+    }
+
+
+    public static void parseGTKLinkButton(Hyperlink n){
+        //extract corresponding attributes of JavaFX Hyperlink
+        var layoutX = n.getLayoutX();
+        var layoutY = n.getLayoutY();
+        var text = ((Hyperlink) n).getText();
+        var visited = ((Hyperlink) n).isVisited();
+        var linkButton = new LinkButton(n.getId(), n.hashCode(), "linkButton", layoutX, layoutY, text, visited);
+
+        GUIWidgets.add(linkButton);  //add GTKLinkButton to control list
+        appendTextToFile("-- LinkButton \n  " + linkButton.gtkHsCode()); //generate gi-gtk-Haskell-code for GTKLinkButton
+        currentNode = linkButton; //keep track of current Node
+    }
+
+    public static void parseGTKComboBox(ComboBox<?> n){
+        //extract corresponding attributes of JavaFX Hyperlink
+        var layoutX = n.getLayoutX();
+        var layoutY = n.getLayoutY();
+        var entry = ((ComboBox<?>) n).isEditable();
+        var items = ((ComboBox<?>) n).getItems();
+        var width = ((ComboBox<?>) n).getWidth();
+        var height = ((ComboBox<?>) n).getHeight();
+        var comboBoxText = new ComboBoxText(n.getId(), n.hashCode(), "comboBoxText", layoutX, layoutY, entry, items, width, height);
+
+        GUIWidgets.add(comboBoxText); //add GTKComboBox to control list
+        appendTextToFile("-- ComboBoxText \n  " + comboBoxText.gtkHsCode()); //generate gi-gtk-Haskell-code for GTKComboBOx
+        currentNode = comboBoxText;  //keep track of current Node
+    }
+
     /** Debugging routine to dump the scene graph. */
     public static void dump(Node n) {
         dump(n, 0);
@@ -268,6 +368,8 @@ public class GtkHaskellCode {
         for (int i = 0; i < depth; i++) System.out.print("  ");
 
         System.out.println(n);
+
+        //CREATE Data structures
         if(n instanceof javafx.scene.control.Button){
             parseGTKButton((javafx.scene.control.Button) n);
         }else if (n instanceof AnchorPane){
@@ -281,115 +383,26 @@ public class GtkHaskellCode {
         } else if (n instanceof javafx.scene.control.RadioButton){
             parseGTKRadioButton((javafx.scene.control.RadioButton) n);
         } else if (n instanceof GridPane){
-            var layoutX = n.getLayoutX();
-            var layoutY = n.getLayoutY();
-            var columnSpacing = ((GridPane) n).getHgap();
-            var rowSpacing = ((GridPane) n).getVgap();
-            var gridP = new Grid(n.getId(), n.hashCode(),"grid", layoutX, layoutY, columnSpacing, rowSpacing);
-            GUIContainers.add(gridP);
-
-            appendTextToFile("-- Grid \n  " + gridP.gtkHsCode());
-
-            currentNode = gridP;
+            parseGTKGrid((GridPane) n);
         } else if (n instanceof VBox){
-            var layoutX = n.getLayoutX();
-            var layoutY = n.getLayoutY();
-            var vSpacing = (int)((VBox) n).getSpacing();
-            Box vBox = new Box(n.getId(), n.hashCode(),"vBox", layoutX, layoutY, vSpacing, Orientation.OrientationVertical);
-            GUIContainers.add(vBox);
-
-            appendTextToFile("-- vBox \n  " + vBox.gtkHsCode());
-
-            currentNode = vBox;
+           parseGTKVBox((VBox) n);
         } else if (n instanceof HBox){
-            var layoutX = n.getLayoutX();
-            var layoutY = n.getLayoutY();
-            var hSpacing = (int)((HBox) n).getSpacing();
-            Box hBox = new Box(n.getId(), n.hashCode(),"hBox", layoutX, layoutY, hSpacing, Orientation.OrientationHorizontal);
-            GUIContainers.add(hBox);
-
-            appendTextToFile("-- hBox \n  " + hBox.gtkHsCode());
-
-            currentNode = hBox;
+            parseGTKHBox((HBox) n);
         } else if (n instanceof TabPane){
-            var layoutX = n.getLayoutX();
-            var layoutY = n.getLayoutY();
-            var width = (int)((TabPane) n).getWidth();
-            var height = (int)((TabPane) n).getHeight();
-
-            //Notebook tabs extracten en in file zetten
-            var tabs = ((TabPane) n).getTabs();
-            ArrayList<Label> notebookTabs = new ArrayList<>();
-            for(Tab tab: tabs){
-                var labelText = tab.getText(); //label text
-                Label tabLabel = new Label(null ,labelText.hashCode(), "tabLabel", labelText, 0 ,0);
-                notebookTabs.add(tabLabel);
-                appendTextToFile("--Label \n  " + tabLabel.gtkHsCode());
-                GUIWidgets.add(tabLabel); //toevoegen aan globale lijst
-            }
-
-            //Notebook aanmaken
-            Notebook tabPane = new Notebook(n.getId(), n.hashCode(),"noteBook", layoutX, layoutY, width, height, notebookTabs);
-            GUIContainers.add(tabPane);
-            appendTextToFile("--Notebook \n  " + tabPane.gtkHsCode());
-            currentNode = tabPane;
-
-            //Notebook relaties aanmaken
-            for(int i = 0; i < tabs.size(); i++){
-                var tabTopLevelContainer = tabs.get(i).getContent(); //top level elementen in een tab -> meestal AnchorPane
-                var topLevelContainerHash = String.valueOf(tabTopLevelContainer.hashCode()); //we gaan eerst de hash van de child als childName setten in de relatie
-                var notebookRel = new NotebookRelation(tabPane.getNotebookName(), topLevelContainerHash, notebookTabs.get(i).getName());
-                notebookRelations.add(notebookRel);
-            }
+            parseGTKNotebook((TabPane) n);
         } else if (n instanceof Hyperlink){
-            var layoutX = n.getLayoutX();
-            var layoutY = n.getLayoutY();
-            var text = ((Hyperlink) n).getText();
-            var visited = ((Hyperlink) n).isVisited();
-            var linkButton = new LinkButton(n.getId(), n.hashCode(), "linkButton", layoutX, layoutY, text, visited);
-            GUIWidgets.add(linkButton);
-
-            appendTextToFile("-- LinkButton \n  " + linkButton.gtkHsCode());
-
-            currentNode = linkButton;
+            parseGTKLinkButton((Hyperlink) n);
         } else if (n instanceof ComboBox<?>){
-            var layoutX = n.getLayoutX();
-            var layoutY = n.getLayoutY();
-            var entry = ((ComboBox<?>) n).isEditable();
-            var items = ((ComboBox<?>) n).getItems();
-            var width = ((ComboBox<?>) n).getWidth();
-            var height = ((ComboBox<?>) n).getHeight();
-            var comboBoxText = new ComboBoxText(n.getId(), n.hashCode(), "comboBoxText", layoutX, layoutY, entry, items, width, height);
-            GUIWidgets.add(comboBoxText);
-
-            appendTextToFile("-- ComboBoxText \n  " + comboBoxText.gtkHsCode());
-
-            currentNode = comboBoxText;
+            parseGTKComboBox((ComboBox<?>) n);
         }
 
-        //RELATIES AANMAKEN
-        if(n.getParent() instanceof AnchorPane){ //indien parent een container is zoals AnchorPane -> relatie aanmaken
-            String APParentName = getParentName(n.getParent().hashCode());
-            int x;
-            int y;
-
-            x  = (int)currentNode.getLayoutX();
-            y  = (int)currentNode.getLayoutY();
-
-            LayoutRelation layoutRel = new LayoutRelation(APParentName, currentNode.getName(), x, y);
-            relations.add(layoutRel);
-        } else if(n.getParent() instanceof GridPane){
-            String gridPaneParentName = getParentName(n.getParent().hashCode());
-            Integer row = GridPane.getRowIndex(n);
-            Integer column = GridPane.getColumnIndex(n);
-            if (row == null) row= 0;
-            if (column == null) column= 0;
-            GridRelation gridRel = new GridRelation(gridPaneParentName, currentNode.getName(), row, column);
-            relations.add(gridRel);
-        } else if(n.getParent() instanceof HBox || n.getParent() instanceof VBox){
-            String boxParentName = getParentName(n.getParent().hashCode());
-            BoxRelation boxRel = new BoxRelation(boxParentName, currentNode.getName(), 0);
-            relations.add(boxRel);
+        //CREATE RELATIONS
+        if(n.getParent() instanceof AnchorPane){ //if parent is container like AnchorPane -> create relation
+            makeGTKLayoutRelation(n);
+        } else if(n.getParent() instanceof GridPane){ //if parent is container like GridPane -> create relation
+           makeGTKGridRelation(n);
+        } else if(n.getParent() instanceof HBox || n.getParent() instanceof VBox){ //if parent is container like H/VBox -> create relation
+            makeGTKBoxRelation(n);
         }
 
         if (n instanceof Parent) {
@@ -397,6 +410,36 @@ public class GtkHaskellCode {
                 dump(c, depth + 1);
             }
         }
+    }
+
+    public static void makeGTKLayoutRelation(Node n){
+        //extract corresponding attributes for relation
+        String APParentName = getParentName(n.getParent().hashCode());
+        int x;
+        int y;
+        x  = (int)currentNode.getLayoutX();
+        y  = (int)currentNode.getLayoutY();
+        LayoutRelation layoutRel = new LayoutRelation(APParentName, currentNode.getName(), x, y);
+
+        relations.add(layoutRel);
+    }
+
+    public static void makeGTKGridRelation(Node n){
+        //extract corresponding attributes for relation
+        String gridPaneParentName = getParentName(n.getParent().hashCode());
+        Integer row = GridPane.getRowIndex(n);
+        Integer column = GridPane.getColumnIndex(n);
+        if (row == null) row= 0;
+        if (column == null) column= 0;
+        GridRelation gridRel = new GridRelation(gridPaneParentName, currentNode.getName(), row, column);
+
+        relations.add(gridRel);
+    }
+
+    public static void makeGTKBoxRelation(Node n){
+        String boxParentName = getParentName(n.getParent().hashCode());
+        BoxRelation boxRel = new BoxRelation(boxParentName, currentNode.getName(), 0);
+        relations.add(boxRel);
     }
 
     public static String getParentName(Integer parentID){
