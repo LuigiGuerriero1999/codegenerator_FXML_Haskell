@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Scene?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.stage.Stage?>
+
+<Stage height="400.0" title="JavaFX demo-app" width="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+    <scene>
+        <Scene>
+         <GridPane hgap="10" maxHeight="1080.0" maxWidth="1920.0" prefHeight="400.0" prefWidth="600.0">
+            <columnConstraints>
+               <ColumnConstraints hgrow="SOMETIMES" maxWidth="540.0" minWidth="10.0" percentWidth="50.0" prefWidth="302.0" />
+               <ColumnConstraints hgrow="SOMETIMES" maxWidth="331.0" minWidth="10.0" percentWidth="50.0" prefWidth="298.0" />
+            </columnConstraints>
+            <rowConstraints>
+               <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                  <AnchorPane prefHeight="400.0" prefWidth="600.0">
+                  <children>
+                     <TextField alignment="TOP_CENTER" layoutX="66.0" layoutY="278.0" promptText="Vul hier iets in" />
+                     <Label layoutX="90.0" layoutY="94.0" text="Typ hier uw tekst" />
+                     <Label layoutX="88.0" layoutY="341.0" text="Hier komt de tekst " />
+                     <CheckBox layoutX="83.0" layoutY="157.0" mnemonicParsing="false" text="Checkbutton test" />
+                     <RadioButton layoutX="85.0" layoutY="207.0" mnemonicParsing="false" text="Radiobutton test">
+                        <toggleGroup>
+                           <ToggleGroup fx:id="testGroup" />
+                        </toggleGroup>
+                     </RadioButton>
+                     <RadioButton layoutX="85.0" layoutY="232.0" mnemonicParsing="false" text="Radiobutton test 2" toggleGroup="$testGroup" />
+                  </children>
+               </AnchorPane>
+               <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="477.0" prefWidth="343.0" text="Toon tekst" GridPane.columnIndex="1" />
+            </children>
+         </GridPane>
+        </Scene>
+    </scene>
+</Stage>
