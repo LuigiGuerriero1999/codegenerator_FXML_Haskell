@@ -2,13 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ea12cb0a-9f79-4593-a2e8-558b3cf50c5c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/demo.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/generated/gi-gtk-generated" beforeDir="false" afterPath="$PROJECT_DIR$/generated/gi-gtk-generated" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/generated/gi-gtk-generated.hi" beforeDir="false" afterPath="$PROJECT_DIR$/generated/gi-gtk-generated.hi" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/generated/gi-gtk-generated.hs" beforeDir="false" afterPath="$PROJECT_DIR$/generated/gi-gtk-generated.hs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/generated/gi-gtk-generated.o" beforeDir="false" afterPath="$PROJECT_DIR$/generated/gi-gtk-generated.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/codegenerator_FXML_Haskell/com/example/codegenerator/structures/GTKWidget.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/codegenerator_FXML_Haskell/com/example/codegenerator/structures/GTKWidget.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/codegenerator/GtkHaskellCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/codegenerator/GtkHaskellCode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/codegenerator/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/codegenerator/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/codegenerator/relations/LayoutRelation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/codegenerator/relations/LayoutRelation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/codegenerator/structures/GTKWidget.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/codegenerator/structures/GTKWidget.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,9 +120,14 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/codegenerator/HelloApplication.java</url>
-          <line>18</line>
-          <option name="timeStamp" value="3" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/codegenerator/GtkHaskellCode.java</url>
+          <line>315</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/codegenerator/GtkHaskellCode.java</url>
+          <line>81</line>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

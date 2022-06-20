@@ -77,9 +77,13 @@ public class GtkHaskellCode {
     }
 
     public static String createTopLevelWindow(){
+        int width = (int)stage.getWidth();
+        int height = (int)stage.getHeight();
+        if (width == 0) width = 600;
+        if (height == 0) height = 400;
         String stageResizableBool = String.valueOf(stage.isResizable()).substring(0, 1).toUpperCase() + String.valueOf(stage.isResizable()).substring(1);
         String createTopLevelWindow = "window <- Gtk.windowNew WindowTypeToplevel\n  ";
-        String setWindowProperties =  "Gtk.set window [Gtk.windowTitle := "+"\""+stage.getTitle()+"\""+", Gtk.windowResizable := "+stageResizableBool+", Gtk.windowDefaultWidth := "+(int)stage.getWidth()+", Gtk.windowDefaultHeight := "+(int)stage.getHeight()+"]\n  ";
+        String setWindowProperties =  "Gtk.set window [Gtk.windowTitle := "+"\""+stage.getTitle()+"\""+", Gtk.windowResizable := "+stageResizableBool+", Gtk.windowDefaultWidth := "+width+", Gtk.windowDefaultHeight := "+height+"]\n  ";
         String gtkHsCode = createTopLevelWindow + setWindowProperties;
         return gtkHsCode;
     }

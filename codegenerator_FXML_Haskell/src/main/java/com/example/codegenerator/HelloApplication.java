@@ -31,7 +31,8 @@ public class HelloApplication extends Application {
         //stage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/combobox_choicebox.fxml")));
         //stage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/hyperlinkje.fxml")));
         //stage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/gui_literatuur_metstage_CORRECT.fxml")));
-        stage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/ultiemeTest.fxml")));
+        //stage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/ultiemeTest.fxml")));
+        stage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/demo.fxml")));
         }else{
             stage = FXMLLoader.load(Paths.get(FXML_path).toUri().toURL());
         }

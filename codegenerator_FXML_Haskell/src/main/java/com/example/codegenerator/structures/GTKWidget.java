@@ -24,14 +24,14 @@ public abstract class GTKWidget {
 
     public GTKWidget(String id, Integer id_hash, String name, double layoutX, double layoutY) {
         this.id = id;
-        this.id_hash = id_hash;
+        this.id_hash = Math.abs(id_hash);
         this.name = name;
         this.layoutX = layoutX;
         this.layoutY = layoutY;
     }
 
     public static String makeName(String id, Integer id_hash, String name){
-        return Objects.requireNonNullElseGet(id, () -> name + "_" + id_hash);
+        return Objects.requireNonNullElseGet(id, () -> name + "_" + Math.abs(id_hash));
     }
 
     public double getLayoutX() {

@@ -13,8 +13,8 @@ public class LayoutRelation extends Relation{
 
     public LayoutRelation(String parentName, String childName, Integer x, Integer y) {
         super(parentName, childName);
-        this.x = x;
-        this.y = y;
+        this.x = Math.abs(x);
+        this.y = Math.abs(y);
     }
 
     public Integer getX() {
