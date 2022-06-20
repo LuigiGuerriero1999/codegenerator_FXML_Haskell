@@ -5,7 +5,7 @@ cd out
 cd production
 cd codegenerator_FXML_Haskell
 
-java com.example.codegenerator.HelloApplication $1 &
+java com.example.codegenerator.HelloApplication $1 $2 &
 
 cd ..
 cd ..
@@ -25,11 +25,16 @@ do
    sleep 0.5 
 
    if [[ "$ATIME" != "$LTIME" ]]
-   then    
-       make
-       ./gi-gtk-generated
-       LTIME=$ATIME
-       break
+   then
+       if [[ "$2" != "-runandgenerate" ]] 
+       then 
+        break
+       else      
+        make
+        ./gi-gtk-generated
+        LTIME=$ATIME
+        break
+       fi
    fi
    sleep 0.5
 done

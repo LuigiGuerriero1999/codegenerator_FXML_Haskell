@@ -2,6 +2,8 @@ package com.example.codegenerator;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.SnapshotParameters;
+import javafx.scene.image.WritableImage;
 import javafx.stage.Stage;
 
 import java.io.*;
@@ -10,6 +12,7 @@ import java.util.Objects;
 
 public class HelloApplication extends Application {
     public static String FXML_path;
+    public static String modus;
     public static Stage stage;
     @Override
     public void start(Stage primaryStage) throws IOException {
@@ -32,13 +35,20 @@ public class HelloApplication extends Application {
         }else{
             stage = FXMLLoader.load(Paths.get(FXML_path).toUri().toURL());
         }
-        stage.show();
 
-        new GtkHaskellCode(stage);
+        //instantiate codegenerator
+        GtkHaskellCode codegenerator = new GtkHaskellCode(stage);
 
-        GtkHaskellCode.generateHaskellCode();
-        GtkHaskellCode.dump(stage.getScene().getRoot());
-        GtkHaskellCode.endOfFile();
+        //necessary to ensure a css layout pass has been run on the scene graph before dumping
+        WritableImage image = stage.getScene().getRoot().snapshot(new SnapshotParameters(), null);
+
+        if(modus.equals("-runandgenerate")){
+            codegenerator.getStage().show();
+        }
+
+        codegenerator.generateHaskellCode();      //generate begin code
+        codegenerator.generateHsCodeMiddlePart(); //generate middle part
+        codegenerator.endOfFile();                //generate end code
     }
 
     public static void setFXML_path(String FXML_filename) {
@@ -47,19 +57,31 @@ public class HelloApplication extends Application {
         HelloApplication.FXML_path = FXML_filename;
     }
 
+    public static void setModus(String modus) {
+        HelloApplication.modus = modus;
+    }
+
     public static void main(String[] args) {
         setFXML_path("");
+        setModus("");
         try{
-            if (args[0] == null || args[0].trim().isEmpty()) {
-                System.out.println("You need to specify a path!");
-                return;
-            } else {
+            if (args.length >= 1) {
                 System.out.println(args[0]);
                 setFXML_path(args[0]);
+                if(args.length >= 2) {
+                    System.out.println(args[1]);
+                    setModus(args[1]);
+                }
+            } else {
+                System.out.println("No FXML-file path specified, selecting default FXML-file");
             }
         }catch (Exception e){
-            //setFXML_path("");
+            System.out.println(e.toString());
         }
+
+        System.out.println("FXML_path:" + FXML_path);
+        System.out.println("MODUS: "+modus);
+        //setModus("-runandgenerate");  //only for testing purposes when working in intelliJ without cmd
         launch();
     }
 

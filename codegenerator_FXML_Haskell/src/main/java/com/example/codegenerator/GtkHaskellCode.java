@@ -359,6 +359,18 @@ public class GtkHaskellCode {
         currentNode = comboBoxText;  //keep track of current Node
     }
 
+    public static void generateHsCodeMiddlePart(){
+        dump(stage.getScene().getRoot());
+    }
+
+    public static Stage getStage() {
+        return stage;
+    }
+
+    public static void setStage(Stage stage) {
+        GtkHaskellCode.stage = stage;
+    }
+
     /** Debugging routine to dump the scene graph. */
     public static void dump(Node n) {
         dump(n, 0);

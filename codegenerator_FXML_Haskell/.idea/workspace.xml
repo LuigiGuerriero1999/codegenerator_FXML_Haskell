@@ -2,8 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ea12cb0a-9f79-4593-a2e8-558b3cf50c5c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../runAndResult.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generated/gi-gtk-generated" beforeDir="false" afterPath="$PROJECT_DIR$/generated/gi-gtk-generated" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generated/gi-gtk-generated.hi" beforeDir="false" afterPath="$PROJECT_DIR$/generated/gi-gtk-generated.hi" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generated/gi-gtk-generated.hs" beforeDir="false" afterPath="$PROJECT_DIR$/generated/gi-gtk-generated.hs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generated/gi-gtk-generated.o" beforeDir="false" afterPath="$PROJECT_DIR$/generated/gi-gtk-generated.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/codegenerator/GtkHaskellCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/codegenerator/GtkHaskellCode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/codegenerator/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/codegenerator/HelloApplication.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,19 +29,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "/home/luigi/Documents/GitHub/codegenerator_FXML_Haskell/codegenerator_FXML_Haskell",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.keymap"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/luigi/Documents/GitHub/codegenerator_FXML_Haskell/codegenerator_FXML_Haskell&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/com/example/codegenerator" />
@@ -113,8 +118,8 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/codegenerator/HelloApplication.java</url>
-          <line>52</line>
-          <option name="timeStamp" value="2" />
+          <line>18</line>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
