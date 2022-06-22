@@ -1,5 +1,11 @@
 # Codegenerator from SceneBuilder-FXML to Haskell
-This codegenerator can convert **SceneBuilder-FXML** to **Haskell** code for developing GUIs. The Haskell-code that is being generated uses the **gi-gtk** library wich underlying is using the **GTK** toolkit. The codegenerator was created by the two authors of this repository (Kai and Luigi) for their master's thesis at the University of Hasselt and KU Leuven. The research project was performed at the research group of FunTTOP (ACRO and DTAI).
+This codegenerator can convert **SceneBuilder-FXML** to **Haskell** code for developing GUIs. The Haskell-code that is being generated uses the **gi-gtk** library wich underlying is using the **GTK** toolkit. The codegenerator was created by the two authors of this repository (Kai and Luigi) for their master's thesis at the University of Hasselt and KU Leuven. The research project was performed at the research group of FunTTOP (ACRO and DTAI):
+<div align="center">
+    <img src="/extra/acro_dtai.png" width="400px" height="100px"</img>
+    <img src="/extra/uh_ku.png" width="600px" height="100px"</img>
+</div> <br />
+
+
 
 The codegenerator is built in Java and can succesfully convert and generate the following JavaFX subset:
 <table>
@@ -27,6 +33,7 @@ The codegenerator is built in Java and can succesfully convert and generate the 
 |  Hyperlink  |  LinkButton  |
 
 </td></tr> </table>
+
 
 ## Background of this project
 FunTTop in Diepenbeek aims to increase the use of functional programming in the field to be able to valorize the advantages in terms of efficiency and the number of lines of code compared to imperative programming languages. At the same time, FunTTop finds that programming a graphical user interface (GUI) is still cumbersome in Haskell, the academically developed functional language. Therefore, this master's thesis aims to develop a code generator that can convert the output of SceneBuilder (FXML) to Haskell code.
