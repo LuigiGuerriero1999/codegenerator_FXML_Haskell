@@ -1,7 +1,7 @@
 # Codegenerator from SceneBuilder-FXML to Haskell
-This codegenerator can convert **SceneBuilder-FXML** to **Haskell** code for developing GUIs. The Haskell-code that is being generated uses the **gi-gtk** library wich underlying used **GTK**. The codegenerator was created by the two authors of this repository (Kai and Luigi) for their master's thesis at the University of Hasselt and KU Leuven. The research project was performed at the research group of FunTTOP (ACRO and DTAI).
+This codegenerator can convert **SceneBuilder-FXML** to **Haskell** code for developing GUIs. The Haskell-code that is being generated uses the **gi-gtk** library wich underlying is using the **GTK** toolkit. The codegenerator was created by the two authors of this repository (Kai and Luigi) for their master's thesis at the University of Hasselt and KU Leuven. The research project was performed at the research group of FunTTOP (ACRO and DTAI).
 
-The codegenerator can succesfully convert and generate the following JavaFX subset:
+The codegenerator is built in Java and can succesfully convert and generate the following JavaFX subset:
 <table>
 <tr><th>Containers</th><th>Controls</th></tr>
 <tr><td>
@@ -43,7 +43,7 @@ To also execute the JavaFX-app and compile and run the freshly generated Haskell
 ./run.sh fxmlfile_path -runandgenerate
 ```
 
-## current flaws with the codegenerator
+## Current flaws with the codegenerator
 - The user has to explicitly use the **Label-node** in SceneBuilder in stead of the **Text-node** becasue the codegenerator only assumes that **Text-nodes** are attributes of a bigger element or node.
 - The codegenerator stores the widgets and relations separatly in **GTKWidget**-objects and **Relation**-objects which have to be maintained, but they provide flexibility to modify data.
 - The **TabPane-node** is being parsed inefficiently due to the **Tab** (in JavaFX) not being of a **node-type**.
