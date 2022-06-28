@@ -1,8 +1,0 @@
-# List of source files to skip.
-
-# Main application
-data/glade.desktop.in
-
-# Test data
-tests/toplevel_order_test5.glade
-tests/toplevel_order_test6.glade

@@ -1,4 +1,0 @@
-1. nix installeren: sh <(curl -L https://nixos.org/nix/install) --daemon
-2. nix-shell in het projectfolderopenen: nix-shell 
-3. project builden: make 
-4. uitvoeren: ./projectnaam
